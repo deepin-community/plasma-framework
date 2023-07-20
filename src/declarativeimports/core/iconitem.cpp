@@ -6,22 +6,23 @@
 */
 
 #include "iconitem.h"
+
+#include <cmath>
+
 #include <QDebug>
 #include <QPaintEngine>
 #include <QPainter>
 #include <QPalette>
 #include <QPropertyAnimation>
 #include <QQuickWindow>
-#include <QSGSimpleTextureNode>
+#include <QSGImageNode>
 
 #include <KIconEffect>
 #include <KIconLoader>
 #include <KIconTheme>
 
-#include "fadingnode_p.h"
 #include "theme.h"
 #include "units.h"
-#include <QuickAddons/ManagedTextureNode>
 
 class IconItemSource
 {
@@ -77,8 +78,8 @@ class QIconSource : public IconItemSource
 public:
     explicit QIconSource(const QIcon &icon, IconItem *iconItem)
         : IconItemSource(iconItem)
+        , m_icon(icon)
     {
-        m_icon = icon;
     }
 
     bool isValid() const override
@@ -108,8 +109,8 @@ class QImageSource : public IconItemSource
 public:
     explicit QImageSource(const QImage &imageIcon, IconItem *iconItem)
         : IconItemSource(iconItem)
+        , m_imageIcon(imageIcon)
     {
-        m_imageIcon = imageIcon;
     }
 
     bool isValid() const override
@@ -142,8 +143,8 @@ class SvgSource : public IconItemSource
 public:
     explicit SvgSource(const QString &sourceString, IconItem *iconItem)
         : IconItemSource(iconItem)
+        , m_svgIcon(new Plasma::Svg(iconItem))
     {
-        m_svgIcon = new Plasma::Svg(iconItem);
         m_svgIcon->setColorGroup(iconItem->colorGroup());
         m_svgIcon->setStatus(iconItem->status());
         m_svgIcon->setDevicePixelRatio(devicePixelRatio());
@@ -254,7 +255,7 @@ public:
 private:
     qreal devicePixelRatio()
     {
-        return window() ? window()->devicePixelRatio() : qApp->devicePixelRatio();
+        return std::ceil(window() ? window()->devicePixelRatio() : qApp->devicePixelRatio());
     }
 
     QPointer<Plasma::Svg> m_svgIcon;
@@ -282,8 +283,11 @@ IconItem::IconItem(QQuickItem *parent)
     connect(m_animation, &QPropertyAnimation::valueChanged, this, &IconItem::valueChanged);
     connect(m_animation, &QPropertyAnimation::finished, this, &IconItem::animationFinished);
     m_animation->setTargetObject(this);
-    m_animation->setEasingCurve(QEasingCurve::InOutQuad);
-    m_animation->setDuration(250); // FIXME from theme
+    m_animation->setEasingCurve(QEasingCurve::InOutCubic);
+    m_animation->setDuration(Units::instance().longDuration());
+    connect(&Units::instance(), &Units::durationChanged, m_animation, [=]() {
+        m_animation->setDuration(Units::instance().longDuration());
+    });
 
     setFlag(ItemHasContents, true);
 
@@ -597,6 +601,31 @@ void IconItem::updatePolish()
     loadPixmap();
 }
 
+QSGNode *IconItem::createSubtree(qreal initialOpacity)
+{
+    auto opacityNode = new QSGOpacityNode{};
+    opacityNode->setFlag(QSGNode::OwnedByParent, true);
+    opacityNode->setOpacity(initialOpacity);
+
+    auto imageNode = window()->createImageNode();
+    imageNode->setFlag(QSGNode::OwnedByParent, true);
+    imageNode->setTexture(window()->createTextureFromImage(m_iconPixmap.toImage()));
+    imageNode->setOwnsTexture(true);
+    imageNode->setFiltering(smooth() ? QSGTexture::Linear : QSGTexture::Nearest);
+    opacityNode->appendChildNode(imageNode);
+
+    return opacityNode;
+}
+
+void IconItem::updateSubtree(QSGNode *node, qreal opacity)
+{
+    auto opacityNode = static_cast<QSGOpacityNode *>(node);
+    opacityNode->setOpacity(opacity);
+
+    auto imageNode = static_cast<QSGImageNode *>(opacityNode->firstChild());
+    imageNode->setFiltering(smooth() ? QSGTexture::Linear : QSGTexture::Nearest);
+}
+
 QSGNode *IconItem::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updatePaintNodeData)
 {
     Q_UNUSED(updatePaintNodeData)
@@ -606,51 +635,58 @@ QSGNode *IconItem::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *update
         return nullptr;
     }
 
-    if (m_animation->state() == QAbstractAnimation::Running) {
-        FadingNode *animatingNode = dynamic_cast<FadingNode *>(oldNode);
-
-        if (!animatingNode || m_textureChanged) {
-            delete oldNode;
-
-            QSGTexture *source = window()->createTextureFromImage(m_oldIconPixmap.toImage(), QQuickWindow::TextureCanUseAtlas);
-            source->setFiltering(smooth() ? QSGTexture::Linear : QSGTexture::Nearest);
-            QSGTexture *target = window()->createTextureFromImage(m_iconPixmap.toImage(), QQuickWindow::TextureCanUseAtlas);
-            target->setFiltering(smooth() ? QSGTexture::Linear : QSGTexture::Nearest);
-            animatingNode = new FadingNode(source, target);
-            m_sizeChanged = true;
-            m_textureChanged = false;
-        }
-
-        animatingNode->setProgress(m_animValue);
-
-        if (m_sizeChanged) {
-            const QSize newSize = paintedSize();
-            const QRect destRect(QPointF(boundingRect().center() - QPointF(newSize.width(), newSize.height()) / 2).toPoint(), newSize);
-            animatingNode->setRect(destRect);
-            m_sizeChanged = false;
-        }
-
-        return animatingNode;
-    } else {
-        ManagedTextureNode *textureNode = dynamic_cast<ManagedTextureNode *>(oldNode);
-
-        if (!textureNode || m_textureChanged) {
-            delete oldNode;
-            textureNode = new ManagedTextureNode;
-            textureNode->setTexture(QSharedPointer<QSGTexture>(window()->createTextureFromImage(m_iconPixmap.toImage(), QQuickWindow::TextureCanUseAtlas)));
-            m_sizeChanged = true;
-            m_textureChanged = false;
-        }
-        textureNode->setFiltering(smooth() ? QSGTexture::Linear : QSGTexture::Nearest);
-
-        if (m_sizeChanged) {
-            const QSize newSize = paintedSize();
-            const QRect destRect(QPointF(boundingRect().center() - QPointF(newSize.width(), newSize.height()) / 2).toPoint(), newSize);
-            textureNode->setRect(destRect);
-            m_sizeChanged = false;
-        }
-        return textureNode;
+    if (!oldNode) {
+        oldNode = new QSGNode{};
     }
+
+    if (m_animation->state() == QAbstractAnimation::Running) {
+        if (oldNode->childCount() < 2) {
+            oldNode->appendChildNode(createSubtree(0.0));
+            m_textureChanged = true;
+        }
+
+        // Rather than doing a perfect crossfade, first fade in the new texture
+        // then fade out the old texture. This is done to avoid the underlying
+        // color bleeding through when both textures are at ~0.5 opacity, which
+        // causes flickering if the two textures are very similar.
+        updateSubtree(oldNode->firstChild(), 2.0 - m_animValue * 2.0);
+        updateSubtree(oldNode->lastChild(), m_animValue * 2.0);
+    } else {
+        if (oldNode->childCount() == 0) {
+            oldNode->appendChildNode(createSubtree(1.0));
+            m_textureChanged = true;
+        }
+
+        if (oldNode->childCount() > 1) {
+            auto toRemove = oldNode->firstChild();
+            oldNode->removeChildNode(toRemove);
+            delete toRemove;
+        }
+
+        updateSubtree(oldNode->firstChild(), 1.0);
+    }
+
+    if (m_textureChanged) {
+        auto child = oldNode->lastChild();
+        auto imageNode = static_cast<QSGImageNode *>(child->firstChild());
+        imageNode->setTexture(window()->createTextureFromImage(m_iconPixmap.toImage()));
+        m_textureChanged = false;
+        m_sizeChanged = true;
+    }
+
+    if (m_sizeChanged) {
+        const QSize newSize = paintedSize();
+        const QRect destRect(QPointF(boundingRect().center() - QPointF(newSize.width(), newSize.height()) / 2).toPoint(), newSize);
+
+        for (int i = 0; i < oldNode->childCount(); ++i) {
+            auto imageNode = static_cast<QSGImageNode *>(oldNode->childAtIndex(i)->firstChild());
+            imageNode->setRect(destRect);
+        }
+
+        m_sizeChanged = false;
+    }
+
+    return oldNode;
 }
 
 void IconItem::valueChanged(const QVariant &value)
@@ -789,7 +825,11 @@ void IconItem::itemChange(ItemChange change, const ItemChangeData &value)
     QQuickItem::itemChange(change, value);
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void IconItem::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
+#else
+void IconItem::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry)
+#endif
 {
     if (newGeometry.size() != oldGeometry.size()) {
         m_sizeChanged = true;
@@ -804,7 +844,11 @@ void IconItem::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeome
         }
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QQuickItem::geometryChanged(newGeometry, oldGeometry);
+#else
+    QQuickItem::geometryChange(newGeometry, oldGeometry);
+#endif
 }
 
 void IconItem::componentComplete()

@@ -9,6 +9,7 @@
 #include "config-plasma.h"
 #include "packages_p.h"
 #include <KLocalizedString>
+#include <kcoreaddons_export.h>
 #include <kpackage/package.h>
 #include <kpackage/packagestructure.h>
 
@@ -34,10 +35,15 @@ public:
     {
         ChangeableMainScriptPackage::pathChanged(package);
 
-        if (!package->metadata().isValid()) {
+        const KPluginMetaData md = package->metadata();
+        if (!md.isValid()) {
             return;
         }
-        if (package->metadata().serviceTypes().contains(QLatin1String("Plasma/Containment"))) {
+        if (md.rawData().contains(QStringLiteral("X-Plasma-ContainmentType"))
+#if KCOREADDONS_BUILD_DEPRECATED_SINCE(5, 89)
+            || md.serviceTypes().contains(QLatin1String("Plasma/Containment"))
+#endif
+        ) {
             package->addFileDefinition("compactapplet", QStringLiteral("applet/CompactApplet.qml"), i18n("Custom expander for compact applets"));
         } else {
             package->removeDefinition("compactapplet");

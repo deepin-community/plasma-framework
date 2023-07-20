@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-framework\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
 "PO-Revision-Date: 2020-09-19 11:42+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -114,17 +114,44 @@ msgstr "ХУБ"
 msgid "Cancel"
 msgstr "Бекор кардан"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr ""
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr ""
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "Номаълум"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "Фаъол кардани виҷети %1"
@@ -135,7 +162,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "Тоза кардани %1"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr "Гузариш ба реҷаи тағйирдиҳӣ"
@@ -146,17 +173,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "Танзимоти %1..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "Қулф кардани виҷетҳо"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "Кушодани қулфи виҷетҳо"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr "Баромад аз реҷаи тағйирдиҳӣ"
@@ -235,17 +262,17 @@ msgstr "Акси экран"
 msgid "Translations"
 msgstr "Тарҷумаҳо"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr "Танзимоти намунаи саҳифаҳои UI"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "Файли танзимии XML"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr "Васеъкунандаи фармоишӣ барои зербарномаҳои ҷафс"
@@ -351,95 +378,7 @@ msgstr "Тасвири пасзаминаи нoшаффoф барои масли
 msgid "KColorScheme configuration file"
 msgstr "Файли танзимии KColorScheme"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "Қобилияти дастрасӣ"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "Оғозкунандаи барномаҳо"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "Ситopашинoсӣ"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "Вақт ва сана"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "Абзорҳои барномарезӣ"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "Илму маърифат"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "Муҳити атроф ва обу ҳаво"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "Мисолҳо"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "Низоми файлӣ"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "Дилхушӣ ва бозиҳо"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "Графика"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "Забон"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "Нақшакашӣ"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "Барномаҳои гуногун"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "Мултимедиа"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "Хизматҳои онлайн"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "Самаранокӣ"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "Иттилооти низом"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "Барномаҳои муфид"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "Равзанаҳо ва вазифаҳо"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "Ҳофизаи муваққатӣ"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "Вазифаҳо"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -469,52 +408,52 @@ msgstr "%1 ScriptEngine барои виҷети %2 эҷод карда нашу�
 msgid "Show Alternatives..."
 msgstr "Намоиш додани имконоти дигар..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "Виҷет тоза шуд"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "Виҷети \"%1\" тоза карда шуд."
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "Лавҳа тоза шуд"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "Лавҳа тоза карда шуд."
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "Мизи корӣ тоза шуд"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "Мизи корӣ тоза карда шуд."
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "Ботил сохтан"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "Танзимоти виҷетҳо"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "Тоза кардани ин виҷет"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -522,7 +461,7 @@ msgstr "Тоза кардани ин виҷет"
 msgid "Run the Associated Application"
 msgstr "Иҷро кардани барномаи марбут"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "Омодасозии нақш қатъ шуд"
@@ -533,27 +472,27 @@ msgstr "Омодасозии нақш қатъ шуд"
 msgid "Open with %1"
 msgstr "Кушодан ба воситаи %1"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "Тоза кардани ин лавҳа"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "Тоза кардани ин фаъолият"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "Танзимоти фаъолиятҳо"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "Илова кардани виҷетҳо..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "Унсури дархостшуда ёфт нашуд: %1"
@@ -587,73 +526,73 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "Хидмати (null) беэътибор ягон амалиётро иҷро карда наметавонад."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, fuzzy, kde-format
 #| msgid "Unknown"
 msgid "Unknown Applet"
 msgstr "Номаълум"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, fuzzy, kde-format
 #| msgid "Error loading QML file: %1"
 msgid "Error loading QML file: %1 %2"
 msgstr "Хатои боркунии файли QML: %1"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "Хатои боркунии зербарнома: баста вуҷуд надорад. %1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "Танзимоти %1"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "Бастаи Plasma"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "Насб кардан"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "Насбкунии баста қатъ шуд"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "Бастае, ки шумо интихоб кардед, беэътибор аст."
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "Виҷетҳо"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "Илова кардани %1"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "Илова кардани нишона"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "Тасвири замина"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -663,3 +602,179 @@ msgstr "Танзим кардани %1"
 #, kde-format
 msgid "Content dropped"
 msgstr "Ҳаракаткунии муҳтаво"
+
+#~ msgid "Accessibility"
+#~ msgstr "Қобилияти дастрасӣ"
+
+#~ msgid "Application Launchers"
+#~ msgstr "Оғозкунандаи барномаҳо"
+
+#~ msgid "Astronomy"
+#~ msgstr "Ситopашинoсӣ"
+
+#~ msgid "Date and Time"
+#~ msgstr "Вақт ва сана"
+
+#~ msgid "Development Tools"
+#~ msgstr "Абзорҳои барномарезӣ"
+
+#~ msgid "Education"
+#~ msgstr "Илму маърифат"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "Муҳити атроф ва обу ҳаво"
+
+#~ msgid "Examples"
+#~ msgstr "Мисолҳо"
+
+#~ msgid "File System"
+#~ msgstr "Низоми файлӣ"
+
+#~ msgid "Fun and Games"
+#~ msgstr "Дилхушӣ ва бозиҳо"
+
+#~ msgid "Graphics"
+#~ msgstr "Графика"
+
+#~ msgid "Language"
+#~ msgstr "Забон"
+
+#~ msgid "Mapping"
+#~ msgstr "Нақшакашӣ"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Барномаҳои гуногун"
+
+#~ msgid "Multimedia"
+#~ msgstr "Мултимедиа"
+
+#~ msgid "Online Services"
+#~ msgstr "Хизматҳои онлайн"
+
+#~ msgid "Productivity"
+#~ msgstr "Самаранокӣ"
+
+#~ msgid "System Information"
+#~ msgstr "Иттилооти низом"
+
+#~ msgid "Utilities"
+#~ msgstr "Барномаҳои муфид"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "Равзанаҳо ва вазифаҳо"
+
+#~ msgid "Clipboard"
+#~ msgstr "Ҳофизаи муваққатӣ"
+
+#~ msgid "Tasks"
+#~ msgstr "Вазифаҳо"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Edit %1..."
+#~ msgstr "Таҳрир кардани %1..."
+
+#~ msgid "Default settings for theme, etc."
+#~ msgstr "Танзимоти стандартӣ барои мавзӯъ ва ғайра."
+
+#~ msgid "Color scheme to use for applications."
+#~ msgstr "Нақшаи рангҳо барои истифода дар барномаҳо."
+
+#~ msgid "Preview Images"
+#~ msgstr "Пешнамоиши тасвирҳо"
+
+#~ msgid "Preview for the Login Manager"
+#~ msgstr "Пешнамоиш барои мудири воридшавӣ"
+
+#~ msgid "Preview for the Lock Screen"
+#~ msgstr "Пешнамоиш барои экрани қулф"
+
+#~ msgid "Preview for the Userswitcher"
+#~ msgstr "Пешнамоиш барои ивазкунандаи корбар"
+
+#~ msgid "Preview for the Virtual Desktop Switcher"
+#~ msgstr "Пешнамоиш барои ивазкунандаи мизи кории виртуалӣ"
+
+#~ msgid "Preview for Splash Screen"
+#~ msgstr "Пешнамоиш барои экрани дурахшон"
+
+#~ msgid "Preview for KRunner"
+#~ msgstr "Пешнамоиш барои KRunner"
+
+#~ msgid "Preview for the Window Decorations"
+#~ msgstr "Пешнамоиш барои ороишҳои равзана"
+
+#~ msgid "Preview for Window Switcher"
+#~ msgstr "Пешнамоиш барои ивазкунандаи равзана"
+
+#~ msgid "Login Manager"
+#~ msgstr "Мудири воридшавӣ"
+
+#~ msgid "Main Script for Login Manager"
+#~ msgstr "Нақши асосӣ барои мудири воридшавӣ"
+
+#~ msgid "Logout Dialog"
+#~ msgstr "Равзанаи гуфтугӯи баромад аз низом"
+
+#~ msgid "Main Script for Logout Dialog"
+#~ msgstr "Нақши асосӣ барои равзанаи гуфтугӯи баромад аз низом"
+
+#~ msgid "Screenlocker"
+#~ msgstr "Қулфкунандаи экран"
+
+#~ msgid "Main Script for Lock Screen"
+#~ msgstr "Нақши асосӣ барои экрани қулф"
+
+#~ msgid "UI for fast user switching"
+#~ msgstr "Воситаи корбарӣ барои ивазкунии тезкори корбар"
+
+#~ msgid "Main Script for User Switcher"
+#~ msgstr "Нақши асосӣ барои ивазкунандаи корбар"
+
+#~ msgid "Virtual Desktop Switcher"
+#~ msgstr "Ивазкунандаи мизи кории виртуалӣ"
+
+#~ msgid "Main Script for Virtual Desktop Switcher"
+#~ msgstr "Нақши асосӣ барои ивазкунандаи мизи кории виртуалӣ"
+
+#~ msgid "On-Screen Display Notifications"
+#~ msgstr "Намоиши огоҳиномаҳо дар экран"
+
+#~ msgid "Main Script for On-Screen Display Notifications"
+#~ msgstr "Нақши асосӣ барои намоиши огоҳиномаҳо дар экран"
+
+#~ msgid "Splash Screen"
+#~ msgstr "Экрани дурахшон"
+
+#~ msgid "Main Script for Splash Screen"
+#~ msgstr "Нақши асосӣ барои экрани дурахшон"
+
+#~ msgid "KRunner UI"
+#~ msgstr "Воситаи корбарии KRunner"
+
+#~ msgid "Main Script KRunner"
+#~ msgstr "Нақши асосии KRunner"
+
+#~ msgid "Window Decoration"
+#~ msgstr "Ороиши равзана"
+
+#~ msgid "Main Script for Window Decoration"
+#~ msgstr "Нақши асосӣ барои ороиши равзана"
+
+#~ msgid "Window Switcher"
+#~ msgstr "Ивазкунандаи равзана"
+
+#~ msgid "Main Script for Window Switcher"
+#~ msgstr "Нақши асосӣ барои ивазкунандаи равзана"
+
+#~ msgid "Finish Customizing Layout"
+#~ msgstr "Анҷом додани тарҳбандии фармоишӣ"
+
+#~ msgid "Customize Layout..."
+#~ msgstr "Тарҳбандии фармоишӣ..."
+
+#~ msgid "Fetching file type..."
+#~ msgstr "Бозёбии навъи файл..."
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "%1 Options"
+#~ msgstr "Имконоти %1"

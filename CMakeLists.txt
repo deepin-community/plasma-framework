@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(KF_VERSION "5.90.0") # handled by release scripts
-set(KF_DEP_VERSION "5.90.0") # handled by release scripts
+set(KF_VERSION "5.103.0") # handled by release scripts
+set(KF_DEP_VERSION "5.103.0") # handled by release scripts
 project(Plasma VERSION ${KF_VERSION})
 
 # ECM setup
 include(FeatureSummary)
-find_package(ECM 5.90.0  NO_MODULE)
+find_package(ECM 5.103.0  NO_MODULE)
 set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Modules." URL "https://commits.kde.org/extra-cmake-modules")
 feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
@@ -26,6 +26,8 @@ include(ECMAddQch)
 include(KDEPackageAppTemplates)
 include(ECMGenerateQmlTypes)
 include(ECMSetupQtPluginMacroNames)
+include(ECMMarkNonGuiExecutable)
+include(ECMDeprecationSettings)
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
@@ -40,7 +42,10 @@ ecm_setup_version(PROJECT
 
 set (REQUIRED_QT_VERSION 5.15.2)
 
-find_package(Qt5 ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE COMPONENTS Quick Gui Sql Qml Svg QuickControls2)
+find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE COMPONENTS Quick Gui Sql Qml Svg QuickControls2)
+if (QT_MAJOR_VERSION EQUAL "6")
+    find_package(Qt6 ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE COMPONENTS ShaderTools)
+endif()
 
 find_package(KF5 ${KF_DEP_VERSION} REQUIRED
     COMPONENTS
@@ -56,7 +61,6 @@ find_package(KF5 ${KF_DEP_VERSION} REQUIRED
         I18n
         IconThemes
         KIO
-        Service
         WindowSystem
         XmlGui
         Notifications
@@ -66,6 +70,10 @@ find_package(KF5 ${KF_DEP_VERSION} REQUIRED
         Wayland
         DocTools
 )
+if(NOT EXCLUDE_DEPRECATED_BEFORE_AND_AT STREQUAL "CURRENT" AND
+   EXCLUDE_DEPRECATED_BEFORE_AND_AT VERSION_LESS 5.94.0)
+    find_package(KF5 ${KF_DEP_VERSION} REQUIRED COMPONENTS Service)
+endif()
 
 set_package_properties(KF5Wayland PROPERTIES DESCRIPTION "Integration with the Wayland compositor"
                        TYPE OPTIONAL
@@ -78,24 +86,33 @@ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION "Tools to generate doc
                        TYPE OPTIONAL
                       )
 
-#optional features
-find_package(X11 MODULE)
-set_package_properties(X11 PROPERTIES DESCRIPTION "X11 libraries"
-                       URL "https://www.x.org/"
-                       TYPE OPTIONAL
-                      )
-find_package(XCB MODULE COMPONENTS XCB COMPOSITE DAMAGE SHAPE XFIXES RENDER)
-set_package_properties(XCB PROPERTIES DESCRIPTION "X protocol C-language Binding"
-                       URL "https://xcb.freedesktop.org/"
-                       TYPE OPTIONAL
-                      )
-if(X11_FOUND AND XCB_XCB_FOUND)
-  set(HAVE_X11 1)
-  find_package(Qt5 REQUIRED NO_MODULE COMPONENTS X11Extras)
-  #X11_Xrender discovery is done by FindX11
-  #add_feature_info("X Rendering Extension (libXrender)" X11_Xrender_FOUND "Support for compositing, rendering operations, and alpha-blending. STRONGLY RECOMMENDED")
-else()
-  set(HAVE_X11 0)
+option(WITHOUT_X11 "Build without X11 support (skips finding X11)." OFF)
+if(NOT WITHOUT_X11)
+    #optional features
+    find_package(X11 MODULE)
+    set_package_properties(X11 PROPERTIES DESCRIPTION "X11 libraries"
+                        URL "https://www.x.org/"
+                        TYPE OPTIONAL
+                        )
+    find_package(XCB MODULE COMPONENTS XCB COMPOSITE DAMAGE SHAPE XFIXES RENDER)
+    set_package_properties(XCB PROPERTIES DESCRIPTION "X protocol C-language Binding"
+                        URL "https://xcb.freedesktop.org/"
+                        TYPE OPTIONAL
+                        )
+    if(X11_FOUND AND XCB_XCB_FOUND)
+        set(HAVE_X11 1)
+        if (QT_MAJOR_VERSION STREQUAL "5")
+            find_package(Qt5X11Extras ${REQUIRED_QT_VERSION} NO_MODULE)
+        elseif (QT_MAJOR_VERSION STREQUAL "6")
+            find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Gui) # qtx11extras_p.h
+        endif()
+        #X11_Xrender discovery is done by FindX11
+        #add_feature_info("X Rendering Extension (libXrender)" X11_Xrender_FOUND "Support for compositing, rendering operations, and alpha-blending. STRONGLY RECOMMENDED")
+        set(HAVE_XCB_SHAPE ${XCB_SHAPE_FOUND})
+    else()
+        set(HAVE_X11 0)
+        set(HAVE_XCB_SHAPE 0)
+    endif()
 endif()
 
 find_package(OpenGL)
@@ -110,23 +127,23 @@ set_package_properties(EGL PROPERTIES
                        TYPE OPTIONAL
                       )
 
-add_feature_info(GLX OpenGL_GLX_FOUND "OpenGL GLX libraries.")
-if(OpenGL_GLX_FOUND AND X11_FOUND AND (Qt5Gui_OPENGL_IMPLEMENTATION STREQUAL "GL"))
+get_target_property(QtGui_Enabled_Features Qt${QT_MAJOR_VERSION}::Gui QT_ENABLED_PUBLIC_FEATURES)
+if(OpenGL_GLX_FOUND AND HAVE_X11 AND (QtGui_Enabled_Features MATCHES "opengl"))
+    add_feature_info(GLX OpenGL_GLX_FOUND "OpenGL GLX libraries.")
     set(HAVE_GLX 1)
 else()
     set(HAVE_GLX 0)
 endif()
 
-add_feature_info(EGL OpenGL_EGL_FOUND
-                 "A platform-agnostic mechanism for creating rendering surfaces for use with other graphics libraries, such as OpenGL|ES and OpenVG.")
+
 # OpenGL_EGL_FOUND is defined by FindOpenGL
 if(TARGET OpenGL::EGL)
-    set(HAVE_EGL ${OpenGL_EGL_FOUND})
-    set(EGL_TARGET OpenGL::EGL)
-elseif(EGL_FOUND)
-    set(HAVE_EGL ${EGL_FOUND})
-    set(EGL_TARGET EGL::EGL)
-    message(STATUS "Switch to EGL compatibility target EGL::EGL because OpenGL::EGL is not available")
+    add_feature_info(EGL OpenGL_EGL_FOUND
+                     "A platform-agnostic mechanism for creating rendering surfaces for use with other graphics libraries, such as OpenGL|ES and OpenVG.")
+    set(HAVE_EGL 1)
+else()
+    set(HAVE_EGL 0)
+    message(STATUS "OpenGL::EGL is not available")
 endif()
 
 
@@ -153,8 +170,14 @@ ecm_setup_qtplugin_macro_names(
     CONFIG_CODE_VARIABLE
         PACKAGE_SETUP_AUTOMOC_VARIABLES
 )
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00) # must port away from qmlRegisterInterface before upgrading this to 050f00
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055100)
+
+ecm_set_disabled_deprecation_versions(
+    QT 5.14 # needed for qmlRegisterInterface
+    KF 5.95
+    KCOREADDONS 5.88 # KPluginMetaData::serviceTypes
+    KSERVICE 5.86 # KService::pluginKeyword
+    KDECLARATIVE 5.88 # KDeclarative::ConfigPropertyMap
+)
 
 #add_definitions(-Wno-deprecated)
 
@@ -233,7 +256,7 @@ install(EXPORT KF5PlasmaTargets
         COMPONENT Devel)
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/plasma_version.h
-        DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5} COMPONENT Devel )
+        DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Plasma COMPONENT Devel )
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 

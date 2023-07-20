@@ -7,6 +7,8 @@
 
 #include "framesvgitem.h"
 
+#include "managedtexturenode.h"
+
 #include <QQuickWindow>
 #include <QSGGeometry>
 #include <QSGTexture>
@@ -18,7 +20,6 @@
 #include <plasma/private/framesvg_p.h>
 
 #include <QuickAddons/ImageTexturesCache>
-#include <QuickAddons/ManagedTextureNode>
 
 #include <cmath> //floor()
 
@@ -79,10 +80,9 @@ public:
         : ManagedTextureNode()
         , m_frameSvg(frameSvg)
         , m_border(borders)
-        , m_lastParent(parent)
         , m_fitMode(fitMode)
     {
-        m_lastParent->appendChildNode(this);
+        parent->appendChildNode(this);
 
         if (m_fitMode == Tile) {
             if (m_border == FrameSvg::TopBorder || m_border == FrameSvg::BottomBorder || m_border == FrameSvg::NoBorder) {
@@ -163,7 +163,6 @@ public:
 private:
     FrameSvgItem *m_frameSvg;
     FrameSvg::EnabledBorders m_border;
-    QSGNode *m_lastParent;
     QSize m_elementNativeSize;
     FitMode m_fitMode;
 };
@@ -347,7 +346,7 @@ void FrameSvgItem::setImagePath(const QString &path)
     if (isComponentComplete()) {
         applyPrefixes();
 
-        m_frameSvg->resizeFrame(QSizeF(width(), height()));
+        m_frameSvg->resizeFrame(size());
         m_textureChanged = true;
         update();
     }
@@ -487,12 +486,31 @@ bool FrameSvgItem::hasElementPrefix(const QString &prefix) const
     return m_frameSvg->hasElementPrefix(prefix);
 }
 
+bool FrameSvgItem::hasElement(const QString &elementName) const
+{
+    return m_frameSvg->hasElement(elementName);
+}
+
 QRegion FrameSvgItem::mask() const
 {
     return m_frameSvg->mask();
 }
 
+int FrameSvgItem::minimumDrawingHeight() const
+{
+    return m_frameSvg->minimumDrawingHeight();
+}
+
+int FrameSvgItem::minimumDrawingWidth() const
+{
+    return m_frameSvg->minimumDrawingWidth();
+}
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void FrameSvgItem::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
+#else
+void FrameSvgItem::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry)
+#endif
 {
     const bool isComponentComplete = this->isComponentComplete();
     if (isComponentComplete) {
@@ -500,7 +518,11 @@ void FrameSvgItem::geometryChanged(const QRectF &newGeometry, const QRectF &oldG
         m_sizeChanged = true;
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QQuickItem::geometryChanged(newGeometry, oldGeometry);
+#else
+    QQuickItem::geometryChange(newGeometry, oldGeometry);
+#endif
 
     // the above only triggers updatePaintNode, so we have to inform subscribers
     // about the potential change of the mask explicitly here
@@ -669,21 +691,21 @@ void FrameSvgItem::componentComplete()
     CheckMarginsChange checkInsetMargins(m_oldInsetMargins, m_insetMargins);
 
     QQuickItem::componentComplete();
-    m_frameSvg->resizeFrame(QSize(width(), height()));
+    m_frameSvg->resizeFrame(size());
     m_frameSvg->setRepaintBlocked(false);
     m_textureChanged = true;
 }
 
 void FrameSvgItem::updateDevicePixelRatio()
 {
-    m_frameSvg->setScaleFactor(qMax<qreal>(1.0, floor(Units::instance().devicePixelRatio())));
+    m_frameSvg->setScaleFactor(std::max<qreal>(1.0, floor(Units::instance().devicePixelRatio())));
 
     // devicepixelratio is always set integer in the svg, so needs at least 192dpi to double up.
     //(it needs to be integer to have lines contained inside a svg piece to keep being pixel aligned)
-    const auto newDevicePixelRation = qMax<qreal>(1.0, floor(window() ? window()->devicePixelRatio() : qApp->devicePixelRatio()));
+    const auto newDevicePixelRation = std::max<qreal>(1.0, floor(window() ? window()->devicePixelRatio() : qApp->devicePixelRatio()));
 
     if (newDevicePixelRation != m_frameSvg->devicePixelRatio()) {
-        m_frameSvg->setDevicePixelRatio(qMax<qreal>(1.0, newDevicePixelRation));
+        m_frameSvg->setDevicePixelRatio(newDevicePixelRation);
         m_textureChanged = true;
     }
 }

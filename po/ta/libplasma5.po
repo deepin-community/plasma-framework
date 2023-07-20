@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-framework package.
 #
-# Kishore G <kishore96@gmail.com>, 2021.
+# Kishore G <kishore96@gmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-framework\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
-"PO-Revision-Date: 2021-08-12 21:23+0530\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
+"PO-Revision-Date: 2022-07-26 21:16+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.07.90\n"
+"X-Generator: Lokalize 22.07.80\n"
 
 #: declarativeimports/calendar/eventdatadecorator.cpp:51
 #, kde-format
@@ -113,17 +113,44 @@ msgstr "சரி"
 msgid "Cancel"
 msgstr "ரத்து செய்"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr "மேலும் செயல்கள்"
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr "சுருக்கு"
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr "விரி"
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr "கடவுச்சொல்"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr "தேடு…"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr "தேடு"
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "தெரியாதது"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "%1 பிளாஸ்மாய்டை செயல்படுத்து"
@@ -134,7 +161,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "%1 தனை நீக்கு"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr "திருத்தும் பயன்முறையில் நுழை"
@@ -145,17 +172,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "%1 தனை அமை..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "பிளாஸ்மாய்டுகளை பூட்டு"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "பிளாஸ்மாய்டுகளை திருத்தவிடு"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr "திருத்தும் பயன்முறையிலிருந்து வெளியேறு"
@@ -229,17 +256,17 @@ msgstr "திரைப்பிடிப்பு"
 msgid "Translations"
 msgstr "மொழிபெயர்ப்புகள்"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr ""
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr ""
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr ""
@@ -264,7 +291,7 @@ msgstr "துணை சாளரங்களுக்கான பின்ப�
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:34
 #, kde-format
 msgid "Theme for the logout dialog"
-msgstr ""
+msgstr "வெளியேற்ற சாளரத்திற்கான தோற்றத்திட்டம்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:36
 #, kde-format
@@ -274,13 +301,13 @@ msgstr "பின்னணிப் படத் தொகுப்புகள�
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:38
 #, kde-format
 msgid "Images for widgets"
-msgstr ""
+msgstr "பிளாஸ்மாய்டுகளுக்கான படங்கள்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:39
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:40
 #, kde-format
 msgid "Background image for widgets"
-msgstr ""
+msgstr "பிளாஸ்மாய்டுகளுக்கான பின்புலப் படம்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:41
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:42
@@ -292,148 +319,60 @@ msgstr "முட்கடிகாரம்"
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:44
 #, kde-format
 msgid "Background image for panels"
-msgstr ""
+msgstr "பலகைகளுக்கான பின்புலப் படம்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:45
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:46
 #, kde-format
 msgid "Background for graphing widgets"
-msgstr ""
+msgstr "வரைபட பிளாஸ்மாய்டுகளுக்கான பின்புலப் படம்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:47
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:48
 #, kde-format
 msgid "Background image for tooltips"
-msgstr ""
+msgstr "கருவித்துப்புகளுக்கான பின்புலப் படம்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:50
 #, kde-format
 msgid "Opaque images for dialogs"
-msgstr ""
+msgstr "சாளரங்களுக்கான ஒளிபுகா படங்கள்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:51
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:52
 #, kde-format
 msgid "Opaque generic dialog background"
-msgstr ""
+msgstr "ஒளிபுகா பொது சாளரப் பின்புலம்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:55
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:58
 #, kde-format
 msgid "Opaque theme for the logout dialog"
-msgstr ""
+msgstr "வெளியேற்ற சாளரத்திற்கான ஒளிபுகா தோற்றத்திட்டம்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:60
 #, kde-format
 msgid "Opaque images for widgets"
-msgstr ""
+msgstr "பிளாஸ்மாய்டுகளுக்கான ஒளிபுகா படங்கள்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:63
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:66
 #, kde-format
 msgid "Opaque background image for panels"
-msgstr ""
+msgstr "பலகைகளுக்கான ஒளிபுகா பின்புலப் படம்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:67
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:68
 #, kde-format
 msgid "Opaque background image for tooltips"
-msgstr ""
+msgstr "கருவித்துப்புகளுக்கான ஒளிபுகா பின்புலப் படம்"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:70
 #, kde-format
 msgid "KColorScheme configuration file"
 msgstr ""
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "அணுகல்தன்மை"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "செயலி ஏவிகள்"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "வானியல்"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "தேதி மற்றும் நேரம்"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "உருவாக்கக் கருவிகள்"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "கல்வி"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "சுற்றுச்சூழல் மற்றும் வானிலை"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "எடுத்துக்காட்டுகள்"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "கோப்பு முறைமை"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "விளையாட்டுகள்"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "வரைகலை"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "மொழி"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr ""
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "மற்றவை"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "பல்லூடகம்"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "இணைய சேவைகள்"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "வேலை"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "கணினி விவரங்கள்"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "பயனுள்ளவை"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "சாளரங்கள் மற்றும் பணிகள்"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "பிடிப்புப்பலகை"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "பணிகள்"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -442,72 +381,72 @@ msgstr "மற்றவை"
 #: plasma/private/applet_p.cpp:126
 #, kde-format
 msgid "The %1 widget did not define which ScriptEngine to use."
-msgstr ""
+msgstr "எந்த ScriptEngine-ஐ பயன்படுத்த வேண்டுமென்பதை %1 பிளாஸ்மாய்ட் குறிப்பிடவில்லை."
 
 #: plasma/private/applet_p.cpp:145
 #, kde-format
 msgctxt "Package file, name of the widget"
 msgid "Could not open the %1 package required for the %2 widget."
-msgstr ""
+msgstr "%2 பிளாஸ்மாய்டுக்குத் தேவையான %1 எனும் தொகுப்பைத் திறக்க முடியவில்லை."
 
 #: plasma/private/applet_p.cpp:166
 #, kde-format
 msgctxt ""
 "API or programming language the widget was written in, name of the widget"
 msgid "Could not create a %1 ScriptEngine for the %2 widget."
-msgstr ""
+msgstr "%2 பிளாஸ்மாய்டுக்கான %1 ScriptEngine-ஐ உருவாக்க முடியவில்லை."
 
 #: plasma/private/applet_p.cpp:172
 #, kde-format
 msgid "Show Alternatives..."
 msgstr "மாற்றுகள் காட்டு..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "பிளாஸ்மாய்ட் நீக்கப்பட்டது"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "\"%1\" என்ற பிளாஸ்மாய்ட் நீக்கப்பட்டது."
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "பலகை நீக்கப்பட்டது"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "ஒரு பலகை நீக்கப்பட்டது."
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "பணிமேடை நீக்கப்பட்டது"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "ஒரு பணிமேடை நீக்கப்பட்டது."
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "செயல்நீக்கு"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "பிளாஸ்மாய்ட் அமைப்புகள்"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "இந்த பிளாஸ்மாய்டை நீக்கு"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -515,7 +454,7 @@ msgstr "இந்த பிளாஸ்மாய்டை நீக்கு"
 msgid "Run the Associated Application"
 msgstr "தொடர்புள்ள செயலியை இயக்கு"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "சிறுநிரல் துவக்கம் தோல்வியடைந்தது"
@@ -526,27 +465,27 @@ msgstr "சிறுநிரல் துவக்கம் தோல்வி�
 msgid "Open with %1"
 msgstr "%1 கொண்டு திற"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "இந்த பலகையை நீக்கு"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "இந்த செயல்பாட்டை நீக்கு"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "செயல்பாடு அமைப்புகள்"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "பிளாஸ்மாய்டுகளை சேர்..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "கோரிய கூறை கண்டுபிடிக்க முடியவில்லை: %1"
@@ -579,71 +518,71 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "செல்லுபடியாகாத (null) சேவை, எந்த செயல்பாடுகளையும் செய்ய முடியாது."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, kde-format
 msgid "Unknown Applet"
 msgstr "தெரியாத பிளாஸ்மாய்ட்"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, kde-format
 msgid "Error loading QML file: %1 %2"
 msgstr "QML கோப்பை ஏற்றுவதில் சிக்கல்: %1 %2"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "பிளாஸ்மாய்டை ஏற்றுவதில் சிக்கல்: தொகுப்பு (package) இல்லை. %1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "%1 அமைப்புகள்"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "பிளாஸ்மா தொகுப்பு"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "நிறுவு"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "தொகுப்பை நிறுவல் தோல்வியடைந்தது"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "நீங்கள் இட்ட தொகுப்பு செல்லுபடியாகாதது"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "பிளாஸ்மாய்டுகள்"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "%1 தனை சேர்"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "சின்னத்தை சேர்"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "பின்னணிப் படம்"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -653,3 +592,73 @@ msgstr "%1 தனை அமை"
 #, kde-format
 msgid "Content dropped"
 msgstr "உள்ளடக்கம் போடப்பட்டது"
+
+#~ msgid "Accessibility"
+#~ msgstr "அணுகல்தன்மை"
+
+#~ msgid "Application Launchers"
+#~ msgstr "செயலி ஏவிகள்"
+
+#~ msgid "Astronomy"
+#~ msgstr "வானியல்"
+
+#~ msgid "Date and Time"
+#~ msgstr "தேதி மற்றும் நேரம்"
+
+#~ msgid "Development Tools"
+#~ msgstr "உருவாக்கக் கருவிகள்"
+
+#~ msgid "Education"
+#~ msgstr "கல்வி"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "சுற்றுச்சூழல் மற்றும் வானிலை"
+
+#~ msgid "Examples"
+#~ msgstr "எடுத்துக்காட்டுகள்"
+
+#~ msgid "File System"
+#~ msgstr "கோப்பு முறைமை"
+
+#~ msgid "Fun and Games"
+#~ msgstr "விளையாட்டுகள்"
+
+#~ msgid "Graphics"
+#~ msgstr "வரைகலை"
+
+#~ msgid "Language"
+#~ msgstr "மொழி"
+
+#~ msgid "Mapping"
+#~ msgstr "நிலப்படவியல்"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "மற்றவை"
+
+#~ msgid "Multimedia"
+#~ msgstr "பல்லூடகம்"
+
+#~ msgid "Online Services"
+#~ msgstr "இணைய சேவைகள்"
+
+#~ msgid "Productivity"
+#~ msgstr "வேலை"
+
+#~ msgid "System Information"
+#~ msgstr "கணினி விவரங்கள்"
+
+#~ msgid "Utilities"
+#~ msgstr "பயனுள்ளவை"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "சாளரங்கள் மற்றும் பணிகள்"
+
+#~ msgid "Clipboard"
+#~ msgstr "பிடிப்புப்பலகை"
+
+#~ msgid "Tasks"
+#~ msgstr "பணிகள்"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Edit %1..."
+#~ msgstr "%1 தனை திருத்து..."

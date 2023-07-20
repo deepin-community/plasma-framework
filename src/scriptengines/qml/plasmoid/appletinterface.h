@@ -9,25 +9,30 @@
 #ifndef APPLETINTERFACE_H
 #define APPLETINTERFACE_H
 
+#include <QAction>
 #include <QQuickItem>
 #include <QQuickView>
 
 #include <KPluginMetaData>
+#include <kdeclarative/kdeclarative_export.h>
 
 #include <Plasma/Applet>
+#include <Plasma/Containment>
 #include <Plasma/Theme>
 
 #include "declarativeappletscript.h"
 #include <appletquickitem.h>
 
-class QAction;
 class QActionGroup;
 class QmlAppletScript;
 class QSizeF;
+class KConfigPropertyMap;
 
 namespace KDeclarative
 {
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
 class ConfigPropertyMap;
+#endif
 class QmlObject;
 }
 
@@ -41,7 +46,7 @@ class ConfigLoader;
  *
  * @short This class is exposed to applets in QML as the attached property Plasmoid
  *
- * \@import org.kde.plasma.Plasmoid
+ * \@import org.kde.plasma.plasmoid
  */
 class AppletInterface : public PlasmaQuick::AppletQuickItem
 {
@@ -259,6 +264,34 @@ class AppletInterface : public PlasmaQuick::AppletQuickItem
     Q_PROPERTY(KPluginMetaData metaData READ metaData CONSTANT)
 
     Q_PROPERTY(QList<QObject *> contextualActions READ contextualActionsObjects NOTIFY contextualActionsChanged)
+
+    // TODO: Remove in KF6, it is fixed in Qt 6 via QTBUG-97427. Not an #ifdef, because that would break QML code.
+    /**
+     * Returns the Plasmoid object itself.
+     * Workaround QML limitation/bug that does not allow to use attached properties themselves as the value of an expression.
+     */
+    Q_PROPERTY(AppletInterface *self READ self CONSTANT)
+
+    /**
+     * True when the Corona is in an edit mode that allows to move
+     * things around.
+     * This is global to the Corona, all containments will have the same value for editMode
+     * @since 5.96
+     */
+    Q_PROPERTY(bool editMode READ isEditMode NOTIFY editModeChanged)
+
+public:
+    /**
+     * Expose the QAction::Priority values which cannot be directly accessed from plasmoids
+     * @since 5.101
+     */
+    enum ActionPriority {
+        LowPriorityAction = QAction::LowPriority,
+        NormalPriorityAction = QAction::NormalPriority,
+        HighPriorityAction = QAction::HighPriority,
+    };
+    Q_ENUM(ActionPriority);
+
 public:
     AppletInterface(DeclarativeAppletScript *script, const QVariantList &args = QVariantList(), QQuickItem *parent = nullptr);
     ~AppletInterface() override;
@@ -436,6 +469,10 @@ public:
 
     KPluginMetaData metaData() const;
 
+    AppletInterface *self();
+
+    bool isEditMode() const;
+
 Q_SIGNALS:
     /**
      * somebody else, usually the containment sent some data to the applet
@@ -484,6 +521,7 @@ Q_SIGNALS:
     void availableScreenRectChanged();
     void constraintHintsChanged();
     void contextualActionsChanged();
+    void editModeChanged();
 
     void userConfiguringChanged();
     void globalShortcutChanged();
@@ -515,7 +553,11 @@ private:
     QStringList m_actions;
     QHash<QString, QActionGroup *> m_actionGroups;
 
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
     KDeclarative::ConfigPropertyMap *m_configuration;
+#else
+    KConfigPropertyMap *m_configuration;
+#endif
     DeclarativeAppletScript *m_appletScriptEngine;
 
     // UI-specific members ------------------

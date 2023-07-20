@@ -1,22 +1,22 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# A S Alam <aalam@users.sf.net>, 2014, 2015, 2018.
+# A S Alam <aalam@users.sf.net>, 2014, 2015, 2018, 2022.
 # Aman Alam <alam.yellow@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
-"PO-Revision-Date: 2020-07-09 09:26-0700\n"
-"Last-Translator: Aman Alam <alam.yellow@gmail.com>\n"
-"Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
+"PO-Revision-Date: 2022-11-19 05:34-0800\n"
+"Last-Translator: A S Alam <aalam@satluj.org>\n"
+"Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.12.2\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: declarativeimports/calendar/eventdatadecorator.cpp:51
 #, kde-format
@@ -46,7 +46,7 @@ msgstr "ਹੋਰ"
 #, kde-format
 msgctxt "Format: month year"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: declarativeimports/calendar/qml/MonthView.qml:255
 #, kde-format
@@ -92,18 +92,17 @@ msgstr "ਅਗਲਾ ਦਹਾਕਾ"
 #: declarativeimports/calendar/qml/MonthView.qml:306
 #, kde-format
 msgid "Days"
-msgstr ""
+msgstr "ਦਿਨ"
 
 #: declarativeimports/calendar/qml/MonthView.qml:311
-#, fuzzy, kde-format
-#| msgid "Next Month"
+#, kde-format
 msgid "Months"
-msgstr "ਅਗਲਾ ਮਹੀਨਾ"
+msgstr "ਮਹੀਨੇ"
 
 #: declarativeimports/calendar/qml/MonthView.qml:316
 #, kde-format
 msgid "Years"
-msgstr ""
+msgstr "ਸਾਲ"
 
 #: declarativeimports/plasmacomponents/qml/QueryDialog.qml:21
 #, kde-format
@@ -115,17 +114,44 @@ msgstr "ਠੀਕ ਹੈ"
 msgid "Cancel"
 msgstr "ਰੱਦ ਕਰੋ"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
-msgstr ""
+msgstr "ਹੋਰ ਕਾਰਵਾਈਆਂ"
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr "ਸਮੇਟੋ"
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr "ਫੈਲਾਓ"
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr "ਪਾਸਵਰਡ"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr "…ਖੋਜੋ"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr "ਖੋਜੋ"
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "ਅਣਜਾਣ"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "%1 ਵਿਦਜੈਟ ਸਰਗਰਮ ਕਰੋ"
@@ -136,10 +162,10 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "%1 ਨੂੰ ਹਟਾਓ"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
-msgstr ""
+msgstr "ਸੋਧ ਢੰਗ ਵਿੱਚ ਜਾਓ"
 
 #: plasma/containment.cpp:124 plasma/private/applet_p.cpp:111
 #, kde-format
@@ -147,20 +173,20 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "%1 ਸੰਰਚਨਾ..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "ਵਿਦਜੈਟ ਲਾਕ ਕਰੋ"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "ਵਿਦਜੈਟ ਅਣ-ਲਾਕ ਕਰੋ"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
-msgstr ""
+msgstr "ਸੋਧ ਢੰਗ ਤੋਂ ਬਾਹਰ"
 
 #. i18n: ectx: label, entry, group (CachePolicies)
 #: plasma/data/kconfigxt/libplasma-theme-global.kcfg:9
@@ -231,17 +257,17 @@ msgstr "ਸਕਰੀਨਸ਼ਾਟ"
 msgid "Translations"
 msgstr "ਉਲੱਥੇ"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr ""
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
-msgstr ""
+msgstr "ਸੰਰਚਨਾ XML ਫਾਈਲ"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr ""
@@ -306,12 +332,12 @@ msgstr "ਗਰਾਫਿਕ ਵਾਲੇ ਵਿਦਜੈੱਟਾਂ ਲਈ ਬ�
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:48
 #, kde-format
 msgid "Background image for tooltips"
-msgstr ""
+msgstr "ਟੂਲ-ਟਿੱਪ ਲਈ ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:50
 #, kde-format
 msgid "Opaque images for dialogs"
-msgstr ""
+msgstr "ਡਾਈਲਾਗਾਂ ਲਈ ਧੁੰਦਲੇ ਚਿੱਤਰ"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:51
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:52
@@ -347,95 +373,7 @@ msgstr "ਟੂਲ-ਟਿੱਪ ਲਈ ਧੁੰਦਲਾ ਬੈਕਗਰਾਊ�
 msgid "KColorScheme configuration file"
 msgstr "KColorScheme ਸੰਰਚਨਾ ਫਾਈਲ"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "ਅਸੈੱਸਬਿਲਟੀ"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "ਐਪਲੀਕੇਸ਼ਨ ਲਾਂਚਰ"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "ਗਰੈਹ ਵਿਦਿਆ"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "ਮਿਤੀ ਅਤੇ ਟਾਈਮ"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "ਡਿਵੈਲਪਮੈਂਟ ਟੂਲ"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "ਸਿੱਖਿਆ"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "ਵਾਤਾਵਰਨ ਤੇ ਮੌਸਮ"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "ਮਿਸਾਲਾਂ"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "ਫਾਈਲ-ਸਿਸਟਮ"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "ਮੌਜ ਮਸਤੀ ਤੇ ਖੇਡਾਂ"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "ਗਰਾਫਿਕਸ"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "ਭਾਸ਼ਾ"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "ਮੈਪਿੰਗ"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "ਫੁਟਕਲ"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "ਮਲਟੀਮੀਡਿਆ"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "ਆਨਲਾਈਨ ਸੇਵਾਵਾਂ"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "ਪਰੋਡਕਟਵਿਟੀ"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "ਸਿਸਟਮ ਜਾਣਕਾਰੀ"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "ਸਹੂਲਤਾਂ"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "ਵਿੰਡੋਜ਼ ਤੇ ਟਾਸਕ"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "ਕਲਿੱਪਬੋਰਡ"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "ਟਾਸਕ"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -464,52 +402,52 @@ msgstr ""
 msgid "Show Alternatives..."
 msgstr "ਬਦਲ ਦਿਖਾਓ..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "ਵਿਦਜੈਟ ਹਟਾਇਆ"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "ਵਿਦਜੈਟ \"%1\" ਨੂੰ ਹਟਾਇਆ ਗਿਆ।"
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "ਪੈਨਲ ਹਟਾਇਆ"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "ਪੈਨਲ ਹਟਾਇਆ ਜਾ ਚੁੱਕਾ ਹੈ।"
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "ਡੈਸਕਟਾਪ ਹਟਾਇਆ"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "ਡੈਸਕਟਾਪ ਹਟਾਇਆ ਜਾ ਚੁੱਕਿਆ ਹੈ।"
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "ਵਾਪਿਸ"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "ਵਿਦਜੈਟ ਸੈਟਿੰਗ"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "ਇਹ ਵਿਦਜੈਟ ਹਟਾਓ"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -517,7 +455,7 @@ msgstr "ਇਹ ਵਿਦਜੈਟ ਹਟਾਓ"
 msgid "Run the Associated Application"
 msgstr "ਸੰਬੰਧਿਤ ਐਪਲੀਕੇਸ਼ਨ ਚਲਾਓ"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "ਸਕ੍ਰਿਪਟ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਫੇਲ੍ਹ"
@@ -528,27 +466,27 @@ msgstr "ਸਕ੍ਰਿਪਟ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਫੇਲ੍ਹ"
 msgid "Open with %1"
 msgstr "%1 ਨਾਲ ਖੋਲ੍ਹੋ"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "ਇਹ ਪੈਨਲ ਹਟਾਓ"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "ਇਹ ਸਰਗਰਮੀ ਹਟਾਓ"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "ਸਰਗਰਮੀ ਸੈਟਿੰਗਾਂ"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "...ਵਿਦਜੈੱਟ ਸ਼ਾਮਿਲ"
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "ਲੋੜੀਦਾ ਭਾਗ ਲੱਭਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ: %1"
@@ -581,72 +519,71 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "ਗਲਤ (ਨਲ) ਸਰਵਿਸ, ਕੋਈ ਵੀ ਓਪਰੇਸ਼ਨ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।"
 
-#: plasmaquick/appletquickitem.cpp:595
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#: plasmaquick/appletquickitem.cpp:609
+#, kde-format
 msgid "Unknown Applet"
-msgstr "ਅਣਜਾਣ"
+msgstr "ਅਣਪਛਾਤਾ ਐਪਲਿਟ"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, kde-format
 msgid "Error loading QML file: %1 %2"
-msgstr ""
+msgstr "QML ਫਾਈਲ ਲੋਡ ਕਰਨ ਵਿੱਚ ਗਲਤੀ: %1 %2"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr ""
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "%1 ਸੈਟਿੰਗਾਂ"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "ਪਲਾਜ਼ਮਾ ਪੈਕੇਜ"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "ਇੰਸਟਾਲ ਕਰੋ"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "ਪੈਕੇਜ ਇੰਸਟਾਲੇਸ਼ਨ ਅਸਫ਼ਲ ਹੈ"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr ""
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "ਵਿਦਜੈੱਟ"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "%1 ਜੋੜੋ"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "ਆਈਕਾਨ ਜੋੜੋ"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "ਵਾਲਪੇਪਰ"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -656,3 +593,385 @@ msgstr "%1 ਸੈੱਟ ਕਰੋ"
 #, kde-format
 msgid "Content dropped"
 msgstr ""
+
+#~ msgid "Accessibility"
+#~ msgstr "ਅਸੈੱਸਬਿਲਟੀ"
+
+#~ msgid "Application Launchers"
+#~ msgstr "ਐਪਲੀਕੇਸ਼ਨ ਲਾਂਚਰ"
+
+#~ msgid "Astronomy"
+#~ msgstr "ਗਰੈਹ ਵਿਦਿਆ"
+
+#~ msgid "Date and Time"
+#~ msgstr "ਮਿਤੀ ਅਤੇ ਟਾਈਮ"
+
+#~ msgid "Development Tools"
+#~ msgstr "ਡਿਵੈਲਪਮੈਂਟ ਟੂਲ"
+
+#~ msgid "Education"
+#~ msgstr "ਸਿੱਖਿਆ"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "ਵਾਤਾਵਰਨ ਤੇ ਮੌਸਮ"
+
+#~ msgid "Examples"
+#~ msgstr "ਮਿਸਾਲਾਂ"
+
+#~ msgid "File System"
+#~ msgstr "ਫਾਈਲ-ਸਿਸਟਮ"
+
+#~ msgid "Fun and Games"
+#~ msgstr "ਮੌਜ ਮਸਤੀ ਤੇ ਖੇਡਾਂ"
+
+#~ msgid "Graphics"
+#~ msgstr "ਗਰਾਫਿਕਸ"
+
+#~ msgid "Language"
+#~ msgstr "ਭਾਸ਼ਾ"
+
+#~ msgid "Mapping"
+#~ msgstr "ਮੈਪਿੰਗ"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "ਫੁਟਕਲ"
+
+#~ msgid "Multimedia"
+#~ msgstr "ਮਲਟੀਮੀਡਿਆ"
+
+#~ msgid "Online Services"
+#~ msgstr "ਆਨਲਾਈਨ ਸੇਵਾਵਾਂ"
+
+#~ msgid "Productivity"
+#~ msgstr "ਪਰੋਡਕਟਵਿਟੀ"
+
+#~ msgid "System Information"
+#~ msgstr "ਸਿਸਟਮ ਜਾਣਕਾਰੀ"
+
+#~ msgid "Utilities"
+#~ msgstr "ਸਹੂਲਤਾਂ"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "ਵਿੰਡੋਜ਼ ਤੇ ਟਾਸਕ"
+
+#~ msgid "Clipboard"
+#~ msgstr "ਕਲਿੱਪਬੋਰਡ"
+
+#~ msgid "Tasks"
+#~ msgstr "ਟਾਸਕ"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Edit %1..."
+#~ msgstr "%1 ਨੂੰ ਸੋਧੋ..."
+
+#~ msgid "Default settings for theme, etc."
+#~ msgstr "ਥੀਮ ਆਦਿ ਲਈ ਡਿਫਾਲਟ ਸੈਟਿੰਗਾਂ"
+
+#~ msgid "Color scheme to use for applications."
+#~ msgstr "ਐਪਲੀਕੇਸ਼ਨ ਵਾਸਤੇ ਵਰਤਣ ਲਈ ਰੰਗ ਸਕੀਮ ਹੈ।"
+
+#~ msgid "Preview Images"
+#~ msgstr "ਚਿੱਤਰ ਝਲਕ"
+
+#~ msgid "Preview for the Login Manager"
+#~ msgstr "ਲਾਗਇਨ ਮੈਨੇਜਰ ਲਈ ਝਲਕ"
+
+#~ msgid "Preview for the Lock Screen"
+#~ msgstr "ਲਾਕ ਸਕਰੀਨ ਲਈ ਝਲਕ"
+
+#~ msgid "Preview for the Virtual Desktop Switcher"
+#~ msgstr "ਵਰਚੁਅਲ ਡੈਸਕ ਸਵਿੱਚ ਲਈ ਝਲਕ"
+
+#~ msgid "Preview for KRunner"
+#~ msgstr "ਕੇਰਨਰ ਲਈ ਝਲਕ"
+
+#~ msgid "Preview for the Window Decorations"
+#~ msgstr "ਵਿੰਡੋ ਸਜਾਵਟਾਂ ਲਈ ਝਲਕ"
+
+#~ msgid "Preview for Window Switcher"
+#~ msgstr "ਵਿੰਡੋ ਸਵਿੱਚਰ ਲਈ ਝਲਕ"
+
+#~ msgid "Login Manager"
+#~ msgstr "ਲਾਗ-ਇਨ ਮੈਨੇਜਰ"
+
+#~ msgid "Main Script for Login Manager"
+#~ msgstr "ਲਾਗ-ਇਨ ਮੈਨੇਜਰ ਲਈ ਮੁੱਖ ਸਕ੍ਰਿਪਟ"
+
+#~ msgid "Logout Dialog"
+#~ msgstr "ਲਾਗਆਉਟ ਡਾਈਲਾਗ"
+
+#~ msgid "Screenlocker"
+#~ msgstr "ਸਕਰੀਨਲਾਕਰ"
+
+#~ msgid "Main Script for User Switcher"
+#~ msgstr "ਵਰਤੋਂਕਾਰ ਸਵਿੱਚਰ ਲਈ ਮੁੱਖ ਸਕ੍ਰਿਪਟ"
+
+#~ msgid "Virtual Desktop Switcher"
+#~ msgstr "ਵਰਚੁਅਲ ਡੈਸਕਟਾਪ ਸਵਿੱਚਰ"
+
+#~ msgid "Main Script for Virtual Desktop Switcher"
+#~ msgstr "ਫ਼ਰਜ਼ੀ ਡੈਸਕਟਾਪ ਸਵਿੱਚਰ ਲਈ ਮੁੱਖ ਸਕ੍ਰਿਪਟ"
+
+#~ msgid "On-Screen Display Notifications"
+#~ msgstr "ਸਕਰੀਨ ਉੱਤੇ ਸੂਚਨਾਵਾਂ ਝਲਕ"
+
+#~ msgid "Main Script for On-Screen Display Notifications"
+#~ msgstr "ਆਨ-ਸਕਰੀਨ ਡਿਸਪਲੇਅ ਨੋਟੀਫਿਕੇਸ਼ਨਾਂ ਲਈ ਮੁੱਖ ਸਕ੍ਰਿਪਟ"
+
+#~ msgid "Splash Screen"
+#~ msgstr "ਸਵਾਗਤੀ ਸਕਰੀਨ"
+
+#~ msgid "Main Script for Splash Screen"
+#~ msgstr "ਸਵਾਗਤੀ ਸਕਰੀਨ ਲਈ ਮੁੱਖ ਸਕ੍ਰਿਪਟ"
+
+#~ msgid "KRunner UI"
+#~ msgstr "ਕੇ-ਰਨਰ UI"
+
+#~ msgid "Main Script KRunner"
+#~ msgstr "ਕੇ-ਰਨਰ ਲਈ ਮੁੱਖ ਸਕ੍ਰਿਪਟ"
+
+#~ msgid "Window Decoration"
+#~ msgstr "ਵਿੰਡੋ ਸਜਾਵਟ"
+
+#~ msgid "Window Switcher"
+#~ msgstr "ਵਿੰਡੋ ਸਵਿੱਚਰ"
+
+#~ msgid "Finish Customizing Layout"
+#~ msgstr "ਖਾਕੇ ਨੂੰ ਕਸਟਮਾਈਜ਼ ਪੂਰਾ"
+
+#~ msgid "Customize Layout..."
+#~ msgstr "ਖਾਕੇ ਨੂੰ ਕਸਟਮਾਈਜ਼ ਕਰੋ..."
+
+#~ msgid "Fetching file type..."
+#~ msgstr "...ਫਾਈਲ ਕਿਸਮ ਲਈ ਜਾ ਰਹੀ ਹੈ"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "%1 Options"
+#~ msgstr "%1 ਚੋਣਾਂ"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "Remove this %1"
+#~ msgstr "ਇਹ %1 ਹਟਾਓ"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings"
+#~ msgstr "%1 ਸੈਟਿੰਗਾਂ"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings..."
+#~ msgstr "...%1 ਸੈਟਿੰਗਾਂ"
+
+#~ msgid "Low color images for dialogs"
+#~ msgstr "ਡਾਈਲਾਗਾਂ ਲਈ ਘੱਟ ਰੰਗ ਚਿੱਤਰ"
+
+#~ msgid "Low color generic dialog background"
+#~ msgstr "ਘੱਟ ਰੰਗ ਆਮ ਡਾਈਲਾਗ ਬੈਕਗਰਾਊਂਡ"
+
+#~ msgid "Low color theme for the logout dialog"
+#~ msgstr "ਲਾਗਆਉਟ ਡਾਈਲਾਗ ਲਈ ਘੱਟ ਰੰਗ ਥੀਮ"
+
+#~ msgid "Low color background image for widgets"
+#~ msgstr "ਵਿਦਜੈੱਟ ਲਈ ਘੱਟ ਰੰਗ ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
+
+#~ msgid "Low color analog clock face"
+#~ msgstr "ਘੱਟ ਰੰਗ ਐਨਾਲਾਗ ਘੜੀ ਫੇਸ"
+
+#~ msgid "Low color background image for panels"
+#~ msgstr "ਪੈਨਲਾਂ ਲਈ ਘੱਟ ਰੰਗ ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
+
+#~ msgid "Low color background for graphing widgets"
+#~ msgstr "ਗਰਾਫਿਕਸ ਵਿਦਜੈੱਟਾਂ ਲਈ ਘੱਟ ਰੰਗ ਬੈਕਗਰਾਊਂਡ"
+
+#~ msgid "Low color background image for tooltips"
+#~ msgstr "ਟੂਲ-ਟਿੱਪ ਲਈ ਘੱਟ ਰੰਗ ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
+
+#~ msgid "Plasma Package Manager"
+#~ msgstr "ਪਲਾਜ਼ਮਾ ਪੈਕੇਜ ਮੈਨੇਜਰ"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Generate a SHA1 hash for the package at <path>"
+#~ msgstr "<path> ਉੱਤੇ ਪੈਕੇਜ ਲਈ SHA1 ਹੈਸ਼ ਬਣਾਓ"
+
+#~ msgid "For install or remove, operates on packages installed for all users."
+#~ msgstr "ਸਭ ਯੂਜ਼ਰਾਂ ਲਈ ਇੰਸਟਾਲ ਕੀਤੇ ਪੈਕੇਜਾਂ ਉੱਤੇ ਇੰਸਟਾਲ ਜਾਂ ਹਟਾਓ ਓਪਰੇਸ਼ਨਾਂ ਲਈ"
+
+#~ msgctxt ""
+#~ "theme, wallpaper, etc. are keywords, but they may be translated, as both "
+#~ "versions are recognized by the application (if translated, should be same "
+#~ "as messages with 'package type' context below)"
+#~ msgid ""
+#~ "The type of package, e.g. theme, wallpaper, plasmoid, dataengine, runner, "
+#~ "layout-template, etc."
+#~ msgstr ""
+#~ "ਪੈਕੇਜਾਂ ਦੀ ਟਾਈਪ, ਜਿਵੇਂ ਕਿ ਥੀਮ, ਵਾਲਪੇਪਰ, ਪਲਾਜ਼ਮੋਡ, ਡਾਟਾ-ਇੰਜਣ, ਰਨਰ, ਲੇਆਉਟ-ਟੈਪਲੇਟ ਆਦਿ।"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Install the package at <path>"
+#~ msgstr "<path> ਉੱਤੇ ਪੈਕੇਜ ਇੰਸਟਾਲ"
+
+#~ msgctxt "Do not translate <name>"
+#~ msgid "Show information of package <name>"
+#~ msgstr "<name> ਪੈਕੇਜ ਬਾਰੇ ਜਾਣਕਾਰੀ ਵੇਖੋ"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Upgrade the package at <path>"
+#~ msgstr "<path> ਉੱਤੇ ਪੈਕੇਜ ਅੱਪਗਰੇਡ"
+
+#~ msgid "List installed packages"
+#~ msgstr "ਇੰਸਟਾਲ ਕੀਤੇ ਪੈਕੇਜ ਵੇਖੋ"
+
+#~ msgctxt "Do not translate <name>"
+#~ msgid "Remove the package named <name>"
+#~ msgstr "<name> ਨਾਂ ਦਾ ਪੈਕੇਜ ਹਟਾਓ"
+
+#~ msgid ""
+#~ "Absolute path to the package root. If not supplied, then the standard "
+#~ "data directories for this KDE session will be searched instead."
+#~ msgstr ""
+#~ "ਪੈਕੇਜ ਰੂਟ ਲਈ ਅਸਲੀ ਪਾਥ ਹੈ। ਜੇ ਇਹ ਨਾ ਦਿੱਤਾ ਤਾਂ ਇਸ KDE ਸ਼ੈਸ਼ਨ ਲਈ ਸਟੈਂਡਰਡ ਡਾਟਾ ਡਾਇਰੈਕਟਰੀਆਂ "
+#~ "ਦੀ ਖੋਜ ਕੀਤੀ ਜਾਵੇਗੀ।"
+
+#~ msgid "Failed to generate a Package hash for %1"
+#~ msgstr "%1 ਲਈ ਇੱਕ ਪੈਕੇਜ ਹੈਸ਼ ਤਿਆਰ ਕਰਨ ਲਈ ਫੇਲ੍ਹ ਹੈ"
+
+#~ msgid "SHA1 hash for Package at %1: '%2'"
+#~ msgstr "%1 ਉੱਤੇ ਪੈਕੇਜ ਲਈ SHA1 ਹੈਸ਼: '%2'"
+
+#~ msgctxt "package type"
+#~ msgid "wallpaper"
+#~ msgstr "ਵਾਲਪੇਪਰ"
+
+#~ msgctxt "package type"
+#~ msgid "plasmoid"
+#~ msgstr "plasmoid"
+
+#~ msgctxt "package type"
+#~ msgid "package"
+#~ msgstr "ਪੈਕੇਜ"
+
+#~ msgctxt "package type"
+#~ msgid "theme"
+#~ msgstr "ਥੀਮ"
+
+#~ msgctxt "package type"
+#~ msgid "dataengine"
+#~ msgstr "ਡਾਟਾਇੰਜਣ"
+
+#~ msgctxt "package type"
+#~ msgid "runner"
+#~ msgstr "ਰਨਰ"
+
+#~ msgctxt "package type"
+#~ msgid "wallpaperplugin"
+#~ msgstr "ਵਾਲਪੇਪਰਪਲੱਗਇਨ"
+
+#~ msgctxt "package type"
+#~ msgid "shell"
+#~ msgstr "ਸ਼ੈੱਲ"
+
+#~ msgid "Error: Plugin %1 is not installed."
+#~ msgstr "ਗਲਤੀ: ਪਲੱਗਇਨ %1 ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ।"
+
+#~ msgid "      Name : %1"
+#~ msgstr "      ਨਾਂ : %1"
+
+#~ msgid "   Comment : %1"
+#~ msgstr "   ਟਿੱਪਣੀ: %1"
+
+#~ msgid "    Plugin : %1"
+#~ msgstr "    ਪਲੱਗਇਨ : %1"
+
+#~ msgid "    Author : %1"
+#~ msgstr "    ਲੇਖਕ : %1"
+
+#~ msgid "      Path : %1"
+#~ msgstr "      ਪਾਥ : %1"
+
+#~ msgctxt ""
+#~ "The user entered conflicting options packageroot and global, this is the "
+#~ "error message telling the user he can use only one"
+#~ msgid ""
+#~ "The packageroot and global options conflict each other, please select "
+#~ "only one."
+#~ msgstr "ਪੈਕੇਜਰਰੂਟ ਅਤੇ ਗਲੋਬਲ ਚੋਣਾਂ ਦਾ ਆਪਸ ਵਿੱਚ ਟਕਰਾ ਹੈ, ਕਿਸੇ ਇੱਕ ਦੀ ਚੋਣ ਕਰੋ ਜੀ।"
+
+#~ msgid "Addon Name"
+#~ msgstr "ਐਡ-ਆਨ ਨਾਂ"
+
+#~ msgid "Service Type"
+#~ msgstr "ਸਰਵਿਸ ਕਿਸਮ"
+
+#~ msgid "Path"
+#~ msgstr "ਮਾਰਗ"
+
+#~ msgid "Package types that are installable with this tool:"
+#~ msgstr "ਇਹ ਟੂਲ ਨਾਲ ਇੰਸਟਾਲ ਹੋਣਯੋਗ ਪੈਕੇਜ ਕਿਸਮਾਂ:"
+
+#~ msgid "Built in:"
+#~ msgstr "ਬਿਲਟ-ਇਨ:"
+
+#~ msgid "DataEngine"
+#~ msgstr "ਡਾਟਾਇੰਜਣ"
+
+#~ msgid "Layout Template"
+#~ msgstr "ਲੇਆਉਟ ਟੈਪਲੇਟ"
+
+#~ msgid "Look and Feel"
+#~ msgstr "ਦਿੱਖ ਤੇ ਪਰਭਾਵ"
+
+#~ msgid "Package"
+#~ msgstr "ਪੈਕੇਜ"
+
+#~ msgid "Runner"
+#~ msgstr "ਰਨਰ"
+
+#~ msgid "Shell"
+#~ msgstr "ਸ਼ੈੱਲ"
+
+#~ msgid "Theme"
+#~ msgstr "ਥੀਮ"
+
+#~ msgid "Wallpaper Images"
+#~ msgstr "ਵਾਲਪੇਪਰ ਚਿੱਤਰ"
+
+#~ msgid "Animated Wallpaper"
+#~ msgstr "ਐਨੀਮੇਟਡ ਵਾਲਪੇਪਰ"
+
+#~ msgid "KWin Effect"
+#~ msgstr "KWin ਪਰਭਾਵ"
+
+#~ msgid "KWin Window Switcher"
+#~ msgstr "KWin ਵਿੰਡੋ ਸਵਿੱਚਰ"
+
+#~ msgid "KWin Script"
+#~ msgstr "KWin ਸਕ੍ਰਿਪਟ"
+
+#~ msgid "Provided by plugins:"
+#~ msgstr "ਪਲੱਗਇਨ ਦਿੱਤੇ ਗਏ:"
+
+#~ msgid "Provided by .desktop files:"
+#~ msgstr ".desktop ਫਾਈਲਾਂ ਵਲੋਂ ਦਿੱਤੇ:"
+
+#~ msgid "Successfully upgraded %1"
+#~ msgstr "%1 ਕਾਮਯਾਬੀ ਨਾਲ ਅੱਪਗਰੇਡ ਕੀਤਾ"
+
+#~ msgid "Successfully installed %1"
+#~ msgstr "%1 ਠੀਕ ਤਰ੍ਹਾਂ ਇੰਸਟਾਲ ਕੀਤਾ"
+
+#~ msgid "No such file: %1"
+#~ msgstr "ਇੰਝ ਦੀ ਫਾਈਲ ਨਹੀਂ: %1"
+
+#~ msgid "Could not open package file: %1"
+#~ msgstr "ਪੈਕੇਜ ਫਾਈਲ ਖੋਲ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕੀ: %1"
+
+#~ msgid "%1 already exists"
+#~ msgstr "%1 ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ"
+
+#~ msgid "%1 does not exist"
+#~ msgstr "%1 ਮੌਜੂਦ ਨਹੀਂ"
+
+#~ msgid "Default layout file"
+#~ msgstr "ਡਿਫਾਲਟ ਲੇਆਉਟ ਫਾਈਲ"
+
+#~ msgid "Panel configuration UI"
+#~ msgstr "ਪਲਾਜ਼ਮਾ ਸੰਰਚਨਾ UI"

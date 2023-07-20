@@ -135,15 +135,18 @@ libKF5PlasmaQuick.so.5 libkf5plasmaquick5 #MINVER#, libkf5plasmaquick5 (>= 5.53~
  _ZN11PlasmaQuick6Dialog17outputOnlyChangedEv@Base 4.98.0
  _ZN11PlasmaQuick6Dialog17setFramelessFlagsE6QFlagsIN2Qt10WindowTypeEE@Base 4.98.0
  _ZN11PlasmaQuick6Dialog17windowDeactivatedEv@Base 4.99.0
+ _ZN11PlasmaQuick6Dialog18setAppletInterfaceEP10QQuickItem@Base 5.96.0
  _ZN11PlasmaQuick6Dialog18setBackgroundHintsENS0_15BackgroundHintsE@Base 5.2.0
  _ZN11PlasmaQuick6Dialog19visibleChangedProxyEv@Base 5.2.0+git20141003
  _ZN11PlasmaQuick6Dialog19visualParentChangedEv@Base 4.98.0
+ _ZN11PlasmaQuick6Dialog22appletInterfaceChangedEv@Base 5.96.0
  _ZN11PlasmaQuick6Dialog22backgroundHintsChangedEv@Base 5.2.0
  _ZN11PlasmaQuick6Dialog25setHideOnWindowDeactivateEb@Base 4.98.0
  _ZN11PlasmaQuick6Dialog29hideOnWindowDeactivateChangedEv@Base 4.98.0
  _ZN11PlasmaQuick6Dialog5eventEP6QEvent@Base 4.98.0
  _ZN11PlasmaQuick6Dialog7setTypeENS0_10WindowTypeE@Base 4.98.0
  _ZN11PlasmaQuick6Dialog9hideEventEP10QHideEvent@Base 4.98.0
+ _ZN11PlasmaQuick6Dialog9moveEventEP10QMoveEvent@Base 5.96.0
  _ZN11PlasmaQuick6Dialog9showEventEP10QShowEvent@Base 4.98.0
  _ZN11PlasmaQuick6DialogC1EP10QQuickItem@Base 4.98.0
  _ZN11PlasmaQuick6DialogC2EP10QQuickItem@Base 4.98.0
@@ -191,6 +194,7 @@ libKF5PlasmaQuick.so.5 libkf5plasmaquick5 #MINVER#, libkf5plasmaquick5 (>= 5.53~
  _ZNK11PlasmaQuick6Dialog10metaObjectEv@Base 4.98.0
  _ZNK11PlasmaQuick6Dialog12isOutputOnlyEv@Base 4.98.0
  _ZNK11PlasmaQuick6Dialog12visualParentEv@Base 4.98.0
+ _ZNK11PlasmaQuick6Dialog15appletInterfaceEv@Base 5.96.0
  _ZNK11PlasmaQuick6Dialog15backgroundHintsEv@Base 5.2.0
  _ZNK11PlasmaQuick6Dialog22hideOnWindowDeactivateEv@Base 4.98.0
  _ZNK11PlasmaQuick6Dialog4typeEv@Base 4.98.0
@@ -199,9 +203,9 @@ libKF5PlasmaQuick.so.5 libkf5plasmaquick5 #MINVER#, libkf5plasmaquick5 (>= 5.53~
  _ZNK11PlasmaQuick6Dialog8locationEv@Base 4.98.0
  _ZNK11PlasmaQuick6Dialog8mainItemEv@Base 4.98.0
  _ZNK11PlasmaQuick6Dialog9isVisibleEv@Base 5.2.0+git20141003
+ _ZNK12KConfigGroup9readEntryIdEET_PKcRKS1_@Base 5.96.0
  (optional=templinst)_ZNK12KConfigGroup9readEntryIiEET_PKcRKS1_@Base 4.100.0
  _ZTI17ShellPluginLoader@Base 4.98.0
- _ZTI18ManagedTextureNode@Base 5.3.0+git20141016.0942
  _ZTI26QQmlAbstractUrlInterceptor@Base 4.96.0
  _ZTIN11PlasmaQuick10ConfigViewE@Base 4.97.0
  _ZTIN11PlasmaQuick11ConfigModelE@Base 4.97.0
@@ -211,7 +215,6 @@ libKF5PlasmaQuick.so.5 libkf5plasmaquick5 #MINVER#, libkf5plasmaquick5 (>= 5.53~
  _ZTIN11PlasmaQuick4ViewE@Base 4.97.0
  _ZTIN11PlasmaQuick6DialogE@Base 4.98.0
  _ZTS17ShellPluginLoader@Base 4.98.0
- _ZTS18ManagedTextureNode@Base 5.3.0+git20141016.0942
  _ZTS26QQmlAbstractUrlInterceptor@Base 4.96.0
  _ZTSN11PlasmaQuick10ConfigViewE@Base 4.97.0
  _ZTSN11PlasmaQuick11ConfigModelE@Base 4.97.0
@@ -221,7 +224,6 @@ libKF5PlasmaQuick.so.5 libkf5plasmaquick5 #MINVER#, libkf5plasmaquick5 (>= 5.53~
  _ZTSN11PlasmaQuick4ViewE@Base 4.97.0
  _ZTSN11PlasmaQuick6DialogE@Base 4.98.0
  _ZTV17ShellPluginLoader@Base 4.98.0
- _ZTV18ManagedTextureNode@Base 5.3.0+git20141016.0942
  _ZTVN11PlasmaQuick10ConfigViewE@Base 4.97.0
  _ZTVN11PlasmaQuick11ConfigModelE@Base 4.97.0
  _ZTVN11PlasmaQuick15AppletQuickItemE@Base 4.97.0

@@ -74,10 +74,6 @@ void ContainmentInterface::init()
     connect(m_activityInfo, &KActivities::Info::nameChanged, this, &ContainmentInterface::activityNameChanged);
     Q_EMIT activityNameChanged();
 
-    if (!m_containment->wallpaper().isEmpty()) {
-        loadWallpaper();
-    }
-
     AppletInterface::init();
 
     // Create the ToolBox
@@ -387,6 +383,16 @@ QAction *ContainmentInterface::globalAction(QString name) const
     return m_containment->corona()->actions()->action(name);
 }
 
+void ContainmentInterface::openContextMenu(const QPointF &globalPos)
+{
+    if (globalPos.isNull()) {
+        return;
+    }
+
+    QMouseEvent me(QEvent::MouseButtonRelease, QPointF(), globalPos, Qt::RightButton, Qt::RightButton, Qt::NoModifier);
+    mousePressEvent(&me);
+}
+
 bool ContainmentInterface::isEditMode() const
 {
     return m_containment->corona()->isEditMode();
@@ -692,7 +698,12 @@ void ContainmentInterface::mimeTypeRetrieved(KIO::Job *job, const QString &mimet
                     m_dropMenu->addAction(action);
                     actionsToWallpapers.insert(action, info.pluginId());
                     const QUrl url = tjob->url();
-                    connect(action, &QAction::triggered, this, [this, url]() {
+                    connect(action, &QAction::triggered, this, [this, info, url]() {
+                        // Change wallpaper plugin if it's not the current one
+                        if (containment()->wallpaper() != info.pluginId()) {
+                            containment()->setWallpaper(info.pluginId());
+                        }
+
                         // set wallpapery stuff
                         if (m_wallpaperInterface && url.isValid()) {
                             m_wallpaperInterface->setUrl(url);
@@ -804,8 +815,7 @@ void ContainmentInterface::loadWallpaper()
 
         m_containment->setProperty("wallpaperGraphicsObject", QVariant::fromValue(m_wallpaperInterface));
     } else if (m_wallpaperInterface && m_containment->wallpaper().isEmpty()) {
-        m_wallpaperInterface->deleteLater();
-        m_wallpaperInterface = nullptr;
+        deleteWallpaperInterface();
     }
 
     Q_EMIT wallpaperInterfaceChanged();
@@ -1034,7 +1044,11 @@ void ContainmentInterface::wheelEvent(QWheelEvent *event)
         return;
     }
 
-    m_wheelDelta += event->angleDelta().y();
+    if (std::abs(event->angleDelta().x()) > std::abs(event->angleDelta().y())) {
+        m_wheelDelta += event->angleDelta().x();
+    } else {
+        m_wheelDelta += event->angleDelta().y();
+    }
 
     // Angle delta 120 for common "one click"
     // See: https://doc.qt.io/qt-5/qml-qtquick-wheelevent.html#angleDelta-prop
@@ -1160,6 +1174,28 @@ bool ContainmentInterface::isLoading() const
         loading |= m_wallpaperInterface->isLoading();
     }
     return loading;
+}
+
+void ContainmentInterface::itemChange(ItemChange change, const ItemChangeData &value)
+{
+    if (change == QQuickItem::ItemSceneChange) {
+        // we have a window: create the representations if needed
+        if (value.window && !m_containment->wallpaper().isEmpty()) {
+            loadWallpaper();
+        } else if (m_wallpaperInterface) {
+            deleteWallpaperInterface();
+            Q_EMIT wallpaperInterfaceChanged();
+        }
+    }
+
+    AppletInterface::itemChange(change, value);
+}
+
+void ContainmentInterface::deleteWallpaperInterface()
+{
+    m_containment->setProperty("wallpaperGraphicsObject", QVariant());
+    m_wallpaperInterface->deleteLater();
+    m_wallpaperInterface = nullptr;
 }
 
 #include "moc_containmentinterface.cpp"

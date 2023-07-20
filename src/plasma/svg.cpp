@@ -27,6 +27,7 @@
 #include <KIconEffect>
 #include <KIconLoader>
 #include <KIconTheme>
+#include <KPackage/Package>
 #include <QDebug>
 
 #include "applet.h"
@@ -36,16 +37,18 @@
 
 uint qHash(const Plasma::SvgPrivate::CacheId &id, uint seed)
 {
-    std::array<uint, 10> parts = {::qHash(id.width),
-                                  ::qHash(id.height),
-                                  ::qHash(id.elementName),
-                                  ::qHash(id.filePath),
-                                  ::qHash(id.status),
-                                  ::qHash(id.devicePixelRatio),
-                                  ::qHash(id.scaleFactor),
-                                  ::qHash(id.colorGroup),
-                                  ::qHash(id.extraFlags),
-                                  ::qHash(id.lastModified)};
+    std::array<size_t, 10> parts = {
+        ::qHash(id.width),
+        ::qHash(id.height),
+        ::qHash(id.elementName),
+        ::qHash(id.filePath),
+        ::qHash(id.status),
+        ::qHash(id.devicePixelRatio),
+        ::qHash(id.scaleFactor),
+        ::qHash(id.colorGroup),
+        ::qHash(id.extraFlags),
+        ::qHash(id.lastModified),
+    };
     return qHashRange(parts.begin(), parts.end(), seed);
 }
 
@@ -182,7 +185,6 @@ void SvgRectsCache::insert(uint id, const QString &filePath, const QRectF &rect,
 
     m_localRectCache.insert(id, rect);
 
-
     KConfigGroup imageGroup(m_svgElementsCache, filePath);
 
     if (rect.isValid()) {
@@ -206,12 +208,12 @@ bool SvgRectsCache::findElementRect(Plasma::SvgPrivate::CacheId cacheId, QRectF 
     return findElementRect(qHash(cacheId, SvgRectsCache::s_seed), cacheId.filePath, rect);
 }
 
-bool SvgRectsCache::findElementRect(uint id, const QString &filePath, QRectF &rect)
+bool SvgRectsCache::findElementRect(uint id, QStringView filePath, QRectF &rect)
 {
     auto it = m_localRectCache.find(id);
 
     if (it == m_localRectCache.end()) {
-        auto elements = m_invalidElements.value(filePath);
+        auto elements = m_invalidElements.value(filePath.toString());
         if (elements.contains(id)) {
             rect = QRectF();
             return true;
@@ -410,10 +412,10 @@ SvgPrivate::~SvgPrivate()
 }
 
 // This function is meant for the rects cache
-SvgPrivate::CacheId SvgPrivate::cacheId(const QString &elementId) const
+SvgPrivate::CacheId SvgPrivate::cacheId(QStringView elementId) const
 {
     auto idSize = size.isValid() && size != naturalSize ? size : QSizeF{-1.0, -1.0};
-    return CacheId{idSize.width(), idSize.height(), path, elementId, status, devicePixelRatio, scaleFactor, -1, 0, lastModified};
+    return CacheId{idSize.width(), idSize.height(), path, elementId.toString(), status, devicePixelRatio, scaleFactor, -1, 0, lastModified};
 }
 
 // This function is meant for the pixmap cache
@@ -647,12 +649,11 @@ void SvgPrivate::createRenderer()
         // FIXME: this maybe could be more efficient if we knew if the package was empty, e.g. for
         // C++; however, I'm not sure this has any real world runtime impact. something to measure
         // for.
-        if (applet && applet->kPackage().isValid()) {
-            const KPackage::Package package = applet->kPackage();
-            path = package.filePath("images", themePath + QLatin1String(".svg"));
+        if (applet) {
+            path = applet->filePath("images", themePath + QLatin1String(".svg"));
 
             if (path.isEmpty()) {
-                path = package.filePath("images", themePath + QLatin1String(".svgz"));
+                path = applet->filePath("images", themePath + QLatin1String(".svgz"));
             }
         }
 
@@ -714,10 +715,10 @@ void SvgPrivate::eraseRenderer()
     }
 
     renderer = nullptr;
-    styleCrc = 0;
+    styleCrc = QChar(0);
 }
 
-QRectF SvgPrivate::elementRect(const QString &elementId)
+QRectF SvgPrivate::elementRect(QStringView elementId)
 {
     if (themed && path.isEmpty()) {
         if (themeFailed) {
@@ -747,16 +748,20 @@ QRectF SvgPrivate::elementRect(const QString &elementId)
     return rect;
 }
 
-QRectF SvgPrivate::findAndCacheElementRect(const QString &elementId)
+QRectF SvgPrivate::findAndCacheElementRect(QStringView elementId)
 {
     // we need to check the id before createRenderer(), otherwise it may generate a different id compared to the previous cacheId)( call
     const CacheId cacheId = SvgPrivate::cacheId(elementId);
 
     createRenderer();
 
+    auto elementIdString = elementId.toString();
+
     // This code will usually never be run because createRenderer already caches all the boundingRect in the elements in the svg
-    QRectF elementRect =
-        renderer->elementExists(elementId) ? renderer->transformForElement(elementId).map(renderer->boundsOnElement(elementId)).boundingRect() : QRectF();
+    QRectF elementRect = renderer->elementExists(elementIdString)
+        ? renderer->transformForElement(elementIdString).map(renderer->boundsOnElement(elementIdString)).boundingRect()
+        : QRectF();
+
     naturalSize = renderer->defaultSize() * scaleFactor;
 
     qreal dx = size.width() / renderer->defaultSize().width();
@@ -887,13 +892,12 @@ Svg::Svg(QObject *parent)
     : QObject(parent)
     , d(new SvgPrivate(this))
 {
-    connect(SvgRectsCache::instance(), &SvgRectsCache::lastModifiedChanged,
-            this, [this] (const QString &filePath, unsigned int lastModified) {
-                if (d->lastModified != lastModified && filePath == d->path) {
-                    d->lastModified = lastModified;
-                    Q_EMIT repaintNeeded();
-                }
-            });
+    connect(SvgRectsCache::instance(), &SvgRectsCache::lastModifiedChanged, this, [this](const QString &filePath, unsigned int lastModified) {
+        if (d->lastModified != lastModified && filePath == d->path) {
+            d->lastModified = lastModified;
+            Q_EMIT repaintNeeded();
+        }
+    });
 }
 
 Svg::~Svg()
@@ -1060,12 +1064,27 @@ QSize Svg::elementSize(const QString &elementId) const
     return d->elementRect(elementId).size().toSize();
 }
 
+QSize Svg::elementSize(QStringView elementId) const
+{
+    return d->elementRect(elementId).size().toSize();
+}
+
 QRectF Svg::elementRect(const QString &elementId) const
 {
     return d->elementRect(elementId);
 }
 
+QRectF Svg::elementRect(QStringView elementId) const
+{
+    return d->elementRect(elementId);
+}
+
 bool Svg::hasElement(const QString &elementId) const
+{
+    return hasElement(QStringView(elementId));
+}
+
+bool Svg::hasElement(QStringView elementId) const
 {
     if (elementId.isEmpty() || (d->path.isNull() && d->themePath.isNull())) {
         return false;

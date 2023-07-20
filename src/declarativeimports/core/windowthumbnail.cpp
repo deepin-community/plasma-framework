@@ -5,18 +5,23 @@
 */
 #include "windowthumbnail.h"
 // KF5
-#include <KWindowSystem>
+#include <KX11Extras>
 // Qt
 #include <QGuiApplication>
 #include <QIcon>
 #include <QOpenGLContext>
+#include <QOpenGLFunctions>
 #include <QQuickWindow>
 #include <QRunnable>
 #include <QSGImageNode>
 
 // X11
 #if HAVE_XCB_COMPOSITE
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 #include <xcb/composite.h>
 #if HAVE_GLX
 #include <GL/glx.h>
@@ -117,7 +122,7 @@ void DiscardEglPixmapRunnable::run()
 
 QSGTexture *WindowTextureProvider::texture() const
 {
-    return m_texture.data();
+    return m_texture.get();
 }
 
 void WindowTextureProvider::setTexture(QSGTexture *texture)
@@ -270,7 +275,7 @@ void WindowThumbnail::setWinId(uint32_t winId)
     if (m_winId == winId) {
         return;
     }
-    if (!KWindowSystem::self()->hasWId(winId)) {
+    if (!KX11Extras::self()->hasWId(winId)) {
         // invalid Id, don't updated
         return;
     }
@@ -336,7 +341,11 @@ QSGNode *WindowThumbnail::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData 
     return node;
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 bool WindowThumbnail::nativeEventFilter(const QByteArray &eventType, void *message, long int *result)
+#else
+bool WindowThumbnail::nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result)
+#endif
 {
     Q_UNUSED(result)
     if (!m_xcb || !m_composite || eventType != QByteArrayLiteral("xcb_generic_event_t")) {
@@ -374,8 +383,8 @@ bool WindowThumbnail::nativeEventFilter(const QByteArray &eventType, void *messa
 void WindowThumbnail::iconToTexture(WindowTextureProvider *textureProvider)
 {
     QIcon icon;
-    if (KWindowSystem::self()->hasWId(m_winId)) {
-        icon = KWindowSystem::self()->icon(m_winId, boundingRect().width(), boundingRect().height());
+    if (KX11Extras::self()->hasWId(m_winId)) {
+        icon = KX11Extras::self()->icon(m_winId, boundingRect().width(), boundingRect().height());
     } else {
         // fallback to plasma icon
         icon = QIcon::fromTheme(QStringLiteral("plasma"));
@@ -388,7 +397,12 @@ void WindowThumbnail::iconToTexture(WindowTextureProvider *textureProvider)
 #if HAVE_GLX
 bool WindowThumbnail::windowToTextureGLX(WindowTextureProvider *textureProvider)
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     if (window()->openglContext()) {
+#else
+    const auto openglContext = static_cast<QOpenGLContext *>(window()->rendererInterface()->getResource(window(), QSGRendererInterface::OpenGLContextResource));
+    if (openglContext) {
+#endif
         if (!m_openGLFunctionsResolved) {
             resolveGLXFunctions();
         }
@@ -417,9 +431,16 @@ bool WindowThumbnail::windowToTextureGLX(WindowTextureProvider *textureProvider)
                 return false;
             }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             textureProvider->setTexture(window()->createTextureFromId(m_texture, QSize(geo->width, geo->height), QQuickWindow::TextureCanUseAtlas));
         }
         textureProvider->texture()->bind();
+#else
+            textureProvider->setTexture(
+                QNativeInterface::QSGOpenGLTexture::fromNative(m_texture, window(), QSize(geo->width, geo->height), QQuickWindow::TextureCanUseAtlas));
+        }
+        openglContext->functions()->glBindTexture(GL_TEXTURE_2D, m_texture);
+#endif
         bindGLXTexture();
         return true;
     }
@@ -448,7 +469,7 @@ bool WindowThumbnail::xcbWindowToTextureEGL(WindowTextureProvider *textureProvid
 
             const EGLint attribs[] = {EGL_IMAGE_PRESERVED_KHR, EGL_TRUE, EGL_NONE};
             m_image = ((eglCreateImageKHR_func)(
-                m_eglCreateImageKHR))(eglGetCurrentDisplay(), EGL_NO_CONTEXT, EGL_NATIVE_PIXMAP_KHR, (EGLClientBuffer)m_pixmap, attribs);
+                m_eglCreateImageKHR))(eglGetCurrentDisplay(), EGL_NO_CONTEXT, EGL_NATIVE_PIXMAP_KHR, (EGLClientBuffer)(uintptr_t)m_pixmap, attribs);
 
             if (m_image == EGL_NO_IMAGE_KHR) {
                 qDebug() << "failed to create egl image";
@@ -462,9 +483,16 @@ bool WindowThumbnail::xcbWindowToTextureEGL(WindowTextureProvider *textureProvid
                 size.setWidth(geo->width);
                 size.setHeight(geo->height);
             }
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             textureProvider->setTexture(window()->createTextureFromId(m_texture, size, QQuickWindow::TextureCanUseAtlas));
         }
         textureProvider->texture()->bind();
+#else
+            textureProvider->setTexture(QNativeInterface::QSGOpenGLTexture::fromNative(m_texture, window(), size, QQuickWindow::TextureCanUseAtlas));
+        }
+        auto *openglContext = static_cast<QOpenGLContext *>(window()->rendererInterface()->getResource(window(), QSGRendererInterface::OpenGLContextResource));
+        openglContext->functions()->glBindTexture(GL_TEXTURE_2D, m_texture);
+#endif
         bindEGLTexture();
         return true;
     }
@@ -477,7 +505,11 @@ void WindowThumbnail::resolveEGLFunctions()
     if (display == EGL_NO_DISPLAY) {
         return;
     }
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     auto *context = window()->openglContext();
+#else
+    auto *context = static_cast<QOpenGLContext *>(window()->rendererInterface()->getResource(window(), QSGRendererInterface::OpenGLContextResource));
+#endif
     QList<QByteArray> extensions = QByteArray(eglQueryString(display, EGL_EXTENSIONS)).split(' ');
     if (extensions.contains(QByteArrayLiteral("EGL_KHR_image")) //
         || (extensions.contains(QByteArrayLiteral("EGL_KHR_image_base")) //
@@ -556,7 +588,11 @@ xcb_pixmap_t WindowThumbnail::pixmapForWindow()
 #if HAVE_GLX
 void WindowThumbnail::resolveGLXFunctions()
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     auto *context = window()->openglContext();
+#else
+    auto *context = static_cast<QOpenGLContext *>(window()->rendererInterface()->getResource(window(), QSGRendererInterface::OpenGLContextResource));
+#endif
     QList<QByteArray> extensions = QByteArray(glXQueryExtensionsString(QX11Info::display(), QX11Info::appScreen())).split(' ');
     if (extensions.contains(QByteArrayLiteral("GLX_EXT_texture_from_pixmap"))) {
         m_bindTexImage = context->getProcAddress(QByteArrayLiteral("glXBindTexImageEXT"));
@@ -774,9 +810,7 @@ FbConfigInfo *getConfig(xcb_visualid_t visual)
         candidates.append(FBConfig{configs[i], depth, stencil, texture_format});
     }
 
-    if (count > 0) {
-        XFree(configs);
-    }
+    XFree(configs);
 
     std::stable_sort(candidates.begin(), candidates.end(), [](const FBConfig &left, const FBConfig &right) {
         if (left.depth < right.depth) {

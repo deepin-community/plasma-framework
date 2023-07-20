@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-framework\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
 "PO-Revision-Date: 2019-12-14 15:16+0530\n"
 "Last-Translator: Nithin S Sabu <nithinsn@protonmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -115,17 +115,44 @@ msgstr "ശരി"
 msgid "Cancel"
 msgstr "റദ്ദാക്കുക"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr ""
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr ""
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "അജ്ഞാതം"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "%1 വിഡ്ജറ്റ് സജീവമാക്കുക"
@@ -136,7 +163,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "%1 കളയുക"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr ""
@@ -147,17 +174,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "%1 സജ്ജീകരിക്കുക..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "വിഡ്ജറ്റുകൾ വെച്ചുറപ്പിക്കുക"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "വിഡ്ജറ്റുകളുടെ വിലക്കഴിക്കുക"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr ""
@@ -231,17 +258,17 @@ msgstr "സ്ക്രീന്‍ഷോട്ട്"
 msgid "Translations"
 msgstr "പരിഭാഷ"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr "സജ്ജീകരണ സമ്പർക്കമുഖങ്ങളുടെ മാതൃക"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "സജ്ജീകരണ എക്സ് എം എൽ ഫയൽ"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr ""
@@ -347,95 +374,7 @@ msgstr "സൂചനകള്‍ക്കുള്ള അതാര്യപശ�
 msgid "KColorScheme configuration file"
 msgstr "കെ കളര്‍സ്കീം സജ്ജീകരണ ഫയ"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "പ്രാപ്യത"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "ആപ്ലിക്കേഷന്‍ ലോഞ്ചര്‍"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "ജ്യോതിശാസ്ത്രം"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "തീയതിയും സമയവും"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "വികസനത്തിനായുള്ള ഉപകരണങ്ങ"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "വിദ്യാഭ്യാസം"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "പരിസരവും കാലാവസ്ഥയും"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "ഉദാഹരണങ്ങള്‍"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "ഫയല്‍ സിസ്റ്റം"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "കേളിയും കളികളും"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "ഗ്രാഫിക്സ്"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "ഭാഷ"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "മാപ്പിംഗ്"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "പലവക"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "മള്‍ട്ടിമീഡിയ"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "ഓണ്‍ലൈന്‍ സേവനങ്ങള്‍"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "ഉത്പാദനക്ഷമത"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "സിസ്റ്റം അറിവ്"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "ഉപകരണങ്ങൾ"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "ജാലകങ്ങളും ജോലികളും"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "ഓര്‍മ്മച്ചെപ്പ്"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "ജോലികള്‍"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -464,52 +403,52 @@ msgstr "%2 വിഡ്ജറ്റിനു വേണ്ട %1 സ്ക്ര�
 msgid "Show Alternatives..."
 msgstr "മറ്റു മാര്‍ഗങ്ങള്‍ കാണിക്കുക..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "വിഡ്ജറ്റ് നീക്കംചെയ്യപ്പെട്ടു"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "%1 വിഡ്ജറ്റ് നീക്കംചെയ്യപ്പെട്ടിരിക്കുന്നു."
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "പാളി നീക്കംചെയ്യപ്പെട്ടു"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "ഒരു പാളി നീക്കംചെയ്യപ്പെട്ടിരിക്കുന്നു."
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "പണിയിടം നീക്കംചെയ്യപ്പെട്ടു"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "ഒരു പണിയിടം നീക്കംചെയ്യപ്പെട്ടിരിക്കുന്നു."
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "തിരിച്ചെടുക്കുക"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "വിഡ്ജറ്റ് ക്രമീകരണങ്ങള്‍"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "ഈ വിഡ്ജറ്റ് നീക്കംചെയ്യുക"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -517,7 +456,7 @@ msgstr "ഈ വിഡ്ജറ്റ് നീക്കംചെയ്യുക"
 msgid "Run the Associated Application"
 msgstr "ബന്ധപ്പെട്ട ആപ്ലിക്കേഷന്‍ പ്രവര്‍ത്തിപ്പിക്കുക"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "സ്ക്രിപ്റ്റ് ആരംഭിക്കല്‍ പരാജയപ്പെട്ടു"
@@ -528,27 +467,27 @@ msgstr "സ്ക്രിപ്റ്റ് ആരംഭിക്കല്‍ �
 msgid "Open with %1"
 msgstr "%1-ഓടുകൂടി തുറക്കുക"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "ഈ പാളി നീക്കംചെയ്യുക"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "ഈ പ്രവൃത്തി നീക്കംചെയ്യുക"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "പ്രവൃത്തി ക്രമീകരണങ്ങള്‍"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "വിഡ്ജറ്റ് ചേര്‍ക്കുക..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "ആവശ്യപ്പെട്ട ഘടകം കണ്ടെത്തുവാനായില്ല: %1"
@@ -581,73 +520,73 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "അസാധുവായ സേവനം, യാതൊരു പ്രക്രിയയും നിര്‍വഹിക്കാനാവുന്നില്ല."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, fuzzy, kde-format
 #| msgid "Unknown"
 msgid "Unknown Applet"
 msgstr "അജ്ഞാതം"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, fuzzy, kde-format
 #| msgid "Error loading QML file: %1"
 msgid "Error loading QML file: %1 %2"
 msgstr "ക്യുഎംഎല്‍ ഫയല്‍ തുറക്കുന്നതിനിടയില്‍ പിശക്: %1"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "ആപ്‌ലെറ്റ് ലോഡ് ചെയ്യുന്നതിൽ പിശക് : പാക്കേജ് നിലവിലില്ല. %1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "%1 ക്രമീകരണങ്ങള്‍"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "പ്ലാസ്മ പാക്കേജ്"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "ഇന്‍സ്റ്റാള്‍"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "പാക്കേജ് ഇന്‍സ്റ്റാളേഷന്‍ പരാജയപ്പെട്ടു"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "നിങ്ങളിപ്പോള്‍ നല്‍കിയ പാക്കേജ് സ്വീകാര്യമല്ല."
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "വിഡ്ജറ്റുകള്‍"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "%1 ചേര്‍ക്കുക [വിഡ്ജറ്റ് ചേര്‍ക്കുക]"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "സൂചനാചിത്രങ്ങള്‍ ചേര്‍ക്കുക"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "പശ്ചാത്തലചിത്രം"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -657,3 +596,179 @@ msgstr "%1 -നെ തീര്‍ച്ചപ്പെടുത്തുക"
 #, kde-format
 msgid "Content dropped"
 msgstr "ഉള്ളടക്കം ഉപേക്ഷിക്കപ്പെട്ടു"
+
+#~ msgid "Accessibility"
+#~ msgstr "പ്രാപ്യത"
+
+#~ msgid "Application Launchers"
+#~ msgstr "ആപ്ലിക്കേഷന്‍ ലോഞ്ചര്‍"
+
+#~ msgid "Astronomy"
+#~ msgstr "ജ്യോതിശാസ്ത്രം"
+
+#~ msgid "Date and Time"
+#~ msgstr "തീയതിയും സമയവും"
+
+#~ msgid "Development Tools"
+#~ msgstr "വികസനത്തിനായുള്ള ഉപകരണങ്ങ"
+
+#~ msgid "Education"
+#~ msgstr "വിദ്യാഭ്യാസം"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "പരിസരവും കാലാവസ്ഥയും"
+
+#~ msgid "Examples"
+#~ msgstr "ഉദാഹരണങ്ങള്‍"
+
+#~ msgid "File System"
+#~ msgstr "ഫയല്‍ സിസ്റ്റം"
+
+#~ msgid "Fun and Games"
+#~ msgstr "കേളിയും കളികളും"
+
+#~ msgid "Graphics"
+#~ msgstr "ഗ്രാഫിക്സ്"
+
+#~ msgid "Language"
+#~ msgstr "ഭാഷ"
+
+#~ msgid "Mapping"
+#~ msgstr "മാപ്പിംഗ്"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "പലവക"
+
+#~ msgid "Multimedia"
+#~ msgstr "മള്‍ട്ടിമീഡിയ"
+
+#~ msgid "Online Services"
+#~ msgstr "ഓണ്‍ലൈന്‍ സേവനങ്ങള്‍"
+
+#~ msgid "Productivity"
+#~ msgstr "ഉത്പാദനക്ഷമത"
+
+#~ msgid "System Information"
+#~ msgstr "സിസ്റ്റം അറിവ്"
+
+#~ msgid "Utilities"
+#~ msgstr "ഉപകരണങ്ങൾ"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "ജാലകങ്ങളും ജോലികളും"
+
+#~ msgid "Clipboard"
+#~ msgstr "ഓര്‍മ്മച്ചെപ്പ്"
+
+#~ msgid "Tasks"
+#~ msgstr "ജോലികള്‍"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Edit %1..."
+#~ msgstr "%1 ചിട്ടപ്പെടുത്തുക..."
+
+#~ msgid "Default settings for theme, etc."
+#~ msgstr "പ്രമേയത്തിനും മറ്റുമുള്ള സഹജമായ ക്രമീകരണങ്ങള്‍."
+
+#~ msgid "Color scheme to use for applications."
+#~ msgstr "ആപ്ലിക്കേഷനുപയോഗിക്കുന്ന നിറപദ്ധതി."
+
+#~ msgid "Preview Images"
+#~ msgstr "ചിത്രങ്ങളുടെ തിരനോട്ടം"
+
+#~ msgid "Preview for the Login Manager"
+#~ msgstr "പ്രവേശന മാനേജരുടെ പൂർവദൃശ്യം"
+
+#~ msgid "Preview for the Lock Screen"
+#~ msgstr "പൂട്ടുന്ന സ്‌ക്രീനിന്റെ പൂർവദൃശ്യം"
+
+#~ msgid "Preview for the Userswitcher"
+#~ msgstr "ഉപയോക്താവിനെ മാറ്റുന്നതിന്റെ പൂർവദൃശ്യം"
+
+#~ msgid "Preview for the Virtual Desktop Switcher"
+#~ msgstr "സാങ്കല്പിക പണിയിടം മാറ്റുന്നതിന്റെ പൂർവദൃശ്യം"
+
+#~ msgid "Preview for Splash Screen"
+#~ msgstr "സ്പ്ളാഷ് സ്‌ക്രീനിന്റെ പൂർവദൃശ്യം"
+
+#~ msgid "Preview for KRunner"
+#~ msgstr "കെറണ്ണറിന്റെ പൂർവദൃശ്യം"
+
+#~ msgid "Preview for the Window Decorations"
+#~ msgstr "ജാലക അലങ്കാരങ്ങളുടെ പൂർവദൃശ്യം"
+
+#~ msgid "Preview for Window Switcher"
+#~ msgstr "ജാലകം മാറ്റുന്നതിന്റെ പൂർവദൃശ്യം"
+
+#~ msgid "Login Manager"
+#~ msgstr "പ്രവേശന മാനേജര്‍"
+
+#~ msgid "Main Script for Login Manager"
+#~ msgstr "പ്രവേശന മാനേജരുടെ പ്രധാന സ്ക്രിപ്റ്റ്"
+
+#~ msgid "Logout Dialog"
+#~ msgstr "പുറത്തുകടക്കാനുള്ള ഡയലോഗ്"
+
+#~ msgid "Main Script for Logout Dialog"
+#~ msgstr "പുറത്തേക്കു കടക്കാനുള്ള ഡയലോഗിന്റെ പ്രധാന സ്ക്രിപ്റ്റ്"
+
+#~ msgid "Screenlocker"
+#~ msgstr "സ്ക്രീൻ പൂട്ട്"
+
+#~ msgid "Main Script for Lock Screen"
+#~ msgstr "സ്ക്രീൻ പൂട്ടിന്റെ പ്രധാന സ്ക്രിപ്റ്റ്"
+
+#~ msgid "UI for fast user switching"
+#~ msgstr "ഉപയോക്താവിനെ വേഗത്തിൽ മാറ്റുന്നതിനുള്ള സമ്പർക്കം"
+
+#~ msgid "Main Script for User Switcher"
+#~ msgstr "ഉപയോക്താവിനെ മാറ്റുന്നതിനുള്ള പ്രധാന സ്ക്രിപ്റ്റ്"
+
+#~ msgid "Virtual Desktop Switcher"
+#~ msgstr "സാങ്കല്‍പ്പിക പണിയിടം മാറ്റുക"
+
+#~ msgid "Main Script for Virtual Desktop Switcher"
+#~ msgstr "സാങ്കല്പിക പണിയിടം മാറ്റുന്നതിന്റെ പ്രധാന സ്ക്രിപ്റ്റ്"
+
+#~ msgid "On-Screen Display Notifications"
+#~ msgstr "ഓൺ-സ്ക്രീൻ പ്രദർശനത്തിന്റെ അറിയിപ്പുകൾ"
+
+#~ msgid "Main Script for On-Screen Display Notifications"
+#~ msgstr "ഓൺ-സ്ക്രീൻ പ്രദർശനത്തിന്റെ പ്രധാന സ്ക്രിപ്റ്റ്"
+
+#~ msgid "Splash Screen"
+#~ msgstr "സ്പ്ളാഷ് സ്ക്രീൻ"
+
+#~ msgid "Main Script for Splash Screen"
+#~ msgstr "സ്പ്ളാഷ് സ്‌ക്രീനിനുള്ള പ്രധാന സ്ക്രിപ്റ്റ്"
+
+#~ msgid "KRunner UI"
+#~ msgstr "കെ റണ്ണർ സമ്പർക്കമുഖം"
+
+#~ msgid "Main Script KRunner"
+#~ msgstr "കെ റണ്ണറിനുള്ള പ്രധാന സ്ക്രിപ്റ്റ്"
+
+#~ msgid "Window Decoration"
+#~ msgstr "ജാലകത്തിനായുള്ള അലങ്കാരങ്ങള്‍"
+
+#~ msgid "Main Script for Window Decoration"
+#~ msgstr "ജാലക അലങ്കാരങ്ങൾക്കുള്ള പ്രധാന സ്ക്രിപ്റ്റ്"
+
+#~ msgid "Window Switcher"
+#~ msgstr "ജാലകം മാറുക"
+
+#~ msgid "Main Script for Window Switcher"
+#~ msgstr "ജാലകം മാറ്റുന്നതിനുള്ള പ്രധാന സ്ക്രിപ്റ്റ്"
+
+#~ msgid "Finish Customizing Layout"
+#~ msgstr "ഘടന രൂപീകരണം പൂർത്തിയാക്കുക"
+
+#~ msgid "Customize Layout..."
+#~ msgstr "ഘടന ഇച്ഛാനുസൃതംരൂപപ്പെടുത്തുക..."
+
+#~ msgid "Fetching file type..."
+#~ msgstr "ഫയല്‍ തരം ലഭ്യമാക്കുന്നു..."
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "%1 Options"
+#~ msgstr "%1 സാധ്യതകള്‍"

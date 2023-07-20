@@ -11,9 +11,14 @@
 #include <QObject>
 #include <QStringList>
 
+#include <plasma/plasma_export.h>
+#if PLASMA_ENABLE_DEPRECATED_SINCE(5, 94)
 #include <KPluginInfo>
 #include <KService>
+#endif
 
+#include <KPluginFactory>
+#include <KPluginMetaData>
 #include <plasma/plasma.h>
 #include <plasma/service.h>
 
@@ -447,7 +452,7 @@ private:
     Q_PRIVATE_SLOT(d, void sourceDestroyed(QObject *object))
     Q_PRIVATE_SLOT(d, void scheduleSourcesUpdated())
 
-    DataEnginePrivate *const d;
+    DataEnginePrivate *d;
 };
 
 } // Plasma namespace

@@ -27,7 +27,7 @@ ToolTip::ToolTip(QQuickItem *parent)
     , m_textFormat(Qt::AutoText)
     , m_active(true)
     , m_interactive(false)
-    , m_timeout(4000)
+    , m_timeout(-1)
     , m_usingDialog(false)
 {
     setAcceptHoverEvents(true);
@@ -87,7 +87,6 @@ ToolTipDialog *ToolTip::tooltipDialogInstance()
 {
     if (!s_dialog) {
         s_dialog = new ToolTipDialog;
-        s_dialogUsers = 1;
     }
 
     if (!m_usingDialog) {
@@ -154,6 +153,10 @@ void ToolTip::showToolTip()
     dlg->setMainItem(mainItem());
     dlg->setInteractive(m_interactive);
     dlg->setVisible(true);
+    // In case the last owner triggered a dismiss but the dialog is still shown,
+    // showEvent won't be reached and the old timeout will still be effective.
+    // Call keepalive() to make it use the new timeout.
+    dlg->keepalive();
 }
 
 QString ToolTip::mainText() const

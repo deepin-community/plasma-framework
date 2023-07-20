@@ -28,7 +28,12 @@
 
 #include "containmentinterface.h"
 #include "wallpaperinterface.h"
+
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
 #include <kdeclarative/configpropertymap.h>
+#else
+#include <KConfigPropertyMap>
+#endif
 #include <kdeclarative/qmlobject.h>
 
 AppletInterface::AppletInterface(DeclarativeAppletScript *script, const QVariantList &args, QQuickItem *parent)
@@ -45,6 +50,7 @@ AppletInterface::AppletInterface(DeclarativeAppletScript *script, const QVariant
 {
     qmlRegisterAnonymousType<QAction>("org.kde.plasma.plasmoid", 1);
 
+    connect(applet()->containment()->corona(), &Plasma::Corona::editModeChanged, this, &AppletInterface::editModeChanged);
     connect(this, &AppletInterface::configNeedsSaving, applet(), &Plasma::Applet::configNeedsSaving);
     connect(applet(), &Plasma::Applet::immutabilityChanged, this, &AppletInterface::immutabilityChanged);
     connect(applet(), &Plasma::Applet::userConfiguringChanged, this, &AppletInterface::userConfiguringChanged);
@@ -136,11 +142,19 @@ void AppletInterface::init()
         return;
     }
 
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
     m_configuration = new KDeclarative::ConfigPropertyMap(applet()->configScheme(), this);
+#else
+    m_configuration = new KConfigPropertyMap(applet()->configScheme(), this);
+#endif
 
     AppletQuickItem::init();
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     geometryChanged(QRectF(), QRectF(x(), y(), width(), height()));
+#else
+    geometryChange(QRectF(), QRectF(x(), y(), width(), height()));
+#endif
     Q_EMIT busyChanged();
 
     updateUiReadyConstraint();
@@ -604,9 +618,10 @@ int AppletInterface::screen() const
 
 QRect AppletInterface::screenGeometry() const
 {
-    if (!applet() || !applet()->containment() || !applet()->containment()->corona()) {
+    if (!applet() || !applet()->containment() || !applet()->containment()->corona() || applet()->containment()->screen() < 0) {
         return QRect();
     }
+
     return applet()->containment()->corona()->screenGeometry(applet()->containment()->screen());
 }
 
@@ -650,14 +665,7 @@ void AppletInterface::setGlobalShortcut(const QKeySequence &sequence)
 
 QObject *AppletInterface::nativeInterface()
 {
-    if (qstrcmp(applet()->metaObject()->className(), "Plasma::Applet") != 0) {
-        return applet();
-    } else {
-        if (!m_dummyNativeInterface) {
-            m_dummyNativeInterface = new QObject(this);
-        }
-        return m_dummyNativeInterface;
-    }
+    return applet();
 }
 
 bool AppletInterface::configurationRequired() const
@@ -760,6 +768,10 @@ QRect AppletInterface::availableScreenRect() const
     // If corona returned an invalid screenId, try to use lastScreen value if it is valid
     if (screenId == -1 && applet()->containment()->lastScreen() > -1) {
         screenId = applet()->containment()->lastScreen();
+        // Is this a screen not actually valid?
+        if (screenId >= applet()->containment()->corona()->numScreens()) {
+            screenId = -1;
+        }
     }
 
     if (screenId > -1) {
@@ -870,7 +882,7 @@ bool AppletInterface::eventFilter(QObject *watched, QEvent *event)
             // and set the event position as action data
             if (plugin->contextualActions().length() == 1) {
                 // but first check whether we are not a popup
-                // we don't want to randomly creates applets without confirmation
+                // we don't want to randomly create applets without confirmation
                 if (static_cast<QQuickItem *>(watched)->window() != ci->window()) {
                     return true;
                 }
@@ -917,6 +929,16 @@ bool AppletInterface::isLoading() const
 KPluginMetaData AppletInterface::metaData() const
 {
     return applet()->pluginMetaData();
+}
+
+AppletInterface *AppletInterface::self()
+{
+    return this;
+}
+
+bool AppletInterface::isEditMode() const
+{
+    return applet()->containment()->corona()->isEditMode();
 }
 
 #include "moc_appletinterface.cpp"

@@ -18,16 +18,11 @@ target_sources(plasma_appletscript_declarative PRIVATE
 
 set_target_properties(plasma_appletscript_declarative PROPERTIES PREFIX "")
 
-kcoreaddons_desktop_to_json(
-    plasma_appletscript_declarative data/plasma-scriptengine-applet-declarative.desktop
-    SERVICE_TYPES ${CMAKE_SOURCE_DIR}/src/plasma/data/servicetypes/plasma-scriptengine.desktop
-)
-
-
 target_link_libraries(plasma_appletscript_declarative
-    Qt5::Quick
-    Qt5::Qml
+    Qt${QT_MAJOR_VERSION}::Quick
+    Qt${QT_MAJOR_VERSION}::Qml
     KF5::Activities
+    KF5::ConfigQml
     KF5::KIOCore
     KF5::KIOWidgets
     KF5::Declarative
@@ -38,10 +33,12 @@ target_link_libraries(plasma_appletscript_declarative
     KF5::Package
     KF5::Notifications
 )
+if (QT_MAJOR_VERSION EQUAL "6")
+    target_link_libraries(plasma_appletscript_declarative KF5::ConfigQml)
+endif()
 
 
 install(TARGETS plasma_appletscript_declarative DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/scriptengines)
-install(FILES data/plasma-scriptengine-applet-declarative.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
-install(FILES data/plasma-wallpaper.desktop DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR})
+install(FILES data/plasma-wallpaper.desktop DESTINATION ${KDE_INSTALL_KSERVICETYPESDIR})
 
 

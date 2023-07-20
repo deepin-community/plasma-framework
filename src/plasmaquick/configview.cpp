@@ -10,7 +10,6 @@
 #include "configmodel.h"
 #include "private/configcategory_p.h"
 //#include "plasmoid/wallpaperinterface.h"
-#include "kdeclarative/configpropertymap.h"
 
 #include <QDebug>
 #include <QDir>
@@ -23,7 +22,6 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 #include <KQuickAddons/ConfigModule>
-#include <kdeclarative/kdeclarative.h>
 #include <packageurlinterceptor.h>
 
 #include <Plasma/Corona>
@@ -89,8 +87,6 @@ void ConfigViewPrivate::init()
     }
     q->engine()->rootContext()->setContextObject(localizedContextObject);
 
-    KDeclarative::KDeclarative::setupEngine(q->engine()); // ### how to make sure to do this only once per engine?
-
     // FIXME: problem on nvidia, all windows should be transparent or won't show
     q->setColor(Qt::transparent);
     q->setTitle(i18n("%1 Settings", applet.data()->title()));
@@ -122,16 +118,20 @@ void ConfigViewPrivate::init()
     q->setResizeMode(QQuickView::SizeViewToRootObject);
 
     auto plasmoid = applet.data()->property("_plasma_graphicObject").value<QObject *>();
-    q->engine()->rootContext()->setContextProperties({QQmlContext::PropertyPair{QStringLiteral("plasmoid"), QVariant::fromValue(plasmoid)},
-                                                      QQmlContext::PropertyPair{QStringLiteral("configDialog"), QVariant::fromValue(q)}});
+    q->engine()->rootContext()->setProperty("_plasmoid_property", QVariant::fromValue(plasmoid));
+    if (!qEnvironmentVariableIntValue("PLASMA_NO_CONTEXTPROPERTIES")) {
+        q->engine()->rootContext()->setContextProperties({QQmlContext::PropertyPair{QStringLiteral("plasmoid"), QVariant::fromValue(plasmoid)},
+                                                          QQmlContext::PropertyPair{QStringLiteral("configDialog"), QVariant::fromValue(q)}});
+    }
 
     // config model local of the applet
-    QQmlComponent *component = new QQmlComponent(q->engine(), applet.data()->kPackage().fileUrl("configmodel"), q);
-    QObject *object = component->create(q->engine()->rootContext());
+    QQmlComponent component(q->engine(), applet.data()->kPackage().fileUrl("configmodel"));
+    QObject *object = component.create(q->engine()->rootContext());
     configModel = qobject_cast<ConfigModel *>(object);
 
     if (configModel) {
         configModel->setApplet(applet.data());
+        configModel->setParent(q);
     } else {
         delete object;
     }
@@ -167,8 +167,6 @@ void ConfigViewPrivate::init()
             configModel->appendCategory(md.iconName(), md.name(), QString(), QLatin1String("kcms/") + kcm);
         }
     }
-
-    delete component;
 }
 
 void ConfigViewPrivate::updateMinimumWidth()
@@ -268,8 +266,9 @@ ConfigView::ConfigView(Plasma::Applet *applet, QWindow *parent)
     , d(new ConfigViewPrivate(applet, this))
 {
     setIcon(QIcon::fromTheme(QStringLiteral("configure")));
-    qmlRegisterType<ConfigModel>("org.kde.plasma.configuration", 2, 0, "ConfigModel");
-    qmlRegisterType<ConfigCategory>("org.kde.plasma.configuration", 2, 0, "ConfigCategory");
+    // Only register types once
+    [[maybe_unused]] static int configModelRegisterResult = qmlRegisterType<ConfigModel>("org.kde.plasma.configuration", 2, 0, "ConfigModel");
+    [[maybe_unused]] static int configCategoryRegisterResult = qmlRegisterType<ConfigCategory>("org.kde.plasma.configuration", 2, 0, "ConfigCategory");
     d->init();
     connect(applet, &QObject::destroyed, this, &ConfigView::close);
     connect(this, &QQuickView::statusChanged, [=](QQuickView::Status status) {

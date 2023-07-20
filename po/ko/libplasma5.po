@@ -1,22 +1,22 @@
 # Translation of plasmapkg to Korean.
 # Copyright (C) 2008 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdebase package.
-# Shinjo Park <kde@peremen.name>, 2008, 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2018, 2019, 2020, 2021.
+# Shinjo Park <kde@peremen.name>, 2008, 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: plasmapkg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
-"PO-Revision-Date: 2021-05-16 23:21+0200\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
+"PO-Revision-Date: 2022-10-03 16:23+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
-"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language-Team: Korean <kde-i18n-doc@kde.org>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 20.12.3\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: declarativeimports/calendar/eventdatadecorator.cpp:51
 #, kde-format
@@ -114,17 +114,44 @@ msgstr "확인"
 msgid "Cancel"
 msgstr "취소"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr "더 많은 동작"
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr "접기"
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr "펴기"
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr "암호"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr "검색…"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr "검색"
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "%1 위젯 활성화하기"
@@ -135,7 +162,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "%1 삭제"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr "편집 모드 들어가기"
@@ -146,17 +173,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "%1 설정..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "위젯 잠금"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "위젯 잠금 풀기"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr "편집 모드 끝내기"
@@ -232,17 +259,17 @@ msgstr "스크린샷"
 msgid "Translations"
 msgstr "번역"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr "설정 UI 페이지 모델"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "설정 XML 파일"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr "작은 애플릿의 사용자 정의 확장 도구"
@@ -348,95 +375,7 @@ msgstr "풍선 도움말의 불투명한 기본 배경 그림"
 msgid "KColorScheme configuration file"
 msgstr "KColorScheme 설정 파일"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "접근성"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "프로그램 실행기"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "천문학"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "날짜와 시간"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "개발 도구"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "교육"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "환경과 날씨"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "예제"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "파일 시스템"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "재미와 게임"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "그래픽"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "언어"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "지도 및 지리"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "기타"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "멀티미디어"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "온라인 서비스"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "생산성"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "시스템 정보"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "유틸리티"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "창과 작업"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "클립보드"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "작업"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -465,52 +404,52 @@ msgstr "%2 위젯에 필요한 스크립트 엔진 %1을(를) 열 수 없습니�
 msgid "Show Alternatives..."
 msgstr "대체 항목 보기..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "위젯 삭제됨"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "위젯 \"%1\"이(가) 삭제되었습니다."
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "패널 삭제됨"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "패널이 삭제되었습니다."
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "바탕 화면 삭제됨"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "바탕 화면이 삭제되었습니다."
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "실행 취소"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "위젯 설정"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "이 위젯 삭제하기"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -518,7 +457,7 @@ msgstr "이 위젯 삭제하기"
 msgid "Run the Associated Application"
 msgstr "연결된 프로그램을 실행합니다"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "스크립트 초기화 실패"
@@ -529,27 +468,27 @@ msgstr "스크립트 초기화 실패"
 msgid "Open with %1"
 msgstr "%1(으)로 열기"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "이 패널 삭제하기"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "이 활동 삭제하기"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "활동 설정"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "위젯 추가..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "요청한 구성 요소를 찾을 수 없습니다: %1"
@@ -582,71 +521,71 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "잘못된(빈) 서비스, 작업을 수행할 수 없습니다."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, kde-format
 msgid "Unknown Applet"
 msgstr "알 수 없는 애플릿"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, kde-format
 msgid "Error loading QML file: %1 %2"
 msgstr "QML 파일을 불러오는 중 오류 발생: %1 %2"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "애플릿을 불러오는 중 오류 발생: 패키지가 없음. %1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "%1 설정"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "Plasma 패키지"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "설치"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "패키지 설치 실패"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "끌어다 놓은 패키지가 잘못되었습니다."
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "위젯"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "%1 추가"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "아이콘 추가"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "배경 그림"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -656,3 +595,449 @@ msgstr "%1 설정"
 #, kde-format
 msgid "Content dropped"
 msgstr "내용 드롭됨"
+
+#~ msgid "Accessibility"
+#~ msgstr "접근성"
+
+#~ msgid "Application Launchers"
+#~ msgstr "프로그램 실행기"
+
+#~ msgid "Astronomy"
+#~ msgstr "천문학"
+
+#~ msgid "Date and Time"
+#~ msgstr "날짜와 시간"
+
+#~ msgid "Development Tools"
+#~ msgstr "개발 도구"
+
+#~ msgid "Education"
+#~ msgstr "교육"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "환경과 날씨"
+
+#~ msgid "Examples"
+#~ msgstr "예제"
+
+#~ msgid "File System"
+#~ msgstr "파일 시스템"
+
+#~ msgid "Fun and Games"
+#~ msgstr "재미와 게임"
+
+#~ msgid "Graphics"
+#~ msgstr "그래픽"
+
+#~ msgid "Language"
+#~ msgstr "언어"
+
+#~ msgid "Mapping"
+#~ msgstr "지도 및 지리"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "기타"
+
+#~ msgid "Multimedia"
+#~ msgstr "멀티미디어"
+
+#~ msgid "Online Services"
+#~ msgstr "온라인 서비스"
+
+#~ msgid "Productivity"
+#~ msgstr "생산성"
+
+#~ msgid "System Information"
+#~ msgstr "시스템 정보"
+
+#~ msgid "Utilities"
+#~ msgstr "유틸리티"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "창과 작업"
+
+#~ msgid "Clipboard"
+#~ msgstr "클립보드"
+
+#~ msgid "Tasks"
+#~ msgstr "작업"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Edit %1..."
+#~ msgstr "%1 편집..."
+
+#~ msgid "Default settings for theme, etc."
+#~ msgstr "테마 등의 기본 설정"
+
+#~ msgid "Color scheme to use for applications."
+#~ msgstr "모든 프로그램에 사용할 색 배열입니다."
+
+#~ msgid "Preview Images"
+#~ msgstr "미리 보기 그림"
+
+#~ msgid "Preview for the Login Manager"
+#~ msgstr "로그인 관리자 미리 보기"
+
+#~ msgid "Preview for the Lock Screen"
+#~ msgstr "잠금 화면 미리 보기"
+
+#~ msgid "Preview for the Userswitcher"
+#~ msgstr "사용자 전환기 미리 보기"
+
+#~ msgid "Preview for the Virtual Desktop Switcher"
+#~ msgstr "가상 바탕 화면 전환기 미리 보기"
+
+#~ msgid "Preview for Splash Screen"
+#~ msgstr "시작 화면 미리 보기"
+
+#~ msgid "Preview for KRunner"
+#~ msgstr "KRunner 미리 보기"
+
+#~ msgid "Preview for the Window Decorations"
+#~ msgstr "창 장식 미리 보기"
+
+#~ msgid "Preview for Window Switcher"
+#~ msgstr "창 전환기 미리 보기"
+
+#~ msgid "Login Manager"
+#~ msgstr "로그인 관리자"
+
+#~ msgid "Main Script for Login Manager"
+#~ msgstr "로그인 관리자 주 스크립트 파일"
+
+#~ msgid "Logout Dialog"
+#~ msgstr "로그아웃 대화 상자"
+
+#~ msgid "Main Script for Logout Dialog"
+#~ msgstr "로그아웃 대화 상자 주 스크립트 파일"
+
+#~ msgid "Screenlocker"
+#~ msgstr "화면 잠금 도구"
+
+#~ msgid "Main Script for Lock Screen"
+#~ msgstr "잠금 화면 주 스크립트 파일"
+
+#~ msgid "UI for fast user switching"
+#~ msgstr "빠른 사용자 전환 인터페이스"
+
+#~ msgid "Main Script for User Switcher"
+#~ msgstr "사용자 전환기 주 스크립트 파일"
+
+#~ msgid "Virtual Desktop Switcher"
+#~ msgstr "가상 바탕 화면 전환기"
+
+#~ msgid "Main Script for Virtual Desktop Switcher"
+#~ msgstr "가상 바탕 화면 전환기 주 스크립트"
+
+#~ msgid "On-Screen Display Notifications"
+#~ msgstr "OSD 알림"
+
+#~ msgid "Main Script for On-Screen Display Notifications"
+#~ msgstr "OSD 알림 주 스크립트"
+
+#~ msgid "Splash Screen"
+#~ msgstr "시작 화면"
+
+#~ msgid "Main Script for Splash Screen"
+#~ msgstr "시작 화면 주 스크립트 파일"
+
+#~ msgid "KRunner UI"
+#~ msgstr "KRunner UI"
+
+#~ msgid "Main Script KRunner"
+#~ msgstr "KRunner 주 스크립트 파일"
+
+#~ msgid "Window Decoration"
+#~ msgstr "창 장식"
+
+#~ msgid "Main Script for Window Decoration"
+#~ msgstr "창 장식 주 스크립트"
+
+#~ msgid "Window Switcher"
+#~ msgstr "창 전환기"
+
+#~ msgid "Main Script for Window Switcher"
+#~ msgstr "창 전환기 주 스크립트 파일"
+
+#~ msgid "Finish Customizing Layout"
+#~ msgstr "레이아웃 사용자 정의 끝내기"
+
+#~ msgid "Customize Layout..."
+#~ msgstr "레이아웃 사용자 정의..."
+
+#~ msgid "Fetching file type..."
+#~ msgstr "파일 형식 가져오는 중..."
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "%1 Options"
+#~ msgstr "%1 옵션"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings"
+#~ msgstr "%1 설정"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings..."
+#~ msgstr "%1 설정..."
+
+#~ msgid "Low color images for dialogs"
+#~ msgstr "대화 상자의 색상 수가 적은 그림"
+
+#~ msgid "Low color generic dialog background"
+#~ msgstr "일반 대화 상자의 색상 수가 적은 배경"
+
+#~ msgid "Low color theme for the logout dialog"
+#~ msgstr "로그아웃 대화 상자의 색상 수가 적은 테마"
+
+#~ msgid "Low color background image for widgets"
+#~ msgstr "위젯의 색상 수가 적은 배경 그림"
+
+#~ msgid "Low color analog clock face"
+#~ msgstr "아날로그 시계의 색상 수가 적은 그림"
+
+#~ msgid "Low color background image for panels"
+#~ msgstr "패널의 색상 수가 적은 배경 그림"
+
+#~ msgid "Low color background for graphing widgets"
+#~ msgstr "그래핑 위젯의 색상 수가 적은 배경 그림"
+
+#~ msgid "Low color background image for tooltips"
+#~ msgstr "풍선 도움말의 색상 수가 적은 배경 그림"
+
+#~ msgid "Plasma Package Manager"
+#~ msgstr "Plasma 패키지 관리자"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Generate a SHA1 hash for the package at <path>"
+#~ msgstr "<path>에 있는 패키지의 SHA1 해시 생성하기"
+
+#~ msgid "For install or remove, operates on packages installed for all users."
+#~ msgstr "모든 사용자의 패키지를 설치, 삭제합니다."
+
+#~ msgctxt ""
+#~ "theme, wallpaper, etc. are keywords, but they may be translated, as both "
+#~ "versions are recognized by the application (if translated, should be same "
+#~ "as messages with 'package type' context below)"
+#~ msgid ""
+#~ "The type of package, e.g. theme, wallpaper, plasmoid, dataengine, runner, "
+#~ "layout-template, etc."
+#~ msgstr ""
+#~ "테마, 배경 그림, Plasmoid, 데이터 엔진, 실행기, 레이아웃 템플릿 등의 패키"
+#~ "지 종류입니다."
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Install the package at <path>"
+#~ msgstr "패키지를 <path>에 설치하기"
+
+#~ msgctxt "Do not translate <name>"
+#~ msgid "Show information of package <name>"
+#~ msgstr "패키지 <name>의 정보 보기"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Upgrade the package at <path>"
+#~ msgstr "<path>의 패키지 업그레이드하기"
+
+#~ msgid "List installed packages"
+#~ msgstr "설치한 패키지 목록 보이기"
+
+#~ msgid "List all known package types that can be installed"
+#~ msgstr "설치할 수 있는 모든 패키지 종류를 표시합니다"
+
+#~ msgctxt "Do not translate <name>"
+#~ msgid "Remove the package named <name>"
+#~ msgstr "<name> 패키지 삭제하기"
+
+#~ msgid ""
+#~ "Absolute path to the package root. If not supplied, then the standard "
+#~ "data directories for this KDE session will be searched instead."
+#~ msgstr ""
+#~ "패키지 루트로부터의 절대 경로입니다. 지정되지 않으면 이 KDE 세션의 표준 데"
+#~ "이터 디렉터리를 찾습니다."
+
+#~ msgid "Failed to generate a Package hash for %1"
+#~ msgstr "%1의 패키지 해시를 생성할 수 없음"
+
+#~ msgid "SHA1 hash for Package at %1: '%2'"
+#~ msgstr "%1에 있는 패키지의 SHA1 해시: '%2'"
+
+#~ msgctxt "package type"
+#~ msgid "wallpaper"
+#~ msgstr "배경 화면"
+
+#~ msgctxt "package type"
+#~ msgid "plasmoid"
+#~ msgstr "plasmoid"
+
+#~ msgctxt "package type"
+#~ msgid "package"
+#~ msgstr "패키지"
+
+#~ msgctxt "package type"
+#~ msgid "theme"
+#~ msgstr "테마"
+
+#~ msgctxt "package type"
+#~ msgid "dataengine"
+#~ msgstr "데이터 엔진"
+
+#~ msgctxt "package type"
+#~ msgid "runner"
+#~ msgstr "실행기"
+
+#~ msgctxt "package type"
+#~ msgid "wallpaperplugin"
+#~ msgstr "wallpaperplugin"
+
+#~ msgctxt "package type"
+#~ msgid "lookandfeel"
+#~ msgstr "모습과 느낌"
+
+#~ msgctxt "package type"
+#~ msgid "shell"
+#~ msgstr "셸"
+
+#~ msgctxt "package type"
+#~ msgid "layout-template"
+#~ msgstr "레이아웃 템플릿"
+
+#~ msgctxt "package type"
+#~ msgid "kwineffect"
+#~ msgstr "kwineffect"
+
+#~ msgctxt "package type"
+#~ msgid "windowswitcher"
+#~ msgstr "windowswitcher"
+
+#~ msgctxt "package type"
+#~ msgid "kwinscript"
+#~ msgstr "kwinscript"
+
+#~ msgid "Could not find a suitable installer for package of type %1"
+#~ msgstr "패키지 종류 %1에 대한 적절한 설치기를 찾을 수 없습니다"
+
+#~ msgid "Listing service types: %1"
+#~ msgstr "다음 서비스 종류에 대한 목록: %1"
+
+#~ msgid "Error: Plugin %1 is not installed."
+#~ msgstr "오류: 플러그인 %1이(가) 설치되지 않았습니다."
+
+#~ msgctxt ""
+#~ "No option was given, this is the error message telling the user he needs "
+#~ "at least one, do not translate install, remove, upgrade nor list"
+#~ msgid "One of install, remove, upgrade or list is required."
+#~ msgstr "설치, 삭제, 업그레이드, 표시 중 하나가 필요합니다."
+
+#~ msgid "Error: Can't find plugin metadata: %1"
+#~ msgstr "오류: 플러그인 메타데이터를 찾을 수 없음: %1"
+
+#~ msgid "Showing info for package: %1"
+#~ msgstr "패키지 정보 표시 중: %1"
+
+#~ msgid "      Name : %1"
+#~ msgstr "      이름: %1"
+
+#~ msgid "   Comment : %1"
+#~ msgstr "   설명: %1"
+
+#~ msgid "    Plugin : %1"
+#~ msgstr "    플러그인: %1"
+
+#~ msgid "    Author : %1"
+#~ msgstr "    작성자: %1"
+
+#~ msgid "      Path : %1"
+#~ msgstr "      경로: %1"
+
+#~ msgctxt ""
+#~ "The user entered conflicting options packageroot and global, this is the "
+#~ "error message telling the user he can use only one"
+#~ msgid ""
+#~ "The packageroot and global options conflict each other, please select "
+#~ "only one."
+#~ msgstr ""
+#~ "packageroot와 global 옵션은 서로 충돌하므로 둘 중 하나만 선택하십시오."
+
+#~ msgid "Addon Name"
+#~ msgstr "추가 기능 이름"
+
+#~ msgid "Service Type"
+#~ msgstr "서비스 종류"
+
+#~ msgid "Path"
+#~ msgstr "경로"
+
+#~ msgid "Type Argument"
+#~ msgstr "인자를 입력하십시오"
+
+#~ msgid "Package types that are installable with this tool:"
+#~ msgstr "이 도구로 설치할 수 있는 패키지 종류:"
+
+#~ msgid "Built in:"
+#~ msgstr "내장됨:"
+
+#~ msgid "DataEngine"
+#~ msgstr "데이터 엔진"
+
+#~ msgid "Layout Template"
+#~ msgstr "레이아웃 템플릿"
+
+#~ msgid "Look and Feel"
+#~ msgstr "모습과 느낌"
+
+#~ msgid "Package"
+#~ msgstr "패키지"
+
+#~ msgid "Plasmoid"
+#~ msgstr "Plasmoid"
+
+#~ msgid "Runner"
+#~ msgstr "실행기"
+
+#~ msgid "Shell"
+#~ msgstr "셸"
+
+#~ msgid "Theme"
+#~ msgstr "테마"
+
+#~ msgid "Wallpaper Images"
+#~ msgstr "배경 그림"
+
+#~ msgid "Animated Wallpaper"
+#~ msgstr "애니메이션 배경 그림"
+
+#~ msgid "KWin Effect"
+#~ msgstr "KWin 효과"
+
+#~ msgid "KWin Window Switcher"
+#~ msgstr "KWin 창 전환기"
+
+#~ msgid "KWin Script"
+#~ msgstr "KWin 스크립트"
+
+#~ msgid "Provided by plugins:"
+#~ msgstr "플러그인이 제공함:"
+
+#~ msgid "Provided by .desktop files:"
+#~ msgstr ".desktop 파일이 제공함:"
+
+#~ msgid "Successfully upgraded %1"
+#~ msgstr "%1을(를) 업그레이드했습니다"
+
+#~ msgid "Successfully installed %1"
+#~ msgstr "%1을(를) 성공적으로 설치했습니다"
+
+#~ msgid "Error: Installation of %1 failed: %2"
+#~ msgstr "오류: %1 설치 실패: %2"
+
+#~ msgid "Upgrading package from file: %1"
+#~ msgstr "파일에서 패키지 업그레이드 중: %1"
+
+#~ msgid "Successfully uninstalled %1"
+#~ msgstr "%1을(를) 성공적으로 삭제했습니다"
+
+#~ msgid "Error: Uninstallation of %1 failed: %2"
+#~ msgstr "오류: %1 삭제 실패: %2"
+
+#~ msgid ""
+#~ "Could not load installer for package of type %1. Error reported was: %2"
+#~ msgstr "패키지 종류 %1에 대한 설치기를 불러올 수 없습니다. 오류: %2"

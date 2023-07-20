@@ -10,9 +10,11 @@
 #include <QSignalSpy>
 #include <QStandardPaths>
 
+#include <KConfigGroup>
 #include <KIconLoader>
 #include <KIconTheme>
 #include <KWindowSystem>
+#include <KX11Extras>
 
 #include <config-plasma.h>
 #if HAVE_X11
@@ -23,16 +25,18 @@
 QString cacheIdHash(const Plasma::SvgPrivate::CacheId &id)
 {
     static const uint seed = 0x9e3779b9;
-    std::array<uint, 10> parts = {::qHash(id.width),
-                                  ::qHash(id.height),
-                                  ::qHash(id.elementName),
-                                  ::qHash(id.filePath),
-                                  ::qHash(id.status),
-                                  ::qHash(id.devicePixelRatio),
-                                  ::qHash(id.scaleFactor),
-                                  ::qHash(id.colorGroup),
-                                  ::qHash(id.extraFlags),
-                                  ::qHash(id.lastModified)};
+    std::array<size_t, 10> parts = {
+        ::qHash(id.width),
+        ::qHash(id.height),
+        ::qHash(id.elementName),
+        ::qHash(id.filePath),
+        ::qHash(id.status),
+        ::qHash(id.devicePixelRatio),
+        ::qHash(id.scaleFactor),
+        ::qHash(id.colorGroup),
+        ::qHash(id.extraFlags),
+        ::qHash(id.lastModified),
+    };
     return QString::number(qHashRange(parts.begin(), parts.end(), seed));
 }
 
@@ -119,6 +123,24 @@ void ThemeTest::loadSvgIcon()
     QVERIFY(!m_svg->theme()->findInCache(cacheId, result));
 }
 
+void ThemeTest::testThemeConfig_data()
+{
+    QTest::addColumn<QString>("themeName");
+
+    QTest::addRow("new metadata style theme") << QStringLiteral("testtheme");
+#if PLASMA_BUILD_DEPRECATED_SINCE(5, 86)
+    QTest::addRow("old metadata format theme") << QStringLiteral("test_old_metadata_format_theme");
+#endif
+}
+
+void ThemeTest::testThemeConfig()
+{
+    QFETCH(QString, themeName);
+    auto theme = std::make_unique<Plasma::Theme>(themeName, this);
+    QCOMPARE(theme->backgroundContrastEnabled(), true);
+    QCOMPARE(theme->backgroundContrast(), 0.23);
+}
+
 void ThemeTest::testColors()
 {
     QCOMPARE(m_theme->color(Plasma::Theme::TextColor, Plasma::Theme::NormalColorGroup), QColor(49, 54, 59));
@@ -177,7 +199,7 @@ void ThemeTest::testCompositingChange()
     if (!KWindowSystem::isPlatformX11()) {
         QSKIP("Test is only for X11");
     }
-    QVERIFY(!KWindowSystem::compositingActive());
+    QVERIFY(!KX11Extras::compositingActive());
 
     // image path should give us an opaque variant
     QVERIFY(m_theme->imagePath(QStringLiteral("element")).endsWith(QLatin1String("/desktoptheme/testtheme/opaque/element.svg")));
@@ -186,16 +208,16 @@ void ThemeTest::testCompositingChange()
     QVERIFY(themeChangedSpy.isValid());
 
     // fake the compositor
-    QSignalSpy compositingChangedSpy(KWindowSystem::self(), &KWindowSystem::compositingChanged);
+    QSignalSpy compositingChangedSpy(KX11Extras::self(), &KX11Extras::compositingChanged);
     QVERIFY(compositingChangedSpy.isValid());
-    QScopedPointer<KSelectionOwner> compositorSelection(new KSelectionOwner("_NET_WM_CM_S0"));
-    QSignalSpy claimedSpy(compositorSelection.data(), &KSelectionOwner::claimedOwnership);
+    std::unique_ptr<KSelectionOwner> compositorSelection(new KSelectionOwner("_NET_WM_CM_S0"));
+    QSignalSpy claimedSpy(compositorSelection.get(), &KSelectionOwner::claimedOwnership);
     QVERIFY(claimedSpy.isValid());
     compositorSelection->claim(true);
     QVERIFY(claimedSpy.wait());
 
     QCOMPARE(compositingChangedSpy.count(), 1);
-    QVERIFY(KWindowSystem::compositingActive());
+    QVERIFY(KX11Extras::compositingActive());
     QVERIFY(themeChangedSpy.wait());
     QCOMPARE(themeChangedSpy.count(), 1);
     QVERIFY(m_theme->imagePath(QStringLiteral("element")).endsWith(QLatin1String("/desktoptheme/testtheme/element.svg")));
@@ -204,7 +226,7 @@ void ThemeTest::testCompositingChange()
     compositorSelection.reset();
     QVERIFY(compositingChangedSpy.wait());
     QCOMPARE(compositingChangedSpy.count(), 2);
-    QVERIFY(!KWindowSystem::compositingActive());
+    QVERIFY(!KX11Extras::compositingActive());
     QVERIFY(themeChangedSpy.wait());
     QCOMPARE(themeChangedSpy.count(), 2);
     QVERIFY(m_theme->imagePath(QStringLiteral("element")).endsWith(QLatin1String("/desktoptheme/testtheme/opaque/element.svg")));

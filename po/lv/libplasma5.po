@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-framework\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
 "PO-Revision-Date: 2019-12-08 12:11+0200\n"
 "Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -115,17 +115,44 @@ msgstr "Labi"
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr ""
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr ""
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "Nezināms"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "Aktivēt %1 logdaļu"
@@ -136,7 +163,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "Noņemt %1"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr ""
@@ -147,17 +174,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "Konfigurēt %1..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "Slēgt logdaļas"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "Atslēgt logdaļas"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr ""
@@ -234,17 +261,17 @@ msgstr "Ekrānuzņēmums"
 msgid "Translations"
 msgstr "Tulkojumi"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr "UI lapu konfigurācijas modelis"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "Konfigurācijas XML datne"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr "Pielāgots izpletējs kompaktām lietotnēm"
@@ -350,95 +377,7 @@ msgstr "Necaurspīdīgi attēli paskaidrēm"
 msgid "KColorScheme configuration file"
 msgstr "KColorScheme konfigurācijas datne"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "Pieejamība"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "Programmu palaidēji"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "Astronomija"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "Datums un laiks"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "Izstrādes rīki"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "Izglītība"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "Vide un laikapstākļi"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "Piemēri"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "Datņu sistēma"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "Spēles un jautrība"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "Grafika"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "Valoda"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "Kartēšana"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "Dažādi"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "Multivide"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "Tiešsaistes servisi"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "Produktivitāte"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "Sistēmas informācija"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "Utilītas"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "Logi un uzdevumi"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "Starpliktuve"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "Uzdevumi"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -468,52 +407,52 @@ msgstr "Nebija iespējams izveidot %1 ScriptEngine priekš logdaļas %2."
 msgid "Show Alternatives..."
 msgstr "Parādīt alternatīvas..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "Logdaļa ir noņemta"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "Logdaļa „%1“ ir noņemta."
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "Panelis ir noņemts"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "Panelis ir noņemts."
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "Darbvirsma ir noņemta"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "Darbvirsma ir noņemta"
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "Atdarīt"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "Logdaļas iestatījumi"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "Noņemt šo logdaļu"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -521,7 +460,7 @@ msgstr "Noņemt šo logdaļu"
 msgid "Run the Associated Application"
 msgstr "Darbināt piesaistīto aplikāciju"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "Nesekmīga skripta inicializācija"
@@ -532,27 +471,27 @@ msgstr "Nesekmīga skripta inicializācija"
 msgid "Open with %1"
 msgstr "Atvērt ar %1"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "Noņemt šo paneli"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "Noņemt šo aktivitāti"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "Aktivitātes iestatījumi"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "Pievienot logdaļas..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "Nebija iespējams atrast pieprasīto komponenti: %1"
@@ -585,73 +524,73 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "Nederīgs (null) serviss. Nav iespējams veikt darbības."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, fuzzy, kde-format
 #| msgid "Unknown"
 msgid "Unknown Applet"
 msgstr "Nezināms"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, fuzzy, kde-format
 #| msgid "Error loading QML file: %1"
 msgid "Error loading QML file: %1 %2"
 msgstr "Kļūda ielādējot QML datni: %1"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "Kļūda ielādējot lietotni: pakotne neeksistē. %1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "%1 iestatījumi"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "Plasma pakotne"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "Instalēt"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "Neizdevās instalēt pakotni"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "Nomestā pakotne nav derīga."
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "Logdaļas"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "Pievienot %1"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "Pievienot ikonu"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "Tapete"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -661,3 +600,175 @@ msgstr "Uzlikt %1"
 #, kde-format
 msgid "Content dropped"
 msgstr "Saturs ir nomests"
+
+#~ msgid "Accessibility"
+#~ msgstr "Pieejamība"
+
+#~ msgid "Application Launchers"
+#~ msgstr "Programmu palaidēji"
+
+#~ msgid "Astronomy"
+#~ msgstr "Astronomija"
+
+#~ msgid "Date and Time"
+#~ msgstr "Datums un laiks"
+
+#~ msgid "Development Tools"
+#~ msgstr "Izstrādes rīki"
+
+#~ msgid "Education"
+#~ msgstr "Izglītība"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "Vide un laikapstākļi"
+
+#~ msgid "Examples"
+#~ msgstr "Piemēri"
+
+#~ msgid "File System"
+#~ msgstr "Datņu sistēma"
+
+#~ msgid "Fun and Games"
+#~ msgstr "Spēles un jautrība"
+
+#~ msgid "Graphics"
+#~ msgstr "Grafika"
+
+#~ msgid "Language"
+#~ msgstr "Valoda"
+
+#~ msgid "Mapping"
+#~ msgstr "Kartēšana"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Dažādi"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multivide"
+
+#~ msgid "Online Services"
+#~ msgstr "Tiešsaistes servisi"
+
+#~ msgid "Productivity"
+#~ msgstr "Produktivitāte"
+
+#~ msgid "System Information"
+#~ msgstr "Sistēmas informācija"
+
+#~ msgid "Utilities"
+#~ msgstr "Utilītas"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "Logi un uzdevumi"
+
+#~ msgid "Clipboard"
+#~ msgstr "Starpliktuve"
+
+#~ msgid "Tasks"
+#~ msgstr "Uzdevumi"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Edit %1..."
+#~ msgstr "Rediģēt %1..."
+
+#~ msgid "Default settings for theme, etc."
+#~ msgstr "Tēmu u.c. noklusējuma iestatījumi."
+
+#~ msgid "Color scheme to use for applications."
+#~ msgstr "Lietotņu krāsu shēma."
+
+#~ msgid "Preview Images"
+#~ msgstr "Priekšskatīt attēlus"
+
+#~ msgid "Preview for the Login Manager"
+#~ msgstr "Pieteikšanās pārvaldnieka priekšskatījums"
+
+#~ msgid "Preview for the Lock Screen"
+#~ msgstr "Ekrānslēdzēja priekšskatījums"
+
+#~ msgid "Preview for the Userswitcher"
+#~ msgstr "Lietotāju pārslēdzēja priekšskatījums"
+
+#~ msgid "Preview for the Virtual Desktop Switcher"
+#~ msgstr "Virtuālo darbvirsmu pārslēdzēja priekšskatījums"
+
+#~ msgid "Preview for Splash Screen"
+#~ msgstr "Uzplaiksnījumekrāna priekšskatījums"
+
+#~ msgid "Preview for KRunner"
+#~ msgstr "KRunner priekšskatījums"
+
+#~ msgid "Preview for the Window Decorations"
+#~ msgstr "Logu dekorāciju priekšskatījums"
+
+#~ msgid "Preview for Window Switcher"
+#~ msgstr "Logu pārslēdzēja priekšskatījums"
+
+#~ msgid "Login Manager"
+#~ msgstr "Pieteikšanās pārvaldnieks"
+
+#~ msgid "Main Script for Login Manager"
+#~ msgstr "Galvenais pieteikšanās pārvaldnieka skripts"
+
+#~ msgid "Logout Dialog"
+#~ msgstr "Atteikšanās dialogs"
+
+#~ msgid "Main Script for Logout Dialog"
+#~ msgstr "Galvenais atteikšanās dialoga skripts"
+
+#~ msgid "Screenlocker"
+#~ msgstr "Ekrānslēdzējs"
+
+#~ msgid "Main Script for Lock Screen"
+#~ msgstr "Galvenais ekrānslēdzēja skripts"
+
+#~ msgid "UI for fast user switching"
+#~ msgstr "Ātrs lietotāju pārslēdzējs"
+
+#~ msgid "Main Script for User Switcher"
+#~ msgstr "Galvenais lietotāju pārslēdzēja skripts"
+
+#~ msgid "Virtual Desktop Switcher"
+#~ msgstr "Virtuālo darbvirsmu pārslēdzējs"
+
+#~ msgid "Main Script for Virtual Desktop Switcher"
+#~ msgstr "Galvenais virtuālo darbvirsmu pārslēdzēja skripts"
+
+#~ msgid "On-Screen Display Notifications"
+#~ msgstr "Uz ekrāna rādāmie paziņojumi"
+
+#~ msgid "Main Script for On-Screen Display Notifications"
+#~ msgstr "Galvenais uz ekrāna rādāmo paziņojumu skripts"
+
+#~ msgid "Splash Screen"
+#~ msgstr "Uzplaiksnījuma ekrāns"
+
+#~ msgid "Main Script for Splash Screen"
+#~ msgstr "Galvenais uzplaiksnījuma ekrāna skripts"
+
+#~ msgid "KRunner UI"
+#~ msgstr "KRunner UI"
+
+#~ msgid "Main Script KRunner"
+#~ msgstr "Galvenais KRunner skripts"
+
+#~ msgid "Window Decoration"
+#~ msgstr "Loga dekorācija"
+
+#~ msgid "Main Script for Window Decoration"
+#~ msgstr "Galvenais logu dekorāciju skripts"
+
+#~ msgid "Window Switcher"
+#~ msgstr "Logu pārslēdzējs"
+
+#~ msgid "Main Script for Window Switcher"
+#~ msgstr "Galvenais logu pārslēdzēja skripts"
+
+#~ msgid "Finish Customizing Layout"
+#~ msgstr "Pabeigt pielāgot izkārtojumu"
+
+#~ msgid "Customize Layout..."
+#~ msgstr "Pielāgot izkārtojumu..."
+
+#~ msgid "Fetching file type..."
+#~ msgstr "Iegūst datnes tipu..."

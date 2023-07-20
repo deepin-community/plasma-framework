@@ -18,7 +18,6 @@
 #include <QTimer>
 
 #include <KLocalizedString>
-#include <KWindowSystem>
 
 #include <cmath>
 
@@ -206,7 +205,7 @@ Containment *Corona::containmentForScreen(int screen, const QString &activity, c
     for (Containment *cont : std::as_const(d->containments)) {
         /* clang-format off */
         if (cont->lastScreen() == screen
-            && (cont->activity().isEmpty() || cont->activity() == activity)
+            && ((cont->activity().isEmpty() || activity.isEmpty()) || cont->activity() == activity)
             && (cont->containmentType() == Plasma::Types::DesktopContainment
                 || cont->containmentType() == Plasma::Types::CustomContainment)) { /* clang-format on */
             containment = cont;
@@ -484,7 +483,6 @@ void CoronaPrivate::init()
     lockAction->setAutoRepeat(true);
     lockAction->setIcon(QIcon::fromTheme(QStringLiteral("object-locked")));
     lockAction->setData(Plasma::Types::ControlAction);
-    lockAction->setShortcut(QKeySequence(QStringLiteral("alt+d, l")));
     lockAction->setShortcutContext(Qt::ApplicationShortcut);
 
     // fake containment/applet actions
@@ -656,6 +654,9 @@ QList<Plasma::Containment *> CoronaPrivate::importLayout(const KConfigGroup &con
         KConfigGroup containmentConfig(&containmentsGroup, group);
 
         if (containmentConfig.entryMap().isEmpty()) {
+            continue;
+        } else if (containmentConfig.readEntry(QStringLiteral("transient"), false)) {
+            containmentConfig.deleteGroup();
             continue;
         }
 

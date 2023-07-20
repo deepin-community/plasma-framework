@@ -26,8 +26,8 @@
 #include <KDesktopFile>
 #include <KGlobalAccel>
 #include <KLocalizedString>
+#include <KPackage/Package>
 #include <KService>
-#include <KWindowSystem>
 
 #include "containment.h"
 #include "corona.h"
@@ -159,7 +159,9 @@ Applet::~Applet()
     // ConfigLoader is deleted when AppletPrivate closes not Applet
     // It saves on closure and emits a signal.
     // disconnect early to avoid a crash. See  411221
-    disconnect(d->configLoader, SIGNAL(configChanged()), this, SLOT(propagateConfigChanged()));
+    if (d->configLoader) {
+        disconnect(d->configLoader, SIGNAL(configChanged()), this, SLOT(propagateConfigChanged()));
+    }
     delete d;
 }
 
@@ -769,8 +771,7 @@ void Applet::setGlobalShortcut(const QKeySequence &shortcut)
 
     d->activationAction->setShortcut(shortcut);
     d->globalShortcutEnabled = true;
-    QList<QKeySequence> seqs;
-    seqs << shortcut;
+    QList<QKeySequence> seqs{shortcut};
     KGlobalAccel::self()->setShortcut(d->activationAction, seqs, KGlobalAccel::NoAutoloading);
     d->globalShortcutChanged();
 }
@@ -878,7 +879,7 @@ Applet *Applet::loadPlasmoid(const QString &path, uint appletId)
     if (md.isValid()) {
         QStringList types = md.serviceTypes();
 
-        if (types.contains(QLatin1String("Plasma/Containment"))) {
+        if (types.contains(QLatin1String("Plasma/Containment")) || md.rawData().contains(QStringLiteral("X-Plasma-ContainmentType"))) {
             return new Containment(md, appletId);
         } else {
             return new Applet(md, nullptr, appletId);
@@ -888,6 +889,14 @@ Applet *Applet::loadPlasmoid(const QString &path, uint appletId)
     return nullptr;
 }
 #endif
+
+QString Applet::filePath(const QByteArray &key, const QString &filename) const
+{
+    if (d->package.isValid()) {
+        return d->package.filePath(key, filename);
+    }
+    return QString();
+}
 
 void Applet::timerEvent(QTimerEvent *event)
 {

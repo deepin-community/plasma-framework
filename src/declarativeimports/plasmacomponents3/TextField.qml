@@ -5,7 +5,6 @@
 */
 
 import QtQuick 2.6
-import QtQuick.Window 2.2
 import QtQuick.Controls @QQC2_VERSION@
 import QtQuick.Templates @QQC2_VERSION@ as T
 import org.kde.plasma.core 2.0 as PlasmaCore
@@ -20,6 +19,7 @@ T.TextField {
     /**
      * Whether the button to clear the text from TextField is visible.
      * @since 5.73
+     * @deprecated since 5.93 Use SearchField instead
      */
     property bool clearButtonShown: false
 
@@ -27,6 +27,7 @@ T.TextField {
      * Whether to show a button that allows the user to reveal the password in
      * plain text. This only makes sense if the echoMode is set to Password.
      * @since 5.73
+     * @deprecated since 5.93 Use PasswordField instead
      */
     property bool revealPasswordButtonShown: false
 
@@ -37,6 +38,10 @@ T.TextField {
 
     // Can't guarantee that background will always be present or have the margins property
     readonly property bool __hasBackgroundAndMargins: background && background.hasOwnProperty("margins")
+
+    // store information that echoMode was set to Password, regardless of its current value
+    property var __isPassword: false
+    onEchoModeChanged: __isPassword |= (echoMode === TextInput.Password);
 
     // TextField doesn't have this property by default for whatever reason
     property bool visualFocus: control.activeFocus && (
@@ -51,17 +56,16 @@ T.TextField {
      * behavior. Use the following 2 lines if you want text to stay within the
      * background:
     implicitBackgroundWidth + leftInset + rightInset
-    || Math.ceil(Math.max(contentWidth, placeholder.implicitWidth)) + leftPadding + rightPadding
+    || Math.ceil(Math.max(contentWidth + leftPadding + rightPadding, placeholder.implicitWidth))
      */
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            Math.ceil(Math.max(contentWidth, placeholder.implicitWidth)) + leftPadding + rightPadding)
+                            Math.ceil(Math.max(contentWidth + leftPadding + rightPadding, placeholder.implicitWidth)))
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             contentHeight + topPadding + bottomPadding,
-                             placeholder.implicitHeight + topPadding + bottomPadding)
+                             Math.max(contentHeight + topPadding + bottomPadding, placeholder.implicitHeight, __isPassword ? passwordsizeholder.implicitHeight : 0))
 
-    leftPadding: (__hasBackgroundAndMargins ? background.margins.left : 0) + (control.mirrored ? inlineButtonRow.width : 0)
     topPadding: __hasBackgroundAndMargins ? background.margins.top : 0
-    rightPadding: (__hasBackgroundAndMargins ? background.margins.right : 0) + (control.mirrored ? 0 : inlineButtonRow.width)
+    leftPadding: (__hasBackgroundAndMargins ? background.margins.left : 0) + (control.effectiveHorizontalAlignment === TextInput.AlignRight ? inlineButtonRow.width : 0)
+    rightPadding: (__hasBackgroundAndMargins ? background.margins.right : 0) + (control.effectiveHorizontalAlignment === TextInput.AlignRight ? 0 : inlineButtonRow.width)
     bottomPadding: __hasBackgroundAndMargins ? background.margins.bottom : 0
 
     PlasmaCore.ColorScope.inherit: !background || !background.visible
@@ -77,10 +81,6 @@ T.TextField {
     horizontalAlignment: TextInput.AlignLeft
     opacity: control.enabled ? 1 : 0.6
     hoverEnabled: !Kirigami.Settings.tabletMode
-
-    // Work around Qt bug where NativeRendering breaks for non-integer scale factors
-    // https://bugreports.qt.io/browse/QTBUG-70481
-    renderType: Screen.devicePixelRatio % 1 !== 0 ? Text.QtRendering : Text.NativeRendering
 
     selectByMouse: !Kirigami.Settings.tabletMode
 
@@ -120,19 +120,41 @@ T.TextField {
     Label {
         id: placeholder
         enabled: false
-        x: control.leftPadding
-        y: control.topPadding
-        width: control.availableWidth
-        height: control.availableHeight
-
-        text: control.placeholderText
+        x: 0
+        y: 0
+        topPadding: control.topPadding
+        bottomPadding: control.bottomPadding
+        leftPadding: control.leftPadding
+        rightPadding: control.rightPadding
+        height: control.height
+        width: control.width
         font: control.font
-        color: control.placeholderTextColor
-        horizontalAlignment: control.horizontalAlignment
+        LayoutMirroring.enabled: false
+        horizontalAlignment: control.effectiveHorizontalAlignment
         verticalAlignment: control.verticalAlignment
-        visible: !control.length && !control.preeditText && (!control.activeFocus || control.horizontalAlignment !== Qt.AlignHCenter)
         elide: Text.ElideRight
         renderType: control.renderType
+        text: control.placeholderText
+        visible: !control.length && !control.preeditText && (!control.activeFocus || control.horizontalAlignment !== Qt.AlignHCenter)
+        color: control.placeholderTextColor
+    }
+
+    // Object holding the size (implicitHeight) of the password dot character,
+    // so that a password TextField never gets shorter than required to display it
+    Label {
+        id: passwordsizeholder
+        enabled: false
+        visible: false
+        topPadding: control.topPadding
+        bottomPadding: control.bottomPadding
+        leftPadding: control.leftPadding
+        rightPadding: control.rightPadding
+        font: control.font
+        horizontalAlignment: control.horizontalAlignment
+        verticalAlignment: control.verticalAlignment
+        elide: Text.ElideRight
+        renderType: control.renderType
+        text: control.passwordCharacter
     }
 
     Row {
@@ -140,6 +162,7 @@ T.TextField {
         anchors.right: control.right
         anchors.rightMargin: control.__hasBackgroundAndMargins ? background.margins.right : 0
         anchors.verticalCenter: control.verticalCenter
+        LayoutMirroring.enabled: control.effectiveHorizontalAlignment === TextInput.AlignRight
 
         PlasmaCore.IconItem {
             id: showPasswordButton
@@ -167,7 +190,7 @@ T.TextField {
         PlasmaCore.IconItem {
             id: clearButton
             //ltr confusingly refers to the direction of the arrow in the icon, not the text direction which it should be used in
-            source: clearButtonShown ? (LayoutMirroring.enabled ? "edit-clear-locationbar-ltr" : "edit-clear-locationbar-rtl") : ""
+            source: clearButtonShown ? (control.effectiveHorizontalAlignment === TextInput.AlignRight ? "edit-clear-locationbar-ltr" : "edit-clear-locationbar-rtl") : ""
             height: PlasmaCore.Units.iconSizes.small
             width: height
             opacity: (control.length > 0 && clearButtonShown && control.enabled) ? 1 : 0
@@ -215,7 +238,7 @@ T.TextField {
             }
         }
         PlasmaCore.FrameSvgItem {
-            z: lineEditSvg.hasElement("hint-focus-over-base") ? 0 : -1
+            z: hasElement("hint-focus-over-base") ? 0 : -1
             anchors {
                 fill: parent
                 leftMargin: -margins.left
@@ -224,7 +247,7 @@ T.TextField {
                 bottomMargin: -margins.bottom
             }
             imagePath: "widgets/lineedit"
-            prefix: control.visualFocus && lineEditSvg.hasElement("focusframe-center") ? "focusframe" : "focus"
+            prefix: control.visualFocus && hasElement("focusframe-center") ? "focusframe" : "focus"
             visible: opacity > 0
             opacity: control.visualFocus || control.activeFocus
             Behavior on opacity {
@@ -236,8 +259,4 @@ T.TextField {
         }
     }
 
-    PlasmaCore.Svg {
-        id: lineEditSvg
-        imagePath: "widgets/lineedit"
-    }
 }

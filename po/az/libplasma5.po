@@ -1,21 +1,21 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-framework package.
 #
-# Xəyyam Qocayev <xxmn77@gmail.com>, 2020, 2021.
+# Xəyyam Qocayev <xxmn77@gmail.com>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-framework\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
-"PO-Revision-Date: 2021-04-28 14:38+0400\n"
-"Last-Translator: Kheyyam Gojayev <xxmn77@gmail.com>\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
+"PO-Revision-Date: 2022-07-25 17:18+0400\n"
+"Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.04.0\n"
+"X-Generator: Lokalize 22.04.3\n"
 
 #: declarativeimports/calendar/eventdatadecorator.cpp:51
 #, kde-format
@@ -113,17 +113,44 @@ msgstr "OK"
 msgid "Cancel"
 msgstr "İmtina"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr "Daha çox fəaliyyətlər"
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr "Yığmaq"
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr "Genişləndirmək"
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr "Şifrə"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr "Axtarış…"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr "Axtarış"
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "Naməlum"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "%1 Vidjetin aktiv edilməsi"
@@ -134,7 +161,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "%1 silinməsi"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr "Düzəliş rejimi"
@@ -145,17 +172,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "%1 tənzimləmək..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "Vidjetləri kilidləmək"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "Vidjetlərin kilidini açmaq"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr "Düzəliş rejimindən çıxın"
@@ -232,17 +259,17 @@ msgstr "Ekranın şəkli"
 msgid "Translations"
 msgstr "Tərcümələr"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr "Ayarlar dialoqu səhifəsinin izahı"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "XML konfiqurasiya faylı"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr "Yığcam vidjetlər üçün açılan pəncərə"
@@ -348,95 +375,7 @@ msgstr "Yardımçı mətnləri üçün qeyri-şəffaf arxa fon şəkili"
 msgid "KColorScheme configuration file"
 msgstr "KColorScheme rəng sxemi konfiqurasiya faylı"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "Xüsusi imkanlar"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "Tətbiq Başladıcısı"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "Astronomiya"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "Tarix və Vaxt"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "Tərtibatçı Vasitələri"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "Elm"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "Ətraf mühit və Hava"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "Nümunələr"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "Fayl Sistemi"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "Əyləncə və Oyunlar"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "Təsvirlər"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "Dil"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "Xəritəçəkmə"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "Müxtəlif"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "Multimedia"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "Canlı Xidmətlər"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "Faydalı"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "Sistem Məlumatları"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "Yardımçı Vasitələr"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "Pəncərə və Tapşırıqlar"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "Mübadilə Buferi"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "Tapşırıqlar"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -466,52 +405,52 @@ msgstr "%2 vidjeti üçün %1 Script Yaradıcısı yaradıla bilmədi."
 msgid "Show Alternatives..."
 msgstr "Alternativ Vidjetləri göstər..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "Vidjet ləğv edildi"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "\"%1\" vidjeti ləğv edildi"
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "Panel ləğv edildi"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "Panel ləğv edildi"
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "Masaüstü ləğv edildi"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "Masaüstü ləğv edildi"
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "Geri qaytar"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "Vidjet ayarları"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "Bu vidjeti sil"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -519,7 +458,7 @@ msgstr "Bu vidjeti sil"
 msgid "Run the Associated Application"
 msgstr "Uyğun tətbiqi başladın"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "Skriptin açılmasında xəta"
@@ -530,27 +469,27 @@ msgstr "Skriptin açılmasında xəta"
 msgid "Open with %1"
 msgstr "%1 ilə aç"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "Bu paneli ləğv et"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "Bu otağı ləğv et"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
-msgstr "İş Otağı Ayarları"
+msgstr "İş otağı Ayarları"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "Vidjet əlavə edin..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "Tapılmayan tələb olunan komponent: %1"
@@ -583,71 +522,71 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "Xidmətin istifadəsində xəta."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, kde-format
 msgid "Unknown Applet"
 msgstr "Naməlum Qoşma"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, kde-format
 msgid "Error loading QML file: %1 %2"
 msgstr "QML faylının yüklənməsi xətası: %1 %2"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "Vidjetin yüklənməsində xəta: paket mövcud olmayan paket: %1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "%1 Ayarları"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "Plasma Paketi"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "Quraşdırmaq"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "Paketin quraşdırılması alınmadı"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "Yararsız paket."
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "Vidjetlər"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "%1 əlavə et"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "İkon əlavə et"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "Divar Kağızı"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -657,3 +596,172 @@ msgstr "%1 istifadə et"
 #, kde-format
 msgid "Content dropped"
 msgstr "Elementin daşınması"
+
+#~ msgid "Accessibility"
+#~ msgstr "Xüsusi imkanlar"
+
+#~ msgid "Application Launchers"
+#~ msgstr "Tətbiq Başladıcısı"
+
+#~ msgid "Astronomy"
+#~ msgstr "Astronomiya"
+
+#~ msgid "Date and Time"
+#~ msgstr "Tarix və Vaxt"
+
+#~ msgid "Development Tools"
+#~ msgstr "Tərtibatçı Vasitələri"
+
+#~ msgid "Education"
+#~ msgstr "Elm"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "Ətraf mühit və Hava"
+
+#~ msgid "Examples"
+#~ msgstr "Nümunələr"
+
+#~ msgid "File System"
+#~ msgstr "Fayl Sistemi"
+
+#~ msgid "Fun and Games"
+#~ msgstr "Əyləncə və Oyunlar"
+
+#~ msgid "Graphics"
+#~ msgstr "Təsvirlər"
+
+#~ msgid "Language"
+#~ msgstr "Dil"
+
+#~ msgid "Mapping"
+#~ msgstr "Xəritəçəkmə"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Müxtəlif"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multimedia"
+
+#~ msgid "Online Services"
+#~ msgstr "Canlı Xidmətlər"
+
+#~ msgid "Productivity"
+#~ msgstr "Faydalı"
+
+#~ msgid "System Information"
+#~ msgstr "Sistem Məlumatları"
+
+#~ msgid "Utilities"
+#~ msgstr "Yardımçı Vasitələr"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "Pəncərə və Tapşırıqlar"
+
+#~ msgid "Clipboard"
+#~ msgstr "Mübadilə Buferi"
+
+#~ msgid "Tasks"
+#~ msgstr "Tapşırıqlar"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Edit %1..."
+#~ msgstr "%1 düzəliş etmək..."
+
+#~ msgid "Default settings for theme, etc."
+#~ msgstr "Mövzü üçün standart ayarlar və s."
+
+#~ msgid "Color scheme to use for applications."
+#~ msgstr "Tətbiqlər üçün istifadə olunan rəng sxemi"
+
+#~ msgid "Preview Images"
+#~ msgstr "Öncədən baxış üçün şəkillər"
+
+#~ msgid "Preview for the Login Manager"
+#~ msgstr "Sistemə giriş ekranına öncədən baxış"
+
+#~ msgid "Preview for the Lock Screen"
+#~ msgstr "Kilidlənən ekrana öncədən baxış"
+
+#~ msgid "Preview for the Userswitcher"
+#~ msgstr "İstifadəçi dəyişdiriciyə öncədən baxış"
+
+#~ msgid "Preview for the Virtual Desktop Switcher"
+#~ msgstr "Virtual Masaüstü Dəyişdirici üçün öncədən baxış"
+
+#~ msgid "Preview for Splash Screen"
+#~ msgstr "Başlanğıc Ekranı üçün öncədən baxış"
+
+#~ msgid "Preview for KRunner"
+#~ msgstr "Axtar və Başlat dialoqu görünüşü"
+
+#~ msgid "Preview for the Window Decorations"
+#~ msgstr "Pəncərə tərtibatı görünüşü"
+
+#~ msgid "Preview for Window Switcher"
+#~ msgstr "Pəncərə dəyişdiricisi görünüşü"
+
+#~ msgid "Login Manager"
+#~ msgstr "Sistemə Giriş Rəhbəri"
+
+#~ msgid "Main Script for Login Manager"
+#~ msgstr "Sistemə Giriş Rəhbəri üçün əsas skript"
+
+#~ msgid "Logout Dialog"
+#~ msgstr "Çıxış Dialoqu"
+
+#~ msgid "Main Script for Logout Dialog"
+#~ msgstr "Çıxış Dialoqu üçün əsas skript"
+
+#~ msgid "Screenlocker"
+#~ msgstr "Ekran Kilidləyici"
+
+#~ msgid "Main Script for Lock Screen"
+#~ msgstr "Ekran Kilidləyici üçün skript"
+
+#~ msgid "UI for fast user switching"
+#~ msgstr "İstifadəçi Dəyişdirici"
+
+#~ msgid "Main Script for User Switcher"
+#~ msgstr "İstifadəçi Dəyişdirici üçün skript"
+
+#~ msgid "Virtual Desktop Switcher"
+#~ msgstr "Virtual Masaüstü Dəyişdirici"
+
+#~ msgid "Main Script for Virtual Desktop Switcher"
+#~ msgstr "Virtual Masaüstü Dəyişdirici üçün əsas skript"
+
+#~ msgid "On-Screen Display Notifications"
+#~ msgstr "Ekran bildirişləri"
+
+#~ msgid "Main Script for On-Screen Display Notifications"
+#~ msgstr "Ekran bildirişləri üçün əsas skript"
+
+#~ msgid "Splash Screen"
+#~ msgstr "Başlanğıc Ekran"
+
+#~ msgid "Main Script for Splash Screen"
+#~ msgstr "Başlanğıc ekran üçün əsas skript"
+
+#~ msgid "KRunner UI"
+#~ msgstr "Axtar və Başlat Dialoqu"
+
+#~ msgid "Main Script KRunner"
+#~ msgstr "Axtar və Başlat Dialoqu üçün əsas skript"
+
+#~ msgid "Window Decoration"
+#~ msgstr "Pəncərə Tərtibatı"
+
+#~ msgid "Main Script for Window Decoration"
+#~ msgstr "Pəncərə Tərtibatı üçün əsas skript"
+
+#~ msgid "Window Switcher"
+#~ msgstr "Pəncərə Dəyişdirici"
+
+#~ msgid "Main Script for Window Switcher"
+#~ msgstr "Pəncərə Dəyişdirici üçün əsas skript"
+
+#~ msgid "Finish Customizing Layout"
+#~ msgstr "Vidjetlərin yerləşdirilməsini sonlandırmaq"
+
+#~ msgid "Customize Layout..."
+#~ msgstr "Vidjetləri yerləşdirmə ayarları..."

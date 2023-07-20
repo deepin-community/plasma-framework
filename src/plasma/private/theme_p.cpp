@@ -20,7 +20,10 @@
 #include <KDirWatch>
 #include <KIconLoader>
 #include <KIconTheme>
+#include <KSharedConfig>
 #include <KWindowEffects>
+#include <KX11Extras>
+#include <kpluginmetadata.h>
 
 namespace Plasma
 {
@@ -35,6 +38,44 @@ EffectWatcher *ThemePrivate::s_backgroundContrastEffectWatcher = nullptr;
 
 ThemePrivate *ThemePrivate::globalTheme = nullptr;
 QHash<QString, ThemePrivate *> ThemePrivate::themes = QHash<QString, ThemePrivate *>();
+using QSP = QStandardPaths;
+
+KSharedConfig::Ptr configForTheme(const QString &theme)
+{
+    const QString baseName = QLatin1String(PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/") % theme;
+    QString configPath = QSP::locate(QSP::GenericDataLocation, baseName + QLatin1String("/plasmarc"));
+    if (!configPath.isEmpty()) {
+        return KSharedConfig::openConfig(configPath, KConfig::SimpleConfig);
+    }
+    QString metadataPath = QSP::locate(QSP::GenericDataLocation, baseName + QLatin1String("/metadata.desktop"));
+    return KSharedConfig::openConfig(metadataPath, KConfig::SimpleConfig);
+}
+
+KPluginMetaData metaDataForTheme(const QString &theme)
+{
+    const QString packageBasePath =
+        QSP::locate(QSP::GenericDataLocation, QLatin1String(PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/") % theme, QSP::LocateDirectory);
+    if (packageBasePath.isEmpty()) {
+        qWarning(LOG_PLASMA) << "Could not locate plasma theme" << theme << "in" << PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/"
+                             << "using search path" << QSP::standardLocations(QSP::GenericDataLocation);
+        return {};
+    }
+    if (QFileInfo::exists(packageBasePath + QLatin1String("/metadata.json"))) {
+        return KPluginMetaData::fromJsonFile(packageBasePath + QLatin1String("/metadata.json"));
+    }
+#if KCOREADDONS_BUILD_DEPRECATED_SINCE(5, 92)
+    else if (QFileInfo::exists(packageBasePath + QLatin1String("/metadata.desktop"))) {
+        QT_WARNING_PUSH
+        QT_WARNING_DISABLE_DEPRECATED
+        return KPluginMetaData::fromDesktopFile(packageBasePath + QLatin1String("/metadata.desktop"));
+        QT_WARNING_POP
+    }
+#endif
+    else {
+        qCWarning(LOG_PLASMA) << "Could not locate metadata for theme" << theme;
+        return {};
+    }
+}
 
 ThemePrivate::ThemePrivate(QObject *parent)
     : QObject(parent)
@@ -52,7 +93,7 @@ ThemePrivate::ThemePrivate(QObject *parent)
     , pixmapCache(nullptr)
     , cacheSize(0)
     , cachesToDiscard(NoCache)
-    , compositingActive(KWindowSystem::self()->compositingActive())
+    , compositingActive(KX11Extras::self()->compositingActive())
     , backgroundContrastActive(KWindowEffects::isEffectAvailable(KWindowEffects::BackgroundContrast))
     , isDefault(true)
     , useGlobal(true)
@@ -110,7 +151,7 @@ ThemePrivate::ThemePrivate(QObject *parent)
         scheduleThemeChangeNotification(PixmapCache | SvgElementsCache);
     });
 
-    connect(KWindowSystem::self(), &KWindowSystem::compositingChanged, this, &ThemePrivate::compositingChanged);
+    connect(KX11Extras::self(), &KX11Extras::compositingChanged, this, &ThemePrivate::compositingChanged);
 }
 
 ThemePrivate::~ThemePrivate()
@@ -158,24 +199,21 @@ bool ThemePrivate::useCache()
         if (!themeMetadataPath.isEmpty()) {
             KDirWatch::self()->removeFile(themeMetadataPath);
         }
+        themeMetadataPath = configForTheme(themeName)->name();
         if (isRegularTheme) {
-            themeMetadataPath =
-                QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                       QStringLiteral(PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/") % themeName % QStringLiteral("/metadata.desktop"));
             const auto *iconTheme = KIconLoader::global()->theme();
             if (iconTheme) {
                 iconThemeMetadataPath = iconTheme->dir() + QStringLiteral("index.theme");
             }
 
-            Q_ASSERT(!themeMetadataPath.isEmpty() || themeName.isEmpty());
             const QString cacheFileBase = cacheFile + QLatin1String("*.kcache");
 
             QString currentCacheFileName;
             if (!themeMetadataPath.isEmpty()) {
                 // now we record the theme version, if we can
-                const KPluginInfo pluginInfo(themeMetadataPath);
-                if (pluginInfo.isValid()) {
-                    themeVersion = pluginInfo.version();
+                const KPluginMetaData data = metaDataForTheme(themeName);
+                if (data.isValid()) {
+                    themeVersion = data.version();
                 }
                 if (!themeVersion.isEmpty()) {
                     cacheFile += QLatin1String("_v") + themeVersion;
@@ -325,6 +363,7 @@ void ThemePrivate::discardCache(CacheTypes caches)
     cachedDefaultStyleSheet = QString();
     cachedSvgStyleSheets.clear();
     cachedSelectedSvgStyleSheets.clear();
+    cachedInactiveSvgStyleSheets.clear();
 
     if (caches & SvgElementsCache) {
         discoveries.clear();
@@ -411,7 +450,9 @@ const QString ThemePrivate::processStyleSheet(const QString &css, Plasma::Svg::S
     // If you add elements here, make sure their names are sufficiently unique to not cause
     // clashes between element keys
     elements[QStringLiteral("%textcolor")] =
-        color(status == Svg::Status::Selected ? Theme::HighlightedTextColor : Theme::TextColor, Theme::NormalColorGroup).name();
+        color(status == Svg::Status::Selected ? Theme::HighlightedTextColor : (status == Svg::Status::Inactive ? Theme::DisabledTextColor : Theme::TextColor),
+              Theme::NormalColorGroup)
+            .name();
     elements[QStringLiteral("%backgroundcolor")] =
         color(status == Svg::Status::Selected ? Theme::HighlightColor : Theme::BackgroundColor, Theme::NormalColorGroup).name();
     elements[QStringLiteral("%highlightcolor")] = color(Theme::HighlightColor, Theme::NormalColorGroup).name();
@@ -496,7 +537,9 @@ const QString ThemePrivate::processStyleSheet(const QString &css, Plasma::Svg::S
 
 const QString ThemePrivate::svgStyleSheet(Plasma::Theme::ColorGroup group, Plasma::Svg::Status status)
 {
-    QString stylesheet = (status == Svg::Status::Selected) ? cachedSelectedSvgStyleSheets.value(group) : cachedSvgStyleSheets.value(group);
+    QString stylesheet = (status == Svg::Status::Selected)
+        ? cachedSelectedSvgStyleSheets.value(group)
+        : (status == Svg::Status::Inactive ? cachedInactiveSvgStyleSheets.value(group) : cachedSvgStyleSheets.value(group));
     if (stylesheet.isEmpty()) {
         QString skel = QStringLiteral(".ColorScheme-%1{color:%2;}");
 
@@ -610,6 +653,8 @@ const QString ThemePrivate::svgStyleSheet(Plasma::Theme::ColorGroup group, Plasm
         stylesheet = processStyleSheet(stylesheet, status);
         if (status == Svg::Status::Selected) {
             cachedSelectedSvgStyleSheets.insert(group, stylesheet);
+        } else if (status == Svg::Status::Inactive) {
+            cachedInactiveSvgStyleSheets.insert(group, stylesheet);
         } else {
             cachedSvgStyleSheets.insert(group, stylesheet);
         }
@@ -622,8 +667,8 @@ void ThemePrivate::settingsFileChanged(const QString &file)
 {
     qCDebug(LOG_PLASMA) << "settingsFile: " << file;
     if (file == themeMetadataPath) {
-        const KPluginInfo pluginInfo(themeMetadataPath);
-        if (!pluginInfo.isValid() || themeVersion != pluginInfo.version()) {
+        const KPluginMetaData data = metaDataForTheme(themeName);
+        if (!data.isValid() || themeVersion != data.version()) {
             scheduleThemeChangeNotification(SvgElementsCache);
         }
     } else if (file.endsWith(QLatin1String(themeRcFile))) {
@@ -725,7 +770,7 @@ QColor ThemePrivate::color(Theme::ColorRole role, Theme::ColorGroup group) const
     return QColor();
 }
 
-void ThemePrivate::processWallpaperSettings(KConfigBase *metadata)
+void ThemePrivate::processWallpaperSettings(const KSharedConfigPtr &metadata)
 {
     if (!defaultWallpaperTheme.isEmpty() && defaultWallpaperTheme != QLatin1String(DEFAULT_WALLPAPER_THEME)) {
         return;
@@ -748,7 +793,7 @@ void ThemePrivate::processWallpaperSettings(KConfigBase *metadata)
     defaultWallpaperHeight = cg.readEntry("defaultHeight", DEFAULT_WALLPAPER_HEIGHT);
 }
 
-void ThemePrivate::processContrastSettings(KConfigBase *metadata)
+void ThemePrivate::processContrastSettings(const KSharedConfigPtr &metadata)
 {
     KConfigGroup cg;
     if (metadata->hasGroup("ContrastEffect")) {
@@ -763,7 +808,7 @@ void ThemePrivate::processContrastSettings(KConfigBase *metadata)
     }
 }
 
-void ThemePrivate::processAdaptiveTransparencySettings(KConfigBase *metadata)
+void ThemePrivate::processAdaptiveTransparencySettings(const KSharedConfigPtr &metadata)
 {
     KConfigGroup cg;
     if (metadata->hasGroup("AdaptiveTransparency")) {
@@ -774,7 +819,7 @@ void ThemePrivate::processAdaptiveTransparencySettings(KConfigBase *metadata)
     }
 }
 
-void ThemePrivate::processBlurBehindSettings(KConfigBase *metadata)
+void ThemePrivate::processBlurBehindSettings(const KSharedConfigPtr &metadata)
 {
     KConfigGroup cg;
     if (metadata->hasGroup("BlurBehindEffect")) {
@@ -801,17 +846,10 @@ void ThemePrivate::setThemeName(const QString &tempThemeName, bool writeSettings
     // the system colors.
     bool realTheme = theme != QLatin1String(systemColorsTheme);
     if (realTheme) {
-        QString themePath =
-            QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                   QLatin1String(PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/") % theme % QLatin1String("/metadata.desktop"));
-
-        if (themePath.isEmpty() && themeName.isEmpty()) {
-            // note: can't use QStringLiteral("foo" "bar") on Windows
-            themePath = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                               QStringLiteral(PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/default"),
-                                               QStandardPaths::LocateDirectory);
-
-            if (themePath.isEmpty()) {
+        KPluginMetaData data = metaDataForTheme(theme);
+        if (!data.isValid()) {
+            data = metaDataForTheme(QStringLiteral("default"));
+            if (!data.isValid()) {
                 return;
             }
 
@@ -853,30 +891,24 @@ void ThemePrivate::setThemeName(const QString &tempThemeName, bool writeSettings
 
     // load the wallpaper settings, if any
     if (realTheme) {
-        const QString metadataPath(
-            QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                   QLatin1String(PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/") % theme % QLatin1String("/metadata.desktop")));
-        KConfig metadata(metadataPath, KConfig::SimpleConfig);
-        pluginMetaData = KPluginMetaData(metadataPath);
+        pluginMetaData = metaDataForTheme(theme);
+        KSharedConfigPtr metadata = configForTheme(theme);
 
-        processContrastSettings(&metadata);
-        processBlurBehindSettings(&metadata);
-        processAdaptiveTransparencySettings(&metadata);
+        processContrastSettings(metadata);
+        processBlurBehindSettings(metadata);
+        processAdaptiveTransparencySettings(metadata);
 
-        processWallpaperSettings(&metadata);
+        processWallpaperSettings(metadata);
 
-        KConfigGroup cg(&metadata, "Settings");
+        KConfigGroup cg(metadata, "Settings");
         QString fallback = cg.readEntry("FallbackTheme", QString());
 
         fallbackThemes.clear();
         while (!fallback.isEmpty() && !fallbackThemes.contains(fallback)) {
             fallbackThemes.append(fallback);
 
-            QString metadataPath(
-                QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                       QLatin1String(PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/") % fallback % QStringLiteral("/metadata.desktop")));
-            KConfig metadata(metadataPath, KConfig::SimpleConfig);
-            KConfigGroup cg(&metadata, "Settings");
+            KSharedConfigPtr metadata = configForTheme(fallback);
+            KConfigGroup cg(metadata, "Settings");
             fallback = cg.readEntry("FallbackTheme", QString());
         }
 
@@ -885,17 +917,13 @@ void ThemePrivate::setThemeName(const QString &tempThemeName, bool writeSettings
         }
 
         for (const QString &theme : std::as_const(fallbackThemes)) {
-            QString metadataPath(
-                QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                       QStringLiteral(PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/") % theme % QStringLiteral("/metadata.desktop")));
-            KConfig metadata(metadataPath, KConfig::SimpleConfig);
-            processWallpaperSettings(&metadata);
+            KSharedConfigPtr metadata = configForTheme(theme);
+            processWallpaperSettings(metadata);
         }
 
         // Check for what Plasma version the theme has been done
         // There are some behavioral differences between KDE4 Plasma and Plasma 5
-        cg = KConfigGroup(&metadata, "Desktop Entry");
-        const QString apiVersion = cg.readEntry("X-Plasma-API", QString());
+        const QString apiVersion = pluginMetaData.value(QStringLiteral("X-Plasma-API"));
         apiMajor = 1;
         apiMinor = 0;
         apiRevision = 0;

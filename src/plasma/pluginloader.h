@@ -7,10 +7,19 @@
 #ifndef PLUGIN_LOADER_H
 #define PLUGIN_LOADER_H
 
+#include <plasma/plasma_export.h>
+#if PLASMA_ENABLE_DEPRECATED_SINCE(5, 94)
 #include <KPluginInfo>
 #include <plasma/package.h>
+#else
+class KPluginInfo;
+#endif
+
 #include <plasma/plasma.h>
 
+#include <QVariant>
+
+class KPluginMetaData;
 namespace Plasma
 {
 class Applet;
@@ -57,14 +66,23 @@ public:
      **/
     Applet *loadApplet(const QString &name, uint appletId = 0, const QVariantList &args = QVariantList());
 
+#if PLASMA_ENABLE_DEPRECATED_SINCE(5, 94)
     /**
      * Load a dataengine plugin.
      *
      * @param name the name of the engine
      * @return the dataengine that was loaded, or the NullEngine on failure.
-     **/
+     * @deprecated Since 5.94, Dataengines are being phased out, please port away from them if possible
+     * or load the plugin from the "plasma/dataengine" namespace manually using KPluginMetaData/KPluginFactory
+     */
+    PLASMA_DEPRECATED_VERSION(
+        5,
+        94,
+        "Dataengines are being phased out, please port away from them if possible or load the plugin from the \"plasma/dataengine\" namespace manually")
     DataEngine *loadDataEngine(const QString &name);
+#endif
 
+#if PLASMA_ENABLE_DEPRECATED_SINCE(5, 94)
     /**
      * @return a listing of all known dataengines by name
      *
@@ -72,8 +90,15 @@ public:
      *                  X-KDE-ParentApp entry (if any) in the plugin info.
      *                  The default value of QString() will result in a
      *                  list of all dataengines.
+     * @deprecated Since 5.94, Dataengines are being phased out, please port away from them if possible
+     * or query the plugins in the "plasma/dataengine" namespace manually using KPluginMetaData
      */
+    PLASMA_DEPRECATED_VERSION(
+        5,
+        94,
+        "Dataengines are being phased out, please port away from them if possible or query the plugins in the \"plasma/dataengine\" namespace manually")
     static QStringList listAllEngines(const QString &parentApp = QString());
+#endif
 
 #if PLASMA_ENABLE_DEPRECATED_SINCE(5, 77)
     /**
@@ -156,7 +181,6 @@ public:
      * This may skip applets based on security settings and ExcludeCategories in the application's config.
      *
      * @param category Only applets matching this category will be returned.
-     *                 Useful in conjunction with knownCategories.
      *                 If "Misc" is passed in, then applets without a
      *                 Categories= entry are also returned.
      *                 If an empty string is passed in, all applets are
@@ -179,7 +203,6 @@ public:
      * This may skip applets based on security settings and ExcludeCategories in the application's config.
      *
      * @param category Only applets matching this category will be returned.
-     *                 Useful in conjunction with knownCategories.
      *                 If "Misc" is passed in, then applets without a
      *                 Categories= entry are also returned.
      *                 If an empty string is passed in, all applets are
@@ -282,7 +305,6 @@ public:
      * Returns a list of all known containments.
      *
      * @param category Only containments matching this category will be returned.
-     *                 Useful in conjunction with knownCategories.
      *                 If "Miscellaneous" is passed in, then containments without a
      *                 Categories= entry are also returned.
      *                 If an empty string is passed in, all containments are
@@ -324,7 +346,6 @@ public:
      *             in their .desktop files will be returned. Common values are panel and
      *             desktop
      * @param category Only containments matching this category will be returned.
-     *                 Useful in conjunction with knownCategories.
      *                 If "Miscellaneous" is passed in, then containments without a
      *                 Categories= entry are also returned.
      *                 If an empty string is passed in, all containments are
@@ -530,7 +551,6 @@ protected:
      * files for your applets.
      *
      * @param category Only applets matching this category will be returned.
-     *                 Useful in conjunction with knownCategories.
      *                 If "Misc" is passed in, then applets without a
      *                 Categories= entry are also returned.
      *                 If an empty string is passed in, all applets are
@@ -539,7 +559,7 @@ protected:
      * @deprecated Since 5.86, deprecated for lack of usage, use default behaviour instead
      **/
     PLASMA_DEPRECATED_VERSION(5, 86, "Deprecated for lack of usage, use default behaviour instead")
-    virtual KPluginInfo::List internalAppletInfo(const QString &category) const;
+    virtual QList<KPluginInfo> internalAppletInfo(const QString &category) const;
 
     /**
      * A re-implementable method that allows subclasses to provide additional dataengines
@@ -549,7 +569,7 @@ protected:
      * @deprecated Since 5.86, deprecated for lack of usage, use default behaviour instead
      **/
     PLASMA_DEPRECATED_VERSION(5, 86, "Deprecated for lack of usage, use default behaviour instead")
-    virtual KPluginInfo::List internalDataEngineInfo() const;
+    virtual QList<KPluginInfo> internalDataEngineInfo() const;
 
     /**
      * Returns a list of all known Service implementations
@@ -558,7 +578,7 @@ protected:
      * @deprecated Since 5.86, deprecated for lack of usage, use default behaviour instead
      */
     PLASMA_DEPRECATED_VERSION(5, 86, "Deprecated for lack of usage, use default behaviour instead")
-    virtual KPluginInfo::List internalServiceInfo() const;
+    virtual QList<KPluginInfo> internalServiceInfo() const;
 
     /**
      * Returns a list of all known ContainmentActions implementations
@@ -567,7 +587,7 @@ protected:
      * @deprecated Since 5.86, deprecated for lack of usage, use default behaviour instead
      */
     PLASMA_DEPRECATED_VERSION(5, 86, "Deprecated for lack of usage, use default behaviour instead")
-    virtual KPluginInfo::List internalContainmentActionsInfo() const;
+    virtual QList<KPluginInfo> internalContainmentActionsInfo() const;
 #endif
 
 #if PLASMA_ENABLE_DEPRECATED_SINCE(5, 88)
@@ -579,7 +599,6 @@ protected:
      * call to this method.
      *
      * @param category Only applets matching this category will be returned.
-     *                 Useful in conjunction with knownCategories.
      *                 If "Misc" is passed in, then applets without a
      *                 Categories= entry are also returned.
      *                 If an empty string is passed in, all applets are

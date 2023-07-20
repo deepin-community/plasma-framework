@@ -8,6 +8,8 @@
 #include "framesvg.h"
 #include "private/framesvg_p.h"
 
+#include <string>
+
 #include <QAtomicInt>
 #include <QBitmap>
 #include <QCryptographicHash>
@@ -336,7 +338,16 @@ QRegion FrameSvg::mask() const
     QRegion *obj = d->frame->cachedMasks.object(id);
 
     if (!obj) {
-        obj = new QRegion(QBitmap(d->alphaMask().mask()));
+        QPixmap alphaMask = d->alphaMask();
+        const qreal dpr = alphaMask.devicePixelRatio();
+
+        // region should always be in logical pixels, resize pixmap to be in the logical sizes
+        if (alphaMask.devicePixelRatio() != 1.0) {
+            alphaMask = alphaMask.scaled(alphaMask.width() / dpr, alphaMask.height() / dpr);
+        }
+
+        obj = new QRegion(QBitmap(alphaMask.mask()));
+
         result = *obj;
         d->frame->cachedMasks.insert(id, obj);
     } else {
@@ -404,6 +415,23 @@ void FrameSvg::paintFrame(QPainter *painter, const QPointF &pos)
     painter->drawPixmap(pos, d->frame->cachedBackground);
 }
 
+int FrameSvg::minimumDrawingHeight()
+{
+    if (d->frame) {
+        return d->frame->fixedTopHeight + d->frame->fixedBottomHeight;
+    }
+    return 0;
+}
+
+int FrameSvg::minimumDrawingWidth()
+{
+    if (d->frame) {
+        return d->frame->fixedRightWidth + d->frame->fixedLeftWidth;
+    }
+    return 0;
+    
+}
+
 //#define DEBUG_FRAMESVG_CACHE
 FrameSvgPrivate::~FrameSvgPrivate() = default;
 
@@ -450,6 +478,9 @@ QPixmap FrameSvgPrivate::alphaMask()
 
     if (maskFrame->cachedBackground.isNull()) {
         generateBackground(maskFrame);
+        // When we take the maskFrame from cache, the pixel ratio gets
+        // reset to 1
+        maskFrame->cachedBackground.setDevicePixelRatio(q->devicePixelRatio());
     }
 
     return maskFrame->cachedBackground;
@@ -805,11 +836,30 @@ void FrameSvgPrivate::updateSizes(FrameData *frame) const
         frame->cachedBackground = QPixmap();
     }
 
-    // This has the same size regardless the border is enabled or not
-    frame->fixedTopHeight = q->elementSize(frame->prefix % QLatin1String("top")).height();
+    // This function needs to do a lot of string creation, since we have four
+    // sides with matching margins and insets. Rather than creating a new string
+    // every time for these, create a single buffer that can contain a full
+    // element name and pass that around using views, so we save a lot of
+    // allocations.
+    QString nameBuffer;
+    const auto offset = frame->prefix.length();
+    nameBuffer.reserve(offset + 30);
+    nameBuffer.append(frame->prefix);
 
-    if (q->hasElement(frame->prefix % QLatin1String("hint-top-margin"))) {
-        frame->fixedTopMargin = q->elementSize(frame->prefix % QLatin1String("hint-top-margin")).height();
+    // This uses UTF16 literals to avoid having to create QLatin1String and then
+    // converting that to a QString temporary for the replace operation.
+    // Additionally, we use a template parameter to provide us the compile-time
+    // length of the literal so we don't need to calculate that.
+    auto createName = [&nameBuffer, offset]<std::size_t length>(const char16_t(&name)[length]) {
+        nameBuffer.replace(offset, length - 1, reinterpret_cast<const QChar *>(name), length);
+        return QStringView(nameBuffer).mid(0, offset + length - 1);
+    };
+
+    // This has the same size regardless the border is enabled or not
+    frame->fixedTopHeight = q->elementSize(createName(u"top")).height();
+
+    if (auto topMargin = q->elementRect(createName(u"hint-top-margin")); topMargin.isValid()) {
+        frame->fixedTopMargin = topMargin.height();
     } else {
         frame->fixedTopMargin = frame->fixedTopHeight;
     }
@@ -822,16 +872,16 @@ void FrameSvgPrivate::updateSizes(FrameData *frame) const
         frame->topMargin = frame->topHeight = 0;
     }
 
-    if (q->hasElement(frame->prefix % QLatin1String("hint-top-inset"))) {
-        frame->insetTopMargin = q->elementSize(frame->prefix % QLatin1String("hint-top-inset")).height();
+    if (auto topInset = q->elementRect(createName(u"hint-top-inset")); topInset.isValid()) {
+        frame->insetTopMargin = topInset.height();
     } else {
         frame->insetTopMargin = -1;
     }
 
-    frame->fixedLeftWidth = q->elementSize(frame->prefix % QLatin1String("left")).width();
+    frame->fixedLeftWidth = q->elementSize(createName(u"left")).width();
 
-    if (q->hasElement(frame->prefix % QLatin1String("hint-left-margin"))) {
-        frame->fixedLeftMargin = q->elementSize(frame->prefix % QLatin1String("hint-left-margin")).width();
+    if (auto leftMargin = q->elementRect(createName(u"hint-left-margin")); leftMargin.isValid()) {
+        frame->fixedLeftMargin = leftMargin.width();
     } else {
         frame->fixedLeftMargin = frame->fixedLeftWidth;
     }
@@ -843,16 +893,16 @@ void FrameSvgPrivate::updateSizes(FrameData *frame) const
         frame->leftMargin = frame->leftWidth = 0;
     }
 
-    if (q->hasElement(frame->prefix % QLatin1String("hint-left-inset"))) {
-        frame->insetLeftMargin = q->elementSize(frame->prefix % QLatin1String("hint-left-inset")).width();
+    if (auto leftInset = q->elementRect(createName(u"hint-left-inset")); leftInset.isValid()) {
+        frame->insetLeftMargin = leftInset.width();
     } else {
         frame->insetLeftMargin = -1;
     }
 
-    frame->fixedRightWidth = q->elementSize(frame->prefix % QLatin1String("right")).width();
+    frame->fixedRightWidth = q->elementSize(createName(u"right")).width();
 
-    if (q->hasElement(frame->prefix % QLatin1String("hint-right-margin"))) {
-        frame->fixedRightMargin = q->elementSize(frame->prefix % QLatin1String("hint-right-margin")).width();
+    if (auto rightMargin = q->elementRect(createName(u"hint-right-margin")); rightMargin.isValid()) {
+        frame->fixedRightMargin = rightMargin.width();
     } else {
         frame->fixedRightMargin = frame->fixedRightWidth;
     }
@@ -864,16 +914,16 @@ void FrameSvgPrivate::updateSizes(FrameData *frame) const
         frame->rightMargin = frame->rightWidth = 0;
     }
 
-    if (q->hasElement(frame->prefix % QLatin1String("hint-right-inset"))) {
-        frame->insetRightMargin = q->elementSize(frame->prefix % QLatin1String("hint-right-inset")).width();
+    if (auto rightInset = q->elementRect(createName(u"hint-right-inset")); rightInset.isValid()) {
+        frame->insetRightMargin = rightInset.width();
     } else {
         frame->insetRightMargin = -1;
     }
 
-    frame->fixedBottomHeight = q->elementSize(frame->prefix % QLatin1String("bottom")).height();
+    frame->fixedBottomHeight = q->elementSize(createName(u"bottom")).height();
 
-    if (q->hasElement(frame->prefix % QLatin1String("hint-bottom-margin"))) {
-        frame->fixedBottomMargin = q->elementSize(frame->prefix % QLatin1String("hint-bottom-margin")).height();
+    if (auto bottomMargin = q->elementRect(createName(u"hint-bottom-margin")); bottomMargin.isValid()) {
+        frame->fixedBottomMargin = bottomMargin.height();
     } else {
         frame->fixedBottomMargin = frame->fixedBottomHeight;
     }
@@ -885,21 +935,24 @@ void FrameSvgPrivate::updateSizes(FrameData *frame) const
         frame->bottomMargin = frame->bottomHeight = 0;
     }
 
-    if (q->hasElement(frame->prefix % QLatin1String("hint-bottom-inset"))) {
-        frame->insetBottomMargin = q->elementSize(frame->prefix % QLatin1String("hint-bottom-inset")).height();
+    if (auto bottomInset = q->elementRect(createName(u"hint-bottom-inset")); bottomInset.isValid()) {
+        frame->insetBottomMargin = bottomInset.height();
     } else {
         frame->insetBottomMargin = -1;
     }
 
-    frame->composeOverBorder = (q->hasElement(frame->prefix % QLatin1String("hint-compose-over-border"))
-                                && q->hasElement(QLatin1String("mask-") % frame->prefix % QLatin1String("center")));
+    static const QString maskPrefix = QStringLiteral("mask-");
+    static const QString hintTileCenter = QStringLiteral("hint-tile-center");
+    static const QString hintNoBorderPadding = QStringLiteral("hint-no-border-padding");
+    static const QString hintStretchBorders = QStringLiteral("hint-stretch-borders");
+
+    frame->composeOverBorder = (q->hasElement(createName(u"hint-compose-over-border")) && q->hasElement(maskPrefix % createName(u"center")));
 
     // since it's rectangular, topWidth and bottomWidth must be the same
     // the ones that don't have a frame->prefix is for retrocompatibility
-    frame->tileCenter = (q->hasElement(QStringLiteral("hint-tile-center")) || q->hasElement(frame->prefix % QLatin1String("hint-tile-center")));
-    frame->noBorderPadding =
-        (q->hasElement(QStringLiteral("hint-no-border-padding")) || q->hasElement(frame->prefix % QLatin1String("hint-no-border-padding")));
-    frame->stretchBorders = (q->hasElement(QStringLiteral("hint-stretch-borders")) || q->hasElement(frame->prefix % QLatin1String("hint-stretch-borders")));
+    frame->tileCenter = (q->hasElement(hintTileCenter) || q->hasElement(createName(u"hint-tile-center")));
+    frame->noBorderPadding = (q->hasElement(hintNoBorderPadding) || q->hasElement(createName(u"hint-no-border-padding")));
+    frame->stretchBorders = (q->hasElement(hintStretchBorders) || q->hasElement(createName(u"hint-stretch-borders")));
     q->resize(s);
 }
 

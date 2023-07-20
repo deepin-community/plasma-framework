@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: libplasma5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
-"PO-Revision-Date: 2021-04-28 09:45+0300\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
+"PO-Revision-Date: 2022-07-25 08:34+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -116,17 +116,44 @@ msgstr "Гаразд"
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr "Додаткові дії"
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr "Згорнути"
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr "Розгорнути"
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr "Пароль"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr "Шукати…"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr "Пошук"
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "Задіяти віджет «%1»"
@@ -137,7 +164,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "Вилучити аплет «%1»"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr "Увійти до режиму редагування"
@@ -148,17 +175,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "Налаштувати «%1»…"
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "Заблокувати віджети"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "Розблокувати віджети"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr "Вийти з режиму редагування"
@@ -235,17 +262,17 @@ msgstr "Знімок вікна"
 msgid "Translations"
 msgstr "Переклади"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr "Модель сторінок налаштовування інтерфейсу"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "XML-файл налаштування"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr "Нетиповий доповнювач для компактних аплетів"
@@ -351,95 +378,7 @@ msgstr "Непрозоре зображення для тла підказок"
 msgid "KColorScheme configuration file"
 msgstr "Файл налаштування KColorScheme"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "Доступність"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "Інструменти запуску програм"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "Астрономія"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "Дата і час"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "Інструменти для розробки"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "Освіта"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "Середовище і погода"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "Приклади"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "Файлова система"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "Забавки та ігри"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "Графіка"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "Мова"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "Картографія"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "Різне"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "Мультимедіа"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "Мережеві служби"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "Офісні програми"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "Системна інформація"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "Інструменти"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "Вікна і завдання"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "Буфер обміну"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "Завдання"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -470,52 +409,52 @@ msgstr "Не вдалося створити рушій скриптів %1 дл
 msgid "Show Alternatives..."
 msgstr "Показати альтернативи…"
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "Віджет вилучено"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "Віджет «%1» було вилучено."
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "Панель вилучено"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "Панель було вилучено."
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "Стільницю вилучено"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "Стільницю було вилучено."
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "Вернути"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "Параметри віджета"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "Вилучити цей віджет"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -523,7 +462,7 @@ msgstr "Вилучити цей віджет"
 msgid "Run the Associated Application"
 msgstr "Запустити пов’язану програму"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "Спроба ініціалізації скрипту завершилася невдало"
@@ -534,27 +473,27 @@ msgstr "Спроба ініціалізації скрипту завершил�
 msgid "Open with %1"
 msgstr "Відкрити за допомогою %1"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "Вилучити цю панель"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "Вилучити цей простір дій"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "Налаштувати простір дій"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "Додати віджети..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "Не вдалося знайти потрібного компонента: %1"
@@ -587,71 +526,71 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "Некоректна (нульова) служба, не вдалося виконати жодних дій."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, kde-format
 msgid "Unknown Applet"
 msgstr "Невідомий аплет"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, kde-format
 msgid "Error loading QML file: %1 %2"
 msgstr "Помилка під час завантаження файла QML: %1 %2"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "Помилка під час спроби завантажити аплет: пакунка не існує. %1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "Налаштувати віджет «%1»"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "Пакунок Плазми"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "Встановити"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "Не вдалося встановити пакунок"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "Скинутий вами пакунок є некоректним."
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "Віджети"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "Додати %1"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "Додати піктограму"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "Шпалери"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -661,3 +600,565 @@ msgstr "Встановити %1"
 #, kde-format
 msgid "Content dropped"
 msgstr "Скинуто дані"
+
+#~ msgid "Accessibility"
+#~ msgstr "Доступність"
+
+#~ msgid "Application Launchers"
+#~ msgstr "Інструменти запуску програм"
+
+#~ msgid "Astronomy"
+#~ msgstr "Астрономія"
+
+#~ msgid "Date and Time"
+#~ msgstr "Дата і час"
+
+#~ msgid "Development Tools"
+#~ msgstr "Інструменти для розробки"
+
+#~ msgid "Education"
+#~ msgstr "Освіта"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "Середовище і погода"
+
+#~ msgid "Examples"
+#~ msgstr "Приклади"
+
+#~ msgid "File System"
+#~ msgstr "Файлова система"
+
+#~ msgid "Fun and Games"
+#~ msgstr "Забавки та ігри"
+
+#~ msgid "Graphics"
+#~ msgstr "Графіка"
+
+#~ msgid "Language"
+#~ msgstr "Мова"
+
+#~ msgid "Mapping"
+#~ msgstr "Картографія"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Різне"
+
+#~ msgid "Multimedia"
+#~ msgstr "Мультимедіа"
+
+#~ msgid "Online Services"
+#~ msgstr "Мережеві служби"
+
+#~ msgid "Productivity"
+#~ msgstr "Офісні програми"
+
+#~ msgid "System Information"
+#~ msgstr "Системна інформація"
+
+#~ msgid "Utilities"
+#~ msgstr "Інструменти"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "Вікна і завдання"
+
+#~ msgid "Clipboard"
+#~ msgstr "Буфер обміну"
+
+#~ msgid "Tasks"
+#~ msgstr "Завдання"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Edit %1..."
+#~ msgstr "Змінити %1…"
+
+#~ msgid "Default settings for theme, etc."
+#~ msgstr "Типові параметри для теми тощо."
+
+#~ msgid "Color scheme to use for applications."
+#~ msgstr "Схема кольорів, яку слід використовувати для вікон програм."
+
+#~ msgid "Preview Images"
+#~ msgstr "Ескізи зображень"
+
+#~ msgid "Preview for the Login Manager"
+#~ msgstr "Ескіз засобу керування входом до системи"
+
+#~ msgid "Preview for the Lock Screen"
+#~ msgstr "Ескіз вікна блокування"
+
+#~ msgid "Preview for the Userswitcher"
+#~ msgstr "Ескіз засобу перемикання користувачів"
+
+#~ msgid "Preview for the Virtual Desktop Switcher"
+#~ msgstr "Ескіз засобу перемикання віртуальних стільниць"
+
+#~ msgid "Preview for Splash Screen"
+#~ msgstr "Ескіз вікна вітання"
+
+#~ msgid "Preview for KRunner"
+#~ msgstr "Ескіз для KRunner"
+
+#~ msgid "Preview for the Window Decorations"
+#~ msgstr "Ескіз для обрамлення вікон"
+
+#~ msgid "Preview for Window Switcher"
+#~ msgstr "Ескіз засобу перемикання вікон"
+
+#~ msgid "Login Manager"
+#~ msgstr "Керування входом до системи"
+
+#~ msgid "Main Script for Login Manager"
+#~ msgstr "Основний скрипт засобу керування входом до системи"
+
+#~ msgid "Logout Dialog"
+#~ msgstr "Діалогове вікно виходу з системи"
+
+#~ msgid "Main Script for Logout Dialog"
+#~ msgstr "Основний скрипт діалогового вікна виходу з системи"
+
+#~ msgid "Screenlocker"
+#~ msgstr "Засіб блокування екрана"
+
+#~ msgid "Main Script for Lock Screen"
+#~ msgstr "Основний скрипт засобу блокування екрана"
+
+#~ msgid "UI for fast user switching"
+#~ msgstr "Інтерфейс для швидкого перемикання користувачів"
+
+#~ msgid "Main Script for User Switcher"
+#~ msgstr "Основний скрипт засобу перемикання користувачів"
+
+#~ msgid "Virtual Desktop Switcher"
+#~ msgstr "Перемикач віртуальних стільниць"
+
+#~ msgid "Main Script for Virtual Desktop Switcher"
+#~ msgstr "Основний скрипт засобу перемикання віртуальних стільниць"
+
+#~ msgid "On-Screen Display Notifications"
+#~ msgstr "Екранні сповіщення"
+
+#~ msgid "Main Script for On-Screen Display Notifications"
+#~ msgstr "Основний скрипт засобу показу екранних сповіщень"
+
+#~ msgid "Splash Screen"
+#~ msgstr "Вікно вітання"
+
+#~ msgid "Main Script for Splash Screen"
+#~ msgstr "Основний скрипт вікна вітання"
+
+#~ msgid "KRunner UI"
+#~ msgstr "Інтерфейс KRunner"
+
+#~ msgid "Main Script KRunner"
+#~ msgstr "Основний скрипт KRunner"
+
+#~ msgid "Window Decoration"
+#~ msgstr "Обрамлення вікон"
+
+#~ msgid "Main Script for Window Decoration"
+#~ msgstr "Основний скрипт засобу керування обрамленням вікон"
+
+#~ msgid "Window Switcher"
+#~ msgstr "Перемикач вікон"
+
+#~ msgid "Main Script for Window Switcher"
+#~ msgstr "Основний скрипт засобу перемикання вікон"
+
+#~ msgid "Finish Customizing Layout"
+#~ msgstr "Завершити налаштовування компонування"
+
+#~ msgid "Customize Layout..."
+#~ msgstr "Налаштувати компонування…"
+
+#~ msgid "Fetching file type..."
+#~ msgstr "Отримання типу файла..."
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "%1 Options"
+#~ msgstr "Налаштування віджета «%1»"
+
+#~ msgid "SVG scalable preview"
+#~ msgstr "Попередній перегляд масштабованого SVG"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "Remove this %1"
+#~ msgstr "Вилучити віджет «%1»"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings"
+#~ msgstr "Налаштувати віджет «%1»"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings..."
+#~ msgstr "Параметри віджета «%1»…"
+
+#~ msgid "Low color images for dialogs"
+#~ msgstr "Малокольорові зображення для діалогових вікон"
+
+#~ msgid "Low color generic dialog background"
+#~ msgstr "Малокольорові зображення для типового вікна"
+
+#~ msgid "Low color theme for the logout dialog"
+#~ msgstr "Малокольорова тема для вікна виходу"
+
+#~ msgid "Low color background image for widgets"
+#~ msgstr "Малокольорові зображення для тла віджетів"
+
+#~ msgid "Low color analog clock face"
+#~ msgstr "Малокольоровий циферблат аналогового годинника"
+
+#~ msgid "Low color background image for panels"
+#~ msgstr "Малокольорові зображення для тла панелей"
+
+#~ msgid "Low color background for graphing widgets"
+#~ msgstr "Малокольорове зображення для тла віджетів-графіків"
+
+#~ msgid "Low color background image for tooltips"
+#~ msgstr "Малокольорове зображення для тла підказок"
+
+#~ msgid "Plasma Package Manager"
+#~ msgstr "Керування пакунками Плазми"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Generate a SHA1 hash for the package at <path>"
+#~ msgstr "Визначити хеш SHA1 для пакунка за адресою <path>"
+
+#~ msgid "For install or remove, operates on packages installed for all users."
+#~ msgstr ""
+#~ "Для встановлення і вилучення, працює з пакунками, встановленими для всіх "
+#~ "користувачів."
+
+#~ msgctxt ""
+#~ "theme, wallpaper, etc. are keywords, but they may be translated, as both "
+#~ "versions are recognized by the application (if translated, should be same "
+#~ "as messages with 'package type' context below)"
+#~ msgid ""
+#~ "The type of package, e.g. theme, wallpaper, plasmoid, dataengine, runner, "
+#~ "layout-template, etc."
+#~ msgstr ""
+#~ "Тип пакунка, наприклад theme (тема), wallpaper (тло стільниці), plasmoid "
+#~ "(плазмоїд), dataengine (рушій даних), runner (система запуску), layout-"
+#~ "template (шаблон компонування) тощо."
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Install the package at <path>"
+#~ msgstr "Встановити пакунок до <path>"
+
+#~ msgctxt "Do not translate <name>"
+#~ msgid "Show information of package <name>"
+#~ msgstr "Показ даних щодо пакунка <name>"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Upgrade the package at <path>"
+#~ msgstr "Оновити пакунок до <path>"
+
+#~ msgid "List installed packages"
+#~ msgstr "Показати список встановлених пакунків"
+
+#~ msgid "List all known package types that can be installed"
+#~ msgstr ""
+#~ "Показати список усіх відомих типів пакунків, які програма може "
+#~ "встановлювати"
+
+#~ msgctxt "Do not translate <name>"
+#~ msgid "Remove the package named <name>"
+#~ msgstr "Вилучити пакунок з назвою <name>"
+
+#~ msgid ""
+#~ "Absolute path to the package root. If not supplied, then the standard "
+#~ "data directories for this KDE session will be searched instead."
+#~ msgstr ""
+#~ "Абсолютний шлях до кореня пакунків. Якщо його не вказано, для пошуку буде "
+#~ "використано стандартні каталоги даних цього сеансу KDE."
+
+#~ msgid "Failed to generate a Package hash for %1"
+#~ msgstr "Не вдалося визначити хеш пакунка для %1"
+
+#~ msgid "SHA1 hash for Package at %1: '%2'"
+#~ msgstr "Хеш SHA1 для пакунка за адресою %1: «%2»"
+
+#~ msgctxt "package type"
+#~ msgid "wallpaper"
+#~ msgstr "шпалери"
+
+#~ msgctxt "package type"
+#~ msgid "plasmoid"
+#~ msgstr "плазмоїд"
+
+#~ msgctxt "package type"
+#~ msgid "package"
+#~ msgstr "пакунок"
+
+#~ msgctxt "package type"
+#~ msgid "theme"
+#~ msgstr "тема"
+
+#~ msgctxt "package type"
+#~ msgid "dataengine"
+#~ msgstr "рушій даних"
+
+#~ msgctxt "package type"
+#~ msgid "runner"
+#~ msgstr "засіб запуску"
+
+#~ msgctxt "package type"
+#~ msgid "wallpaperplugin"
+#~ msgstr "додаток шпалер"
+
+#~ msgctxt "package type"
+#~ msgid "lookandfeel"
+#~ msgstr "вигляд і поведінка"
+
+#~ msgctxt "package type"
+#~ msgid "shell"
+#~ msgstr "оболонка"
+
+#~ msgctxt "package type"
+#~ msgid "layout-template"
+#~ msgstr "шаблон компонування"
+
+#~ msgctxt "package type"
+#~ msgid "kwineffect"
+#~ msgstr "kwineffect"
+
+#~ msgctxt "package type"
+#~ msgid "windowswitcher"
+#~ msgstr "windowswitcher"
+
+#~ msgctxt "package type"
+#~ msgid "kwinscript"
+#~ msgstr "kwinscript"
+
+#~ msgid "Could not find a suitable installer for package of type %1"
+#~ msgstr "Не вдалося знайти програми встановлення для пакунка типу %1"
+
+#~ msgid "Listing service types: %1"
+#~ msgstr "Будуємо список типів служб: %1"
+
+#~ msgid "Error: Plugin %1 is not installed."
+#~ msgstr "Помилка: додаток %1 не встановлено."
+
+#~ msgctxt ""
+#~ "No option was given, this is the error message telling the user he needs "
+#~ "at least one, do not translate install, remove, upgrade nor list"
+#~ msgid "One of install, remove, upgrade or list is required."
+#~ msgstr "Слід вказати одну з дій: встановити, вилучити або показати список."
+
+#~ msgid "Error: Can't find plugin metadata: %1"
+#~ msgstr "Помилка: не вдалося знайти метаданих додатка: %1"
+
+#~ msgid "Showing info for package: %1"
+#~ msgstr "Показуємо дані щодо пакунка: %1"
+
+#~ msgid "      Name : %1"
+#~ msgstr "      Назва: %1"
+
+#~ msgid "   Comment : %1"
+#~ msgstr "   Коментар: %1"
+
+#~ msgid "    Plugin : %1"
+#~ msgstr "    Додаток: %1"
+
+#~ msgid "    Author : %1"
+#~ msgstr "      Автор: %1"
+
+#~ msgid "      Path : %1"
+#~ msgstr "       Шлях: %1"
+
+#~ msgctxt ""
+#~ "The user entered conflicting options packageroot and global, this is the "
+#~ "error message telling the user he can use only one"
+#~ msgid ""
+#~ "The packageroot and global options conflict each other, please select "
+#~ "only one."
+#~ msgstr ""
+#~ "Виявлено конфлікт між кореневою текою пакунка і загальними параметрами. "
+#~ "Будь ласка, визначіть, яке з налаштувань є правильним."
+
+#~ msgid "Addon Name"
+#~ msgstr "Назва додатка"
+
+#~ msgid "Service Type"
+#~ msgstr "Тип служби"
+
+#~ msgid "Path"
+#~ msgstr "Шлях"
+
+#~ msgid "Type Argument"
+#~ msgstr "Аргумент типу"
+
+#~ msgid "Package types that are installable with this tool:"
+#~ msgstr "Типи пакунків, які здатна встановлювати ця програма:"
+
+#~ msgid "Built in:"
+#~ msgstr "Вбудовані:"
+
+#~ msgid "DataEngine"
+#~ msgstr "Рушій даних"
+
+#~ msgid "Layout Template"
+#~ msgstr "Шаблон компонування"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Вигляд і поведінка"
+
+#~ msgid "Package"
+#~ msgstr "Пакунок"
+
+#~ msgid "Plasmoid"
+#~ msgstr "Плазмоїд"
+
+#~ msgid "Runner"
+#~ msgstr "Засіб для запуску"
+
+#~ msgid "Shell"
+#~ msgstr "Оболонка"
+
+#~ msgid "Theme"
+#~ msgstr "Тема"
+
+#~ msgid "Wallpaper Images"
+#~ msgstr "Зображення шпалер"
+
+#~ msgid "Animated Wallpaper"
+#~ msgstr "Анімовані шпалери"
+
+#~ msgid "KWin Effect"
+#~ msgstr "Ефект KWin"
+
+#~ msgid "KWin Window Switcher"
+#~ msgstr "Перемикач вікон KWin"
+
+#~ msgid "KWin Script"
+#~ msgstr "Скрипт KWin"
+
+#~ msgid "Provided by plugins:"
+#~ msgstr "Керовані додатками:"
+
+#~ msgid "Provided by .desktop files:"
+#~ msgstr "Керовані файлами .desktop:"
+
+#~ msgid "Successfully upgraded %1"
+#~ msgstr "%1 успішно оновлено"
+
+#~ msgid "Successfully installed %1"
+#~ msgstr "%1 успішно встановлено"
+
+#~ msgid "Error: Installation of %1 failed: %2"
+#~ msgstr "Помилка: спроба встановлення %1 зазнала невдачі: %2"
+
+#~ msgid "Upgrading package from file: %1"
+#~ msgstr "Оновлення пакунка з файла: %1"
+
+#~ msgid "Successfully uninstalled %1"
+#~ msgstr "%1 успішно вилучено"
+
+#~ msgid "Error: Uninstallation of %1 failed: %2"
+#~ msgstr "Помилка: спроба вилучення %1 зазнала невдачі: %2"
+
+#~ msgid ""
+#~ "Could not load installer for package of type %1. Error reported was: %2"
+#~ msgstr ""
+#~ "Не вдалося знайти програми встановлення для пакунка типу %1. Повідомлення "
+#~ "помилки: %2"
+
+#~ msgid "Could not create package root directory: %1"
+#~ msgstr "Не вдалося створити кореневий каталог пакунка: %1"
+
+#~ msgid "No such file: %1"
+#~ msgstr "Такого файла не існує: %1"
+
+#~ msgid "Could not open package file, unsupported archive format: %1 %2"
+#~ msgstr ""
+#~ "Не вдалося відкрити файл пакунка, непідтримуваний формат архіву: %1 %2"
+
+#~ msgid "Could not open package file: %1"
+#~ msgstr "Не вдалося відкрити файл пакунка: %1"
+
+#~ msgid "No metadata file in package: %1"
+#~ msgstr "У пакунку не виявлено файла метаданих: %1"
+
+#~ msgid "Package plugin name not specified: %1"
+#~ msgstr "Не вказано назви додатка у пакунку: %1"
+
+#~ msgid "Package plugin name %1 contains invalid characters"
+#~ msgstr "Назва додатка у пакунку %1 містить некоректні символи"
+
+#~ msgid "%1 already exists"
+#~ msgstr "%1 вже існує"
+
+#~ msgid "Could not move package to destination: %1"
+#~ msgstr "Не вдалося пересунути пакунок до його місця призначення: %1"
+
+#~ msgid "Could not copy package to destination: %1"
+#~ msgstr "Не вдалося скопіювати пакунок до його місця призначення: %1"
+
+#~ msgid "Could not create local service directory: %1"
+#~ msgstr "Не вдалося створити каталог локальної служби: %1"
+
+#~ msgid ""
+#~ "Could not register package as service (this is not necessarily fatal): %1"
+#~ msgstr ""
+#~ "Не вдалося зареєструвати пакунок як службу (така помилка не обов’язково є "
+#~ "критичною): %1"
+
+#~ msgid "%1 does not exist"
+#~ msgstr "%1 не існує"
+
+#~ msgid "Could not delete package from: %1"
+#~ msgstr "Не вдалося вилучити пакунок з %1"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Do you really want to remove this %1?"
+#~ msgstr "Ви справді бажаєте вилучити %1?"
+
+#~ msgid "Applets furniture"
+#~ msgstr "Компоненти аплетів"
+
+#~ msgid "Explorer UI for adding widgets"
+#~ msgstr "Графічний інтерфейс перегляду для додавання віджетів"
+
+#~ msgid "User interface for the views that will show containments"
+#~ msgstr ""
+#~ "Інтерфейс користувача для панелей перегляду, які показують вміст "
+#~ "контейнерів"
+
+#~ msgid "Default layout file"
+#~ msgstr "Типовий файл компонування"
+
+#~ msgid "Default plugins for containments, containmentActions, etc."
+#~ msgstr "Типові додатки для контейнерів, дій з контейнерами тощо"
+
+#~ msgid "Error message shown when an applet fails to load"
+#~ msgstr ""
+#~ "Повідомлення про помилку, яке буде показано, якщо аплет не вдалося "
+#~ "завантажити"
+
+#~ msgid "QML component that shows an applet in a popup"
+#~ msgstr "Компонент QML, який показує аплет у контекстному вікні"
+
+#~ msgid ""
+#~ "Compact representation of an applet when collapsed in a popup, for "
+#~ "instance as an icon. Applets can override this component."
+#~ msgstr ""
+#~ "Компактне представлення аплету, якщо його згорнуто у контекстне вікно, "
+#~ "наприклад піктограму. Аплети можуть перевизначати цей компонент."
+
+#~ msgid "QML component for the configuration dialog for applets"
+#~ msgstr "Компонент QML діалогового вікна налаштовування для аплетів"
+
+#~ msgid "QML component for the configuration dialog for containments"
+#~ msgstr "Компонент QML діалогового вікна налаштовування для контейнерів"
+
+#~ msgid "Panel configuration UI"
+#~ msgstr "Інтерфейс налаштовування панелей"
+
+#~ msgid "QML component for choosing an alternate applet"
+#~ msgstr "Компонент QML для вибору альтернативного аплету"
+
+#~ msgid ""
+#~ "A UI for writing, loading and running desktop scripts in the current live "
+#~ "session"
+#~ msgstr ""
+#~ "Графічний інтерфейс для написання, завантаження та виконання скриптів "
+#~ "стільниці у поточному сеансі"

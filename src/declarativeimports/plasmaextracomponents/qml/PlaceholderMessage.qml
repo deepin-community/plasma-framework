@@ -157,6 +157,22 @@ import org.kde.plasma.extras 2.0 as PlasmaExtras
 ColumnLayout {
     id: root
 
+    enum Type {
+        Actionable,
+        Informational
+    }
+
+    /**
+     * The type of the message. This can be:
+     *
+     * * PlasmaExtras.PlaceholderMessage.Type.Actionable: Makes it more attention-getting. Useful when the user is expected to interact with the message.
+     * * PlasmaExtras.PlaceholderMessage.Type.Informational: Makes it less prominent. Useful when the message in only informational.
+     *
+     * By default if an helpfulAction is provided this will be of type Actionable otherwise of type Informational.
+     * @since 5.94
+     */
+    property int type: helpfulAction && helpfulAction.enabled ? PlaceholderMessage.Type.Actionable : PlaceholderMessage.Type.Informational
+
     /**
      * text: string
      * The text to show as a placeholder label
@@ -204,17 +220,17 @@ ColumnLayout {
      *
      * @since 5.72
      */
-    property alias helpfulAction: actionButton.action
+    property QQC2.Action helpfulAction
 
     spacing: PlasmaCore.Units.largeSpacing
 
     PlasmaCore.IconItem {
-        visible: source != undefined
+        visible: source !== undefined
         opacity: 0.5
 
         Layout.alignment: Qt.AlignHCenter
-        Layout.preferredWidth: PlasmaCore.Units.iconSizes.huge
-        Layout.preferredHeight: PlasmaCore.Units.iconSizes.huge
+        Layout.preferredWidth: Math.round(PlasmaCore.Units.iconSizes.huge * 1.5)
+        Layout.preferredHeight: Math.round(PlasmaCore.Units.iconSizes.huge * 1.5)
 
         source: root.iconName || null
     }
@@ -222,9 +238,9 @@ ColumnLayout {
     PlasmaExtras.Heading {
         text: root.text
         visible: text.length > 0
+        opacity: root.type === PlaceholderMessage.Type.Actionable ? 1 : 0.65
 
-        level: 2
-        opacity: 0.5
+        type: PlasmaExtras.Heading.Primary
 
         Layout.fillWidth: true
         horizontalAlignment: Qt.AlignHCenter
@@ -235,8 +251,7 @@ ColumnLayout {
     PlasmaComponents3.Label {
         text: root.explanation
         visible:  root.explanation !== ""
-
-        opacity: 0.5
+        opacity: root.type === PlaceholderMessage.Type.Actionable ? 1 : 0.65
 
         horizontalAlignment: Qt.AlignHCenter
         wrapMode: Text.WordWrap
@@ -244,11 +259,13 @@ ColumnLayout {
         Layout.fillWidth: true
     }
 
-    PlasmaComponents3.Button {
-        id: actionButton
-
+    Loader {
+        active: root.helpfulAction && root.helpfulAction.enabled
         Layout.alignment: Qt.AlignHCenter
+        Layout.topMargin: PlasmaCore.Units.gridUnit
 
-        visible: action && action.enabled
+        sourceComponent: PlasmaComponents3.Button {
+            action: root.helpfulAction
+        }
     }
 }

@@ -12,9 +12,10 @@
 #include <QQuickItem>
 #include <QTimer>
 
-#include <Plasma/Package>
-
 #include <plasmaquick/plasmaquick_export.h>
+#if PLASMAQUICK_ENABLE_DEPRECATED_SINCE(5, 94)
+#include <Plasma/Package>
+#endif
 
 //
 //  W A R N I N G
@@ -149,7 +150,11 @@ protected:
 
     // Reimplementation
     void childEvent(QChildEvent *event) override;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#else
+    void geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#endif
     void itemChange(ItemChange change, const ItemChangeData &value) override;
 
 private:

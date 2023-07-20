@@ -1,19 +1,19 @@
 # Translation for libplasma5.po to Euskara/Basque (eu).
 # Copyright (C) 2017-2018, Free Software Foundation.
-# Copyright (C) 2019-2021, This file is copyright:
+# Copyright (C) 2019-2022, This file is copyright:
 # This file is distributed under the same license as the plasma-framework package.
 # KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
 # Translators:
 # Osoitz <oelkoro@gmail.com>, 2017.
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022.
 # Ander Elortondo <ander.elor@gmail.com>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-framework\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
-"PO-Revision-Date: 2021-07-15 21:13+0200\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
+"PO-Revision-Date: 2022-07-27 19:21+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.04.3\n"
+"X-Generator: Lokalize 22.04.3\n"
 
 #: declarativeimports/calendar/eventdatadecorator.cpp:51
 #, kde-format
@@ -119,17 +119,44 @@ msgstr "Ados"
 msgid "Cancel"
 msgstr "Utzi"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr "Ekintza gehiago"
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr "Tolestu"
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr "Zabaldu"
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr "Pasahitza"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr "Bilatu..."
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr "Bilatu"
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "Ezezaguna"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "Aktibatu %1 trepeta"
@@ -140,7 +167,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "Kendu %1"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr "Sartu editatzeko modura"
@@ -151,17 +178,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "Konfiguratu %1..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "Giltzatu trepetak"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "Giltzapetik askatu trepetak"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr "Irten editatzeko modutik"
@@ -238,17 +265,17 @@ msgstr "Pantaila-argazkia"
 msgid "Translations"
 msgstr "Itzulpenak"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr "Konfigurazio interfaze-orrien modeloa"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "XML konfigurazio-fitxategia"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr "Norberak finkatutako hedagailua aplikaziotxo trinkoentzat"
@@ -354,95 +381,7 @@ msgstr "Tresna-argibideentzako atzealdeko irudi opakoa"
 msgid "KColorScheme configuration file"
 msgstr "KColorScheme konfigurazio-fitxategia"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "Irisgarritasuna"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "Aplikazio-abiarazleak"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "Astronomia"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "Data eta ordua"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "Garatzaile-tresnak"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "Hezkuntza"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "Ingurunea eta eguraldia"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "Adibideak"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "Fitxategi-sistema"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "Dibertsioa eta jolasak"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "Grafikoak"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "Hizkuntza"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "Mapaketa"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "Bestelakoa"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "Multimedia"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "Lineako zerbitzuak"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "Produktibitatea"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "Sistemaren informazioa"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "Erabilgarriak"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "Leihoak eta atazak "
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "Arbela"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "Atazak"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -471,52 +410,52 @@ msgstr "Ezin izan da %1 ScriptEngine bat sortu %2 trepetarentzat."
 msgid "Show Alternatives..."
 msgstr "Erakutsi ordezko aukerak..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "Trepeta kendu da"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "\"%1\" trepeta kendu da."
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "Panela kenduta"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "Panel bat kendu da."
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "Mahaigaina kenduta"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "Mahaigain bat kendu da."
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "Desegin"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "Trepetaren ezarpenak"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "Kendu trepeta hau"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -524,7 +463,7 @@ msgstr "Kendu trepeta hau"
 msgid "Run the Associated Application"
 msgstr "Exekutatu elkartutako aplikazioa"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "Script-aren hasieratzeak huts egin du"
@@ -535,27 +474,27 @@ msgstr "Script-aren hasieratzeak huts egin du"
 msgid "Open with %1"
 msgstr "Ireki %1(r)ekin"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "Kendu panel hau"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "Ezabatu jarduera hau"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "Jarduera-ezarpenak"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "Gehitu trepetak..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "Ezin izan da aurkitu eskautako osagaia: %1"
@@ -588,71 +527,71 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "Zerbitzu baliogabea (nulua), ezin da ekintzarik burutu."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, kde-format
 msgid "Unknown Applet"
 msgstr "Aplikaziotxo ezezaguna"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, kde-format
 msgid "Error loading QML file: %1 %2"
 msgstr "Errorea QML fitxategia zamatzean: %1 %2"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "Errorea aplikaziotxoa kargatzean: paketea ez dago. %1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "%1 ezarpenak"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "Plasmaren paketea"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "Instalatu"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "Paketearen instalazioak huts egin du"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "Jaregin duzun paketea baliogabea da."
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "Trepetak"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "Erantsi %1"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "Erantsi ikono bat"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "Horma-papera"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -662,3 +601,211 @@ msgstr "Ezarri %1"
 #, kde-format
 msgid "Content dropped"
 msgstr "Edukia jaregin da"
+
+#~ msgid "Accessibility"
+#~ msgstr "Irisgarritasuna"
+
+#~ msgid "Application Launchers"
+#~ msgstr "Aplikazio-abiarazleak"
+
+#~ msgid "Astronomy"
+#~ msgstr "Astronomia"
+
+#~ msgid "Date and Time"
+#~ msgstr "Data eta ordua"
+
+#~ msgid "Development Tools"
+#~ msgstr "Garatzaile-tresnak"
+
+#~ msgid "Education"
+#~ msgstr "Hezkuntza"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "Ingurunea eta eguraldia"
+
+#~ msgid "Examples"
+#~ msgstr "Adibideak"
+
+#~ msgid "File System"
+#~ msgstr "Fitxategi-sistema"
+
+#~ msgid "Fun and Games"
+#~ msgstr "Dibertsioa eta jolasak"
+
+#~ msgid "Graphics"
+#~ msgstr "Grafikoak"
+
+#~ msgid "Language"
+#~ msgstr "Hizkuntza"
+
+#~ msgid "Mapping"
+#~ msgstr "Mapaketa"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Bestelakoa"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multimedia"
+
+#~ msgid "Online Services"
+#~ msgstr "Lineako zerbitzuak"
+
+#~ msgid "Productivity"
+#~ msgstr "Produktibitatea"
+
+#~ msgid "System Information"
+#~ msgstr "Sistemaren informazioa"
+
+#~ msgid "Utilities"
+#~ msgstr "Erabilgarriak"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "Leihoak eta atazak "
+
+#~ msgid "Clipboard"
+#~ msgstr "Arbela"
+
+#~ msgid "Tasks"
+#~ msgstr "Atazak"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Edit %1..."
+#~ msgstr "Editatu %1..."
+
+#~ msgid "Default settings for theme, etc."
+#~ msgstr "Ezarpen lehenetsiak gaientzake, eta abar."
+
+#~ msgid "Color scheme to use for applications."
+#~ msgstr "Aplikaziekin erabili beharreko kolore-eskema."
+
+#~ msgid "Preview Images"
+#~ msgstr "Aurreikusi irudiak"
+
+#~ msgid "Preview for the Login Manager"
+#~ msgstr "Saio-hasteko kudeatzailearen aurrebista"
+
+#~ msgid "Preview for the Lock Screen"
+#~ msgstr "Pantaila-giltzatuaren aurrebista"
+
+#~ msgid "Preview for the Userswitcher"
+#~ msgstr "Erabitzaile-aldatzailearen aurrebista"
+
+#~ msgid "Preview for the Virtual Desktop Switcher"
+#~ msgstr "Alegiazko mahagain aldatzailearen aurrebista"
+
+#~ msgid "Preview for Splash Screen"
+#~ msgstr "Plast-pantailaren aurrebista"
+
+#~ msgid "Preview for KRunner"
+#~ msgstr "KRunner-ren aurrebista"
+
+#~ msgid "Preview for the Window Decorations"
+#~ msgstr "Lehio-apainduren aurrebista"
+
+#~ msgid "Preview for Window Switcher"
+#~ msgstr "Lehio-aldatzailearen aurrebista"
+
+#~ msgid "Login Manager"
+#~ msgstr "Saio-hasteko kudeatzailea"
+
+#~ msgid "Main Script for Login Manager"
+#~ msgstr "Saio-hasteko kudeatzailearen script nagusia"
+
+#~ msgid "Logout Dialog"
+#~ msgstr "Saio-amaitzeko elkarrizketa"
+
+#~ msgid "Main Script for Logout Dialog"
+#~ msgstr "Saio-amaitzeko elkarrizketaren script nagusia"
+
+#~ msgid "Screenlocker"
+#~ msgstr "Pantaila-giltzatzailea"
+
+#~ msgid "Main Script for Lock Screen"
+#~ msgstr "Pantaila-giltzatzearen script nagusia"
+
+#~ msgid "UI for fast user switching"
+#~ msgstr "Erabiltzaile-aldaketa azkarrerako erabiltzaile-interfazea"
+
+#~ msgid "Main Script for User Switcher"
+#~ msgstr "Erabiltzaile-aldatzailearen script nagusia"
+
+#~ msgid "Virtual Desktop Switcher"
+#~ msgstr "Alegiazko mahaigain aldatzailea"
+
+#~ msgid "Main Script for Virtual Desktop Switcher"
+#~ msgstr "Alegiazko mahaigain aldatzailearen script nagusia"
+
+#~ msgid "On-Screen Display Notifications"
+#~ msgstr "Pantailan bistaratzeko jakinarazpenak"
+
+#~ msgid "Main Script for On-Screen Display Notifications"
+#~ msgstr "Pantailan bistaratzeko jakinarazpenen script nagusia"
+
+#~ msgid "Splash Screen"
+#~ msgstr "Plast-pantaila"
+
+#~ msgid "Main Script for Splash Screen"
+#~ msgstr "Plast-pantailaren script nagusia"
+
+#~ msgid "KRunner UI"
+#~ msgstr "KRunner-ren erabiltzaile-interfazea"
+
+#~ msgid "Main Script KRunner"
+#~ msgstr "KRunner-ren script nagusia"
+
+#~ msgid "Window Decoration"
+#~ msgstr "Leiho-apaindura"
+
+#~ msgid "Main Script for Window Decoration"
+#~ msgstr "Leiho-apaindura script nagusia"
+
+#~ msgid "Window Switcher"
+#~ msgstr "Leiho-aldatzailea"
+
+#~ msgid "Main Script for Window Switcher"
+#~ msgstr "Leiho-aldatzaile script-nagusia"
+
+#~ msgid "Finish Customizing Layout"
+#~ msgstr "Amaitu antolamendua norbere erara egokitzea"
+
+#~ msgid "Customize Layout..."
+#~ msgstr "Egokitu antolamendua norbere erara..."
+
+#~ msgid "Fetching file type..."
+#~ msgstr "Fitxategi mota eskuratzen..."
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "%1 Options"
+#~ msgstr "%1 Aukerak"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings"
+#~ msgstr "%1 ezarpenak"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings..."
+#~ msgstr "%1 ezarpenak..."
+
+#~ msgid "Low color images for dialogs"
+#~ msgstr "Kolore baxuko irudiak elkarrizketentzako"
+
+#~ msgid "Low color generic dialog background"
+#~ msgstr "Elkarrizketa generikoentzako kolore baxuko atzealde"
+
+#~ msgid "Low color theme for the logout dialog"
+#~ msgstr "Kolore baxuko gaia saio-amaitzeko elkarrizketan"
+
+#~ msgid "Low color background image for widgets"
+#~ msgstr "Kolore baxuko atzeko planoaren irudia trepetentzako"
+
+#~ msgid "Low color analog clock face"
+#~ msgstr "Kolore baxuko ordulari analogikoaren esfera"
+
+#~ msgid "Low color background image for panels"
+#~ msgstr "Kolore baxuko atzeko planoaren irudia panelentzako"
+
+#~ msgid "Low color background for graphing widgets"
+#~ msgstr "Kolore baxuko atzealdea trepeta grafikoentzako"
+
+#~ msgid "Low color background image for tooltips"
+#~ msgstr "Kolore baxuko atzealdeko irudia tresna-iradokizuentzat"

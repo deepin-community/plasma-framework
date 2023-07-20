@@ -1,16 +1,17 @@
 # Translation of libplasma5.po to Catalan
-# Copyright (C) 2014-2021 This_file_is_part_of_KDE
+# Copyright (C) 2014-2022 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2018, 2019, 2020, 2021.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2018, 2019, 2020.
+# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022.
+# Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2018, 2019, 2020, 2022.
+# Empar Montoro Martín <montoro_mde@gva.es>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-framework\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
-"PO-Revision-Date: 2021-09-06 18:52+0200\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
+"PO-Revision-Date: 2022-07-25 13:03+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -117,17 +118,44 @@ msgstr "D'acord"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr "Més accions"
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr "Redueix"
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr "Expandeix"
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr "Contrasenya"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr "Cerca…"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr "Cerca"
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "Activa el giny %1"
@@ -136,9 +164,9 @@ msgstr "Activa el giny %1"
 #, kde-format
 msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
-msgstr "Elimina el %1"
+msgstr "Elimina %1"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr "Entra en el mode d'edició"
@@ -147,19 +175,19 @@ msgstr "Entra en el mode d'edició"
 #, kde-format
 msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
-msgstr "Configura el %1..."
+msgstr "Configura %1..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "Bloqueja els ginys"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "Desbloqueja els ginys"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr "Surt del mode d'edició"
@@ -168,7 +196,7 @@ msgstr "Surt del mode d'edició"
 #: plasma/data/kconfigxt/libplasma-theme-global.kcfg:9
 #, kde-format
 msgid "Whether or not to create an on-disk cache for the theme."
-msgstr "Si crear o no una memòria cau al disc per al tema."
+msgstr "Determina si s'ha de crear o no una memòria cau al disc per al tema."
 
 #. i18n: ectx: label, entry, group (CachePolicies)
 #: plasma/data/kconfigxt/libplasma-theme-global.kcfg:14
@@ -236,17 +264,17 @@ msgstr "Captura de pantalla"
 msgid "Translations"
 msgstr "Traduccions"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr "Model de pàgines IU de configuració"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "Fitxer XML de configuració"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr "Expansió personalitzada per a les miniaplicacions compactes"
@@ -352,95 +380,7 @@ msgstr "Imatge de fons opaca per als consells"
 msgid "KColorScheme configuration file"
 msgstr "Fitxer de configuració del KColorScheme"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "Accessibilitat"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "Llançadors d'aplicacions"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "Astronomia"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "Data i hora"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "Eines de desenvolupament"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "Educació"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "Medi ambient i meteorologia"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "Exemples"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "Sistema de fitxers"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "Jocs i esbarjo"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "Gràfics"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "Idioma"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "Cartografia"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "Miscel·lània"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "Multimèdia"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "Serveis en línia"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "Productivitat"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "Informació del sistema"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "Utilitats"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "Finestres i tasques"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "Porta-retalls"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "Tasques"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -469,52 +409,52 @@ msgstr "No s'ha pogut crear l'«ScriptEngine» %1 pel giny %2."
 msgid "Show Alternatives..."
 msgstr "Mostra les alternatives..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "S'ha eliminat el giny"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "S'ha eliminat el giny «%1»."
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "S'ha eliminat el plafó"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "S'ha eliminat un plafó."
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "S'ha eliminat l'escriptori"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "S'ha eliminat un escriptori."
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "Desfés"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
-msgstr "Arranjament del giny"
+msgstr "Configuració del giny"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "Suprimeix aquest giny"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -522,7 +462,7 @@ msgstr "Suprimeix aquest giny"
 msgid "Run the Associated Application"
 msgstr "Executa l'aplicació associada"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "Ha fallat la inicialització de l'script"
@@ -533,27 +473,27 @@ msgstr "Ha fallat la inicialització de l'script"
 msgid "Open with %1"
 msgstr "Obre amb %1"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "Elimina aquest plafó"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "Elimina aquesta activitat"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
-msgstr "Arranjament de l'activitat"
+msgstr "Configuració de l'activitat"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "Afegeix ginys..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "No s'ha pogut trobar el component sol·licitat: %1"
@@ -586,71 +526,71 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "Servei no vàlid (nul), no pot executar cap operació."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, kde-format
 msgid "Unknown Applet"
 msgstr "Miniaplicació desconeguda"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, kde-format
 msgid "Error loading QML file: %1 %2"
 msgstr "Error en carregar el fitxer QML: %1 %2"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "Error en carregar la miniaplicació: Paquet inexistent. %1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
-msgstr "Arranjament de %1"
+msgstr "Configuració de %1"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "Paquet del Plasma"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "Instal·la"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "La instal·lació del paquet ha fallat"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "El paquet que acabeu de deixar no és vàlid."
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "Ginys"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "Afegeix el %1"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "Afegeix una icona"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "Fons de pantalla"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -660,3 +600,69 @@ msgstr "Estableix el %1"
 #, kde-format
 msgid "Content dropped"
 msgstr "Contingut descartat"
+
+#~ msgid "Accessibility"
+#~ msgstr "Accessibilitat"
+
+#~ msgid "Application Launchers"
+#~ msgstr "Llançadors d'aplicacions"
+
+#~ msgid "Astronomy"
+#~ msgstr "Astronomia"
+
+#~ msgid "Date and Time"
+#~ msgstr "Data i hora"
+
+#~ msgid "Development Tools"
+#~ msgstr "Eines de desenvolupament"
+
+#~ msgid "Education"
+#~ msgstr "Educació"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "Medi ambient i meteorologia"
+
+#~ msgid "Examples"
+#~ msgstr "Exemples"
+
+#~ msgid "File System"
+#~ msgstr "Sistema de fitxers"
+
+#~ msgid "Fun and Games"
+#~ msgstr "Jocs i esbarjo"
+
+#~ msgid "Graphics"
+#~ msgstr "Gràfics"
+
+#~ msgid "Language"
+#~ msgstr "Idioma"
+
+#~ msgid "Mapping"
+#~ msgstr "Cartografia"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Miscel·lània"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multimèdia"
+
+#~ msgid "Online Services"
+#~ msgstr "Serveis en línia"
+
+#~ msgid "Productivity"
+#~ msgstr "Productivitat"
+
+#~ msgid "System Information"
+#~ msgstr "Informació del sistema"
+
+#~ msgid "Utilities"
+#~ msgstr "Utilitats"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "Finestres i tasques"
+
+#~ msgid "Clipboard"
+#~ msgstr "Porta-retalls"
+
+#~ msgid "Tasks"
+#~ msgstr "Tasques"

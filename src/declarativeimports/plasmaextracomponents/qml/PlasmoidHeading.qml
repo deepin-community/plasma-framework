@@ -8,6 +8,7 @@ import QtQuick 2.12
 import QtQuick.Layouts 1.12
 
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.plasmoid 2.0
 import QtQuick.Templates 2.12 as T
 import "private" as Private
 
@@ -63,19 +64,26 @@ T.ToolBar {
 
     background: PlasmaCore.FrameSvgItem {
         id: headingSvg
-        visible: fromCurrentTheme
+        // This graphics has to back with the dialog background, so it can be used if:
+        // * both this and the dialog background are from the current theme
+        // * both this and the dialog background are from fallback
+        visible: fromCurrentTheme === backgroundSvg.fromCurrentTheme
         imagePath: "widgets/plasmoidheading"
         prefix: position === T.ToolBar.Header ? "header" : "footer"
+        PlasmaCore.Svg {
+            id: backgroundSvg
+            imagePath: "dialogs/background"
+        }
 
         colorGroup: control.PlasmaCore.ColorScope.colorGroup
         PlasmaCore.ColorScope.inherit: false
 
         enabledBorders: {
             let borders = PlasmaCore.FrameSvg.LeftBorder | PlasmaCore.FrameSvg.RightBorder;
-            if (plasmoid.position !== PlasmaCore.Types.TopEdge || position !== T.ToolBar.Header) {
+            if (Plasmoid.position !== PlasmaCore.Types.TopEdge || position !== T.ToolBar.Header) {
                 borders |= PlasmaCore.FrameSvg.TopBorder;
             }
-            if (plasmoid.position !== PlasmaCore.Types.BottomEdge || position !== T.ToolBar.Footer) {
+            if (Plasmoid.position !== PlasmaCore.Types.BottomEdge || position !== T.ToolBar.Footer) {
                 borders |= PlasmaCore.FrameSvg.BottomBorder;
             }
             return borders;

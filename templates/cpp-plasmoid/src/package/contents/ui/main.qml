@@ -7,7 +7,7 @@ import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.components 3.0 as PlasmaComponents3
 
 Item {
     Plasmoid.fullRepresentation: ColumnLayout {
@@ -16,11 +16,11 @@ Item {
             Layout.fillHeight: true
             Layout.fillWidth: true
             fillMode: Image.PreserveAspectFit
-            source: "../images/pairs.svgz"
+            source: "../images/pairs.svg"
         }
-        PlasmaComponents.Label {
+        PlasmaComponents3.Label {
             Layout.alignment: Qt.AlignCenter
-            text: plasmoid.nativeInterface.nativeText
+            text: Plasmoid.nativeInterface.nativeText
         }
     }
 }

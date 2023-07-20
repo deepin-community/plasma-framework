@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
 "PO-Revision-Date: 2019-11-26 19:29+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -114,17 +114,44 @@ msgstr "OK"
 msgid "Cancel"
 msgstr "Annullér"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr ""
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr ""
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "Aktivér widgetten %1"
@@ -135,7 +162,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "Fjern %1"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr ""
@@ -146,17 +173,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "Indstil %1..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "Lås widgets"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "Lås widgets op"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr ""
@@ -233,17 +260,17 @@ msgstr "Skærmbillede"
 msgid "Translations"
 msgstr "Oversættelser"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr "Sidemodel til konfigurationsbrugerflade"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "XML-konfigurationsfil"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr "Brugertilpasset udvider til kompakte applets"
@@ -349,95 +376,7 @@ msgstr "Ugennemsigtigt baggrundsbillede til værktøjstips"
 msgid "KColorScheme configuration file"
 msgstr "Konfigurationsfil til KColorScheme"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "Tilgængelighed"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "Startmenuer"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "Astronomi"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "Dato og klokkeslæt"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "Udviklingsværktøjer"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "Uddannelse"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "Miljø og vejr"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "Eksempler"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "Filsystem"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "Spil og spas"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "Grafik"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "Sprog"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "Kort"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "Diverse"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "Multimedie"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "Online tjenester"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "Produktivitet"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "Systeminformation"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "Værktøjer"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "Vinduer og opgaver"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "Udklipsholder"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "Opgaver"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -466,52 +405,52 @@ msgstr "Kunne ikke oprette en %1-ScriptEngine til widgetten %2."
 msgid "Show Alternatives..."
 msgstr "Vis alternativer..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr "Widget fjernet"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr "Widgetten \"%1\" er blevet fjernet."
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "Panel fjernet"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "Et panel er blevet fjernet."
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "Skrivebord fjernet"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "Et skrivebord er blevet fjernet."
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "Fortryd"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "Indstilling af widget"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "Fjern denne widget"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -519,7 +458,7 @@ msgstr "Fjern denne widget"
 msgid "Run the Associated Application"
 msgstr "Kør det associerede program"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "Initialisering af script mislykkedes"
@@ -530,27 +469,27 @@ msgstr "Initialisering af script mislykkedes"
 msgid "Open with %1"
 msgstr "Åbn med %1"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "Fjern dette panel"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "Fjern denne aktivitet"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "Aktivitetsindstillinger"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "Tilføj widgets..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "Kunne ikke finde den anmodede komponent: %1"
@@ -583,73 +522,73 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "Ugyldig (null) tjeneste, kan ikke udføre nogen handlinger."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, fuzzy, kde-format
 #| msgid "Unknown"
 msgid "Unknown Applet"
 msgstr "Ukendt"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, fuzzy, kde-format
 #| msgid "Error loading QML file: %1"
 msgid "Error loading QML file: %1 %2"
 msgstr "Fejl ved indlæsning af QML-fil: %1"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "Fejl ved indlæsning af applet. Pakken eksisterer ikke. %1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "Indstilling af %1"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "Plasma-pakke"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "Installér"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "Installation af pakken mislykkedes"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "Pakken du netop slap er ugyldig."
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
 msgstr "Widgets"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "Tilføj %1"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "Tilføj ikon"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "Baggrundsbillede"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -659,3 +598,463 @@ msgstr "Sæt %1"
 #, kde-format
 msgid "Content dropped"
 msgstr "Indhold droppet"
+
+#~ msgid "Accessibility"
+#~ msgstr "Tilgængelighed"
+
+#~ msgid "Application Launchers"
+#~ msgstr "Startmenuer"
+
+#~ msgid "Astronomy"
+#~ msgstr "Astronomi"
+
+#~ msgid "Date and Time"
+#~ msgstr "Dato og klokkeslæt"
+
+#~ msgid "Development Tools"
+#~ msgstr "Udviklingsværktøjer"
+
+#~ msgid "Education"
+#~ msgstr "Uddannelse"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "Miljø og vejr"
+
+#~ msgid "Examples"
+#~ msgstr "Eksempler"
+
+#~ msgid "File System"
+#~ msgstr "Filsystem"
+
+#~ msgid "Fun and Games"
+#~ msgstr "Spil og spas"
+
+#~ msgid "Graphics"
+#~ msgstr "Grafik"
+
+#~ msgid "Language"
+#~ msgstr "Sprog"
+
+#~ msgid "Mapping"
+#~ msgstr "Kort"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Diverse"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multimedie"
+
+#~ msgid "Online Services"
+#~ msgstr "Online tjenester"
+
+#~ msgid "Productivity"
+#~ msgstr "Produktivitet"
+
+#~ msgid "System Information"
+#~ msgstr "Systeminformation"
+
+#~ msgid "Utilities"
+#~ msgstr "Værktøjer"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "Vinduer og opgaver"
+
+#~ msgid "Clipboard"
+#~ msgstr "Udklipsholder"
+
+#~ msgid "Tasks"
+#~ msgstr "Opgaver"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Edit %1..."
+#~ msgstr "Redigér %1..."
+
+#~ msgid "Default settings for theme, etc."
+#~ msgstr "Standardindstillinger for tema osv."
+
+#~ msgid "Color scheme to use for applications."
+#~ msgstr "Farveskema som skal bruges til programmer."
+
+#~ msgid "Preview Images"
+#~ msgstr "Forhåndsvis billeder"
+
+#~ msgid "Preview for the Login Manager"
+#~ msgstr "Forhåndsvisning af login-håndteringen"
+
+#~ msgid "Preview for the Lock Screen"
+#~ msgstr "Forhåndsvisning af låseskærmen"
+
+#~ msgid "Preview for the Userswitcher"
+#~ msgstr "Forhåndsvisning af brugerskifter"
+
+#~ msgid "Preview for the Virtual Desktop Switcher"
+#~ msgstr "Forhåndsvisning af virtuel skrivebordsvælger"
+
+#~ msgid "Preview for Splash Screen"
+#~ msgstr "Forhåndsvisning af opstartsskærm"
+
+#~ msgid "Preview for KRunner"
+#~ msgstr "Forhåndsvisning af KRunner"
+
+#~ msgid "Preview for the Window Decorations"
+#~ msgstr "Forhåndsvisning af vinduesdekorationer"
+
+#~ msgid "Preview for Window Switcher"
+#~ msgstr "Forhåndsvisning af vinduesskifter"
+
+#~ msgid "Login Manager"
+#~ msgstr "Login-håndtering"
+
+#~ msgid "Main Script for Login Manager"
+#~ msgstr "Hovedscript til login-håndtering"
+
+#~ msgid "Logout Dialog"
+#~ msgstr "Log ud-dialog"
+
+#~ msgid "Main Script for Logout Dialog"
+#~ msgstr "Hovedscript til log ud-dialog"
+
+#~ msgid "Screenlocker"
+#~ msgstr "Skærmlås"
+
+#~ msgid "Main Script for Lock Screen"
+#~ msgstr "Hovedscript til låseskærm"
+
+#~ msgid "UI for fast user switching"
+#~ msgstr "Brugerflade til hurtigt brugerskift"
+
+#~ msgid "Main Script for User Switcher"
+#~ msgstr "Hovedscript til brugerskifter"
+
+#~ msgid "Virtual Desktop Switcher"
+#~ msgstr "Skift mellem virtuelle skriveborde"
+
+#~ msgid "Main Script for Virtual Desktop Switcher"
+#~ msgstr "Hovedscript til virtuel skrivebordsvælger"
+
+#~ msgid "On-Screen Display Notifications"
+#~ msgstr "Bekendtgørelser med on-screen-display"
+
+#~ msgid "Main Script for On-Screen Display Notifications"
+#~ msgstr "Hovedscript til bekendtgørelser med on-screen-display"
+
+#~ msgid "Splash Screen"
+#~ msgstr "Opstartsskærm"
+
+#~ msgid "Main Script for Splash Screen"
+#~ msgstr "Hovedscript til opstartsskærm"
+
+#~ msgid "KRunner UI"
+#~ msgstr "KRunner-brugerflade"
+
+#~ msgid "Main Script KRunner"
+#~ msgstr "Hovedscript til KRunner"
+
+#~ msgid "Window Decoration"
+#~ msgstr "Vinduesdekoration"
+
+#~ msgid "Main Script for Window Decoration"
+#~ msgstr "Hovedscript til vinduesdekoration"
+
+#~ msgid "Window Switcher"
+#~ msgstr "Vinduesskifter"
+
+#~ msgid "Main Script for Window Switcher"
+#~ msgstr "Hovedscript til vinduesskifter"
+
+#~ msgid "Finish Customizing Layout"
+#~ msgstr "Afslut tilpasning af layout"
+
+#~ msgid "Customize Layout..."
+#~ msgstr "Tilpas layout..."
+
+#~ msgid "Fetching file type..."
+#~ msgstr "Henter filtype..."
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "%1 Options"
+#~ msgstr "Indstilling af %1"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "Remove this %1"
+#~ msgstr "Fjern denne %1"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings"
+#~ msgstr "Indstilling af %1"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings..."
+#~ msgstr "Indstilling af %1..."
+
+#~ msgid "Low color images for dialogs"
+#~ msgstr "Billeder med lav farve til dialoger"
+
+#~ msgid "Low color generic dialog background"
+#~ msgstr "Generisk dialogbaggrund med lav farve"
+
+#~ msgid "Low color theme for the logout dialog"
+#~ msgstr "Tema til log ud-dialog med lav farve"
+
+#~ msgid "Low color background image for widgets"
+#~ msgstr "Baggrundsbillede til widgets med lav farve"
+
+#~ msgid "Low color analog clock face"
+#~ msgstr "Front til analogt ur med lav farve"
+
+#~ msgid "Low color background image for panels"
+#~ msgstr "Baggrundsbillede til paneler med lav farve"
+
+#~ msgid "Low color background for graphing widgets"
+#~ msgstr "Baggrund til graf-widgets med lav farve"
+
+#~ msgid "Low color background image for tooltips"
+#~ msgstr "Baggrundsbillede til værktøjstips med lav farve"
+
+#~ msgid "Plasma Package Manager"
+#~ msgstr "Plasma pakkehåndtering"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Generate a SHA1 hash for the package at <path>"
+#~ msgstr "Generér en SHA1-hash for pakken i <path>"
+
+#~ msgid "For install or remove, operates on packages installed for all users."
+#~ msgstr ""
+#~ "Til at installere eller fjerne. Påvirker pakker installeret for alle "
+#~ "brugere."
+
+#~ msgctxt ""
+#~ "theme, wallpaper, etc. are keywords, but they may be translated, as both "
+#~ "versions are recognized by the application (if translated, should be same "
+#~ "as messages with 'package type' context below)"
+#~ msgid ""
+#~ "The type of package, e.g. theme, wallpaper, plasmoid, dataengine, runner, "
+#~ "layout-template, etc."
+#~ msgstr ""
+#~ "Typen af pakke, f.eks. tema, baggrundsbillede, plasmoid, datamotor, "
+#~ "runner, layout-skabelon, osv."
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Install the package at <path>"
+#~ msgstr "Installér pakken i <path>"
+
+#~ msgctxt "Do not translate <name>"
+#~ msgid "Show information of package <name>"
+#~ msgstr "Vis information om pakken <name>"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Upgrade the package at <path>"
+#~ msgstr "Opgradér pakken i <path>"
+
+#~ msgid "List installed packages"
+#~ msgstr "Liste over installerede pakker"
+
+#~ msgid "List all known package types that can be installed"
+#~ msgstr "Oplist alle kendte pakketyper som kan installeres"
+
+#~ msgctxt "Do not translate <name>"
+#~ msgid "Remove the package named <name>"
+#~ msgstr "Fjern pakken kaldet <name>"
+
+#~ msgid ""
+#~ "Absolute path to the package root. If not supplied, then the standard "
+#~ "data directories for this KDE session will be searched instead."
+#~ msgstr ""
+#~ "Absolut sti til pakkens rod. Hvis ikke angivet, vil standard datamapper "
+#~ "for denne KDE-session blive gennemsøgt i stedet."
+
+#~ msgid "Failed to generate a Package hash for %1"
+#~ msgstr "Kunne ikke generere pakke-hash for %1"
+
+#~ msgid "SHA1 hash for Package at %1: '%2'"
+#~ msgstr "SHA1-hash for pakken i %1: \"%2\""
+
+#~ msgctxt "package type"
+#~ msgid "wallpaper"
+#~ msgstr "baggrundsbillede"
+
+#~ msgctxt "package type"
+#~ msgid "plasmoid"
+#~ msgstr "plasmoid"
+
+#~ msgctxt "package type"
+#~ msgid "package"
+#~ msgstr "pakke"
+
+#~ msgctxt "package type"
+#~ msgid "theme"
+#~ msgstr "tema"
+
+#~ msgctxt "package type"
+#~ msgid "dataengine"
+#~ msgstr "datamotor"
+
+#~ msgctxt "package type"
+#~ msgid "runner"
+#~ msgstr "runner"
+
+#~ msgctxt "package type"
+#~ msgid "wallpaperplugin"
+#~ msgstr "baggrundsbillede-plugin"
+
+#~ msgctxt "package type"
+#~ msgid "lookandfeel"
+#~ msgstr "udseende og fremtoning"
+
+#~ msgctxt "package type"
+#~ msgid "shell"
+#~ msgstr "skal"
+
+#~ msgctxt "package type"
+#~ msgid "layout-template"
+#~ msgstr "layout-skabelon"
+
+#~ msgctxt "package type"
+#~ msgid "kwineffect"
+#~ msgstr "kwin-effekt"
+
+#~ msgctxt "package type"
+#~ msgid "windowswitcher"
+#~ msgstr "vinduesskifter"
+
+#~ msgctxt "package type"
+#~ msgid "kwinscript"
+#~ msgstr "kwin-script"
+
+#~ msgid "Could not find a suitable installer for package of type %1"
+#~ msgstr ""
+#~ "Kunne ikke finde passende installationsprogram til pakke af typen %1"
+
+#~ msgid "Listing service types: %1"
+#~ msgstr "Oplister tjenestetyper: %1"
+
+#~ msgid "Error: Plugin %1 is not installed."
+#~ msgstr "Fejl: Plugin %1 er ikke installeret."
+
+#~ msgctxt ""
+#~ "No option was given, this is the error message telling the user he needs "
+#~ "at least one, do not translate install, remove, upgrade nor list"
+#~ msgid "One of install, remove, upgrade or list is required."
+#~ msgstr "Enten installér, fjern, opgradér eller vis liste er påkrævet."
+
+#~ msgid "Error: Can't find plugin metadata: %1"
+#~ msgstr "Fejl: Kan ikke finde plugin-metadata: %1"
+
+#~ msgid "Showing info for package: %1"
+#~ msgstr "Viser info for pakken: %1"
+
+#~ msgid "      Name : %1"
+#~ msgstr "      Navn : %1"
+
+#~ msgid "   Comment : %1"
+#~ msgstr "   Kommentar: %1"
+
+#~ msgid "    Plugin : %1"
+#~ msgstr "    Plugin : %1"
+
+#~ msgid "    Author : %1"
+#~ msgstr "    Ophavsmand : %1"
+
+#~ msgid "      Path : %1"
+#~ msgstr "      Sti: %1"
+
+#~ msgctxt ""
+#~ "The user entered conflicting options packageroot and global, this is the "
+#~ "error message telling the user he can use only one"
+#~ msgid ""
+#~ "The packageroot and global options conflict each other, please select "
+#~ "only one."
+#~ msgstr ""
+#~ "Pakkeroden og de globale indstillinger er i modstrid med hinanden, vælg "
+#~ "en anden."
+
+#~ msgid "Addon Name"
+#~ msgstr "Navn på tilføjelse"
+
+#~ msgid "Service Type"
+#~ msgstr "Tjenestetype"
+
+#~ msgid "Path"
+#~ msgstr "Sti"
+
+#~ msgid "Type Argument"
+#~ msgstr "Typeargument"
+
+#~ msgid "Package types that are installable with this tool:"
+#~ msgstr "Pakketyper der kan installeres med dette værktøj:"
+
+#~ msgid "Built in:"
+#~ msgstr "Indbygget:"
+
+#~ msgid "DataEngine"
+#~ msgstr "Datamotor"
+
+#~ msgid "Layout Template"
+#~ msgstr "Layout-skabelon"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Udseende og fremtoning"
+
+#~ msgid "Package"
+#~ msgstr "Pakke"
+
+#~ msgid "Plasmoid"
+#~ msgstr "Plasmoid"
+
+#~ msgid "Runner"
+#~ msgstr "Runner"
+
+#~ msgid "Shell"
+#~ msgstr "Skal"
+
+#~ msgid "Theme"
+#~ msgstr "Tema"
+
+#~ msgid "Wallpaper Images"
+#~ msgstr "Baggrundsbilleder"
+
+#~ msgid "Animated Wallpaper"
+#~ msgstr "Animeret baggrundsbillede"
+
+#~ msgid "KWin Effect"
+#~ msgstr "KWin-effekt"
+
+#~ msgid "KWin Window Switcher"
+#~ msgstr "KWin vinduesskifter"
+
+#~ msgid "KWin Script"
+#~ msgstr "KWin-script"
+
+#~ msgid "Provided by plugins:"
+#~ msgstr "Leveret af plugins:"
+
+#~ msgid "Provided by .desktop files:"
+#~ msgstr "Leveret af .desktop-filer:"
+
+#~ msgid "Successfully upgraded %1"
+#~ msgstr "Opgradering af %1 gennemført"
+
+#~ msgid "Successfully installed %1"
+#~ msgstr "Installation af %1 gennemført"
+
+#~ msgid "Error: Installation of %1 failed: %2"
+#~ msgstr "Fejl: Installation af %1 mislykkedes: %2"
+
+#~ msgid "Upgrading package from file: %1"
+#~ msgstr "Opgraderer pakke fra fil: %1"
+
+#~ msgid "Successfully uninstalled %1"
+#~ msgstr "Afinstallation af %1 gennemført"
+
+#~ msgid "Error: Uninstallation of %1 failed: %2"
+#~ msgstr "Fejl: Afinstallation af %1 mislykkedes: %2"
+
+#~ msgid ""
+#~ "Could not load installer for package of type %1. Error reported was: %2"
+#~ msgstr ""
+#~ "Kunne ikke indlæse installationsprogram til pakketypen %1. Fejlbeskeden "
+#~ "var: %2"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "Do you really want to remove this %1?"
+#~ msgstr "Vil du fjerne %1?"

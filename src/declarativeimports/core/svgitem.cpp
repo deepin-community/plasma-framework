@@ -14,7 +14,7 @@
 
 #include "plasma/svg.h"
 
-#include <QuickAddons/ManagedTextureNode>
+#include "managedtexturenode.h"
 
 #include <cmath> //floor()
 
@@ -162,11 +162,11 @@ void SvgItem::updateDevicePixelRatio()
         // devicepixelratio is always set integer in the svg, so needs at least 192dpi to double up.
         //(it needs to be integer to have lines contained inside a svg piece to keep being pixel aligned)
         if (window()) {
-            m_svg.data()->setDevicePixelRatio(qMax<qreal>(1.0, floor(window()->devicePixelRatio())));
+            m_svg.data()->setDevicePixelRatio(qMax<qreal>(1.0, std::ceil(window()->devicePixelRatio())));
         } else {
-            m_svg.data()->setDevicePixelRatio(qMax<qreal>(1.0, floor(qApp->devicePixelRatio())));
+            m_svg.data()->setDevicePixelRatio(qMax<qreal>(1.0, std::ceil(qApp->devicePixelRatio())));
         }
-        m_svg.data()->setScaleFactor(qMax<qreal>(1.0, floor(Units::instance().devicePixelRatio())));
+        m_svg.data()->setScaleFactor(qMax<qreal>(1.0, Units::instance().devicePixelRatio()));
     }
 }
 
@@ -188,13 +188,21 @@ void SvgItem::updatePolish()
     }
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void SvgItem::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
+#else
+void SvgItem::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry)
+#endif
 {
     if (newGeometry.size() != oldGeometry.size() && newGeometry.isValid()) {
         scheduleImageUpdate();
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QQuickItem::geometryChanged(newGeometry, oldGeometry);
+#else
+    QQuickItem::geometryChange(newGeometry, oldGeometry);
+#endif
 }
 
 } // Plasma namespace

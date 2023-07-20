@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libplasma\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -113,17 +113,44 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr ""
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr ""
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr ""
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "نامەلۇم"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
 msgstr "%1 Widget نى ئاكتىپلا"
@@ -136,7 +163,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "بۇ %1 نى چىقىرىۋەت"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr ""
@@ -147,17 +174,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr ""
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
 msgstr "Widget قۇلۇپلا"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
 msgstr "ۋىجېتلارنى قۇلۇپسىزلا"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr ""
@@ -231,17 +258,17 @@ msgstr ""
 msgid "Translations"
 msgstr "تەرجىمىسى"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr ""
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "سەپلىمە XML ھۆججەت"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
 msgstr ""
@@ -347,95 +374,7 @@ msgstr "قورال ئەسكەرتىشىنىڭ سۈزۈك تەگلىك سۈرەت
 msgid "KColorScheme configuration file"
 msgstr "KColorScheme سەپلىمە ھۆججىتى"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "ياردەم ئىقتىدارى"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "پروگرامما ئىجرا قىلغۇچ"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "ئاسترونومىيە"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "چېسلا ۋە ۋاقىت"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "ئىجادكارلار قورالى"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "مائارىپ"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "مۇھىت ۋە ھاۋارايى"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "مىساللار"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "ھۆججەت سىستېمىسى"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "ئويۇن ۋە تاماشا"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "گرافىك"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "تىل"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "خەرىتىلە"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "باشقىلار"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "كۆپ ۋاسىتە"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "توردىكى مۇلازىمەتلەر"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "ئىشلەپچىقىرىش ئۈنۈمى"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "سىستېما ئۇچۇرى"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "قوراللار"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "كۆزنەك ۋە ۋەزىپىلەر"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr ""
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr ""
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -464,52 +403,52 @@ msgstr "%2 widget نىڭ %1 قوليازما ماتورىنى قۇرالمىدى
 msgid "Show Alternatives..."
 msgstr ""
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
 msgstr ""
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
 msgstr ""
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr ""
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr ""
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr ""
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr ""
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr ""
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
 msgstr "Widget تەڭشەكلەر"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
 msgstr "Widget نى چىقىرىۋەت"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -517,7 +456,7 @@ msgstr "Widget نى چىقىرىۋەت"
 msgid "Run the Associated Application"
 msgstr "باغلىنىشلىق پروگراممىنى ئىجرا قىل"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "قوليازمىنى دەسلەپلەشتۈرەلمىدى"
@@ -528,27 +467,27 @@ msgstr "قوليازمىنى دەسلەپلەشتۈرەلمىدى"
 msgid "Open with %1"
 msgstr ""
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "بۇ تاختىنى چىقىرىۋەت"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "بۇ پائالىيەتنى چىقىرىۋەت"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "پائالىيەت تەڭشىكى"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
 msgstr "Widget قوش…"
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "لازىملىق بۆلەكنى تاپالمىدى: %1"
@@ -581,79 +520,79 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "ئىناۋەتسىز (null) مۇلازىمەت، ھەر قانداق مەشغۇلاتنى ئىجرا قىلالمايدۇ."
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, fuzzy, kde-format
 #| msgid "Unknown"
 msgid "Unknown Applet"
 msgstr "نامەلۇم"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, kde-format
 msgid "Error loading QML file: %1 %2"
 msgstr ""
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr ""
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of the applet"
 #| msgid "%1 Settings"
 msgid "%1 Settings"
 msgstr "%1 تەڭشىكى"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, fuzzy, kde-format
 #| msgid "Plasma Package Manager"
 msgid "Plasma Package"
 msgstr "پلازما بوغچا باشقۇرغۇچ"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr ""
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, fuzzy, kde-format
 #| msgid "Script initialization failed"
 msgid "Package Installation Failed"
 msgstr "قوليازمىنى دەسلەپلەشتۈرەلمىدى"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr ""
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, fuzzy, kde-format
 #| msgid "Lock Widgets"
 msgid "Widgets"
 msgstr "Widget قۇلۇپلا"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr ""
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, fuzzy, kde-format
 #| msgid "Icon"
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "سىنبەلگە"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, fuzzy, kde-format
 #| msgid "Wallpaper packages"
 msgid "Wallpaper"
 msgstr "تام قەغەز بوغچالارى"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"
@@ -663,3 +602,342 @@ msgstr ""
 #, kde-format
 msgid "Content dropped"
 msgstr ""
+
+#~ msgid "Accessibility"
+#~ msgstr "ياردەم ئىقتىدارى"
+
+#~ msgid "Application Launchers"
+#~ msgstr "پروگرامما ئىجرا قىلغۇچ"
+
+#~ msgid "Astronomy"
+#~ msgstr "ئاسترونومىيە"
+
+#~ msgid "Date and Time"
+#~ msgstr "چېسلا ۋە ۋاقىت"
+
+#~ msgid "Development Tools"
+#~ msgstr "ئىجادكارلار قورالى"
+
+#~ msgid "Education"
+#~ msgstr "مائارىپ"
+
+#~ msgid "Environment and Weather"
+#~ msgstr "مۇھىت ۋە ھاۋارايى"
+
+#~ msgid "Examples"
+#~ msgstr "مىساللار"
+
+#~ msgid "File System"
+#~ msgstr "ھۆججەت سىستېمىسى"
+
+#~ msgid "Fun and Games"
+#~ msgstr "ئويۇن ۋە تاماشا"
+
+#~ msgid "Graphics"
+#~ msgstr "گرافىك"
+
+#~ msgid "Language"
+#~ msgstr "تىل"
+
+#~ msgid "Mapping"
+#~ msgstr "خەرىتىلە"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "باشقىلار"
+
+#~ msgid "Multimedia"
+#~ msgstr "كۆپ ۋاسىتە"
+
+#~ msgid "Online Services"
+#~ msgstr "توردىكى مۇلازىمەتلەر"
+
+#~ msgid "Productivity"
+#~ msgstr "ئىشلەپچىقىرىش ئۈنۈمى"
+
+#~ msgid "System Information"
+#~ msgstr "سىستېما ئۇچۇرى"
+
+#~ msgid "Utilities"
+#~ msgstr "قوراللار"
+
+#~ msgid "Windows and Tasks"
+#~ msgstr "كۆزنەك ۋە ۋەزىپىلەر"
+
+#, fuzzy
+#~| msgid "Themed Images"
+#~ msgid "Preview Images"
+#~ msgstr "ئۆرنەكلىك سۈرەتلەر"
+
+#, fuzzy
+#~| msgid "Main Script File"
+#~ msgid "Main Script for Login Manager"
+#~ msgstr "ئاساسىي قوليازما ھۆججىتى"
+
+#, fuzzy
+#~| msgid "Main Script File"
+#~ msgid "Main Script for Logout Dialog"
+#~ msgstr "ئاساسىي قوليازما ھۆججىتى"
+
+#, fuzzy
+#~| msgid "Main Script File"
+#~ msgid "Main Script for Lock Screen"
+#~ msgstr "ئاساسىي قوليازما ھۆججىتى"
+
+#, fuzzy
+#~| msgid "Main Script File"
+#~ msgid "Main Script for User Switcher"
+#~ msgstr "ئاساسىي قوليازما ھۆججىتى"
+
+#, fuzzy
+#~| msgid "Main Script File"
+#~ msgid "Main Script for Splash Screen"
+#~ msgstr "ئاساسىي قوليازما ھۆججىتى"
+
+#, fuzzy
+#~| msgid "Main Script File"
+#~ msgid "Main Script KRunner"
+#~ msgstr "ئاساسىي قوليازما ھۆججىتى"
+
+#~ msgid "Fetching file type..."
+#~ msgstr "ھۆججەت تىپىغا ئېرىشىۋاتىدۇ…"
+
+#~ msgctxt "%1 is the name of the containment"
+#~ msgid "%1 Options"
+#~ msgstr "%1 تاللانما"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "Remove this %1"
+#~ msgstr "بۇ %1 نى چىقىرىۋەت"
+
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings"
+#~ msgstr "%1 تەڭشىكى"
+
+#, fuzzy
+#~| msgctxt "%1 is the name of the applet"
+#~| msgid "%1 Settings"
+#~ msgctxt "%1 is the name of the applet"
+#~ msgid "%1 Settings..."
+#~ msgstr "%1 تەڭشىكى"
+
+#~ msgid "Low color images for dialogs"
+#~ msgstr "سۆزلەشكۈنىڭ تۆۋەن رەڭلىك سۈرەتلىرى"
+
+#~ msgid "Low color generic dialog background"
+#~ msgstr "ئادەتتىكى سۆزلەشكۈنىڭ تۆۋەن رەڭلىك تەگلىكى"
+
+#~ msgid "Low color theme for the logout dialog"
+#~ msgstr "تىزىمدىن چىقىش سۆزلەشكۈنىڭ تۆۋەن رەڭلىك ئۆرنەكى"
+
+#~ msgid "Low color background image for widgets"
+#~ msgstr "widget نىڭ تۆۋەن رەڭلىك تەگلىك سۈرىتى"
+
+#~ msgid "Low color analog clock face"
+#~ msgstr "تۆۋەن رەڭلىك تەقلىدىي سائەت يۈزى"
+
+#~ msgid "Low color background image for panels"
+#~ msgstr "تاختىنىڭ تۆۋەن رەڭلىك تەگلىك سۈرىتى"
+
+#~ msgid "Low color background for graphing widgets"
+#~ msgstr "گرافىكىلىق widget نىڭ تۆۋەن رەڭلىك تەگلىكى"
+
+#~ msgid "Low color background image for tooltips"
+#~ msgstr "قورال ئەسكەرتىشنىڭ تۆۋەن رەڭلىك تەگلىك سۈرىتى"
+
+#~ msgid "Plasma Package Manager"
+#~ msgstr "پلازما بوغچا باشقۇرغۇچ"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Generate a SHA1 hash for the package at <path>"
+#~ msgstr "<path> دىكى بوغچا ئۈچۈن SHA1 ئالاھىدىلىك كودى ھاسىل قىلىش"
+
+#~ msgid "For install or remove, operates on packages installed for all users."
+#~ msgstr ""
+#~ "ھەممە ئىشلەتكۈچىگە نىسبەتەن يېڭى بوغچا ئورنىتىش ياكى ئورنىتىلغان بوغچىنى "
+#~ "چىقىرىۋېتىش مەشغۇلاتى بىلەن تەمىنلەيدۇ."
+
+#~ msgctxt ""
+#~ "theme, wallpaper, etc. are keywords, but they may be translated, as both "
+#~ "versions are recognized by the application (if translated, should be same "
+#~ "as messages with 'package type' context below)"
+#~ msgid ""
+#~ "The type of package, e.g. theme, wallpaper, plasmoid, dataengine, runner, "
+#~ "layout-template, etc."
+#~ msgstr ""
+#~ "بوغچىنىڭ تىپى، مەسىلەن ئۆرنەك، تام قەغەز، plasmoid، سانلىق-مەلۇمات "
+#~ "ماتورى، ئىجراچى، جايلاشتۇرۇش قېلىپى قاتارلىق."
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Install the package at <path>"
+#~ msgstr "<path> دىكى بوغچىنى ئورنىتىش"
+
+#~ msgctxt "Do not translate <path>"
+#~ msgid "Upgrade the package at <path>"
+#~ msgstr "<path> دىكى بوغچىنى يۈكسەلدۈرۈش"
+
+#, fuzzy
+#~| msgid "Wallpaper packages"
+#~ msgid "List installed packages"
+#~ msgstr "تام قەغەز بوغچالارى"
+
+#, fuzzy
+#~| msgid "lists all known Package types that can be installed"
+#~ msgid "List all known package types that can be installed"
+#~ msgstr "مەلۇملۇق ئورناتقىلى بولىدىغان ھەممە بوغچا تىپى تىزىمىنى كۆرسىتىدۇ"
+
+#~ msgctxt "Do not translate <name>"
+#~ msgid "Remove the package named <name>"
+#~ msgstr "<name> ئاتلىق بوغچىنى چىقىرىۋەت"
+
+#~ msgid ""
+#~ "Absolute path to the package root. If not supplied, then the standard "
+#~ "data directories for this KDE session will be searched instead."
+#~ msgstr ""
+#~ "بوغچا مۇندەرىجە شېخىنىڭ مۇتلەق يولى.  ئەگەر تەمىنلەنمىسە، ئۇنداقتا بۇ "
+#~ "قېتىملىق KDE ئەڭگىمەنىڭ ئۆلچەملىك سانلىق-مەلۇمات مۇندەرىجىسىنى ئىزدەيدۇ."
+
+#~ msgid "Failed to generate a Package hash for %1"
+#~ msgstr "%1 ئۈچۈن ئالاھىدىلىك كودى ھاسىل قىلىش مەغلۇپ بولدى"
+
+#~ msgid "SHA1 hash for Package at %1: '%2'"
+#~ msgstr "%1 دىكى بوغچىنىڭ SHA1 ئالاھىدىلىك كودى: ‹%2›"
+
+#~ msgctxt "package type"
+#~ msgid "wallpaper"
+#~ msgstr "تام قەغىزى"
+
+#~ msgctxt "package type"
+#~ msgid "plasmoid"
+#~ msgstr "plasmoid"
+
+#~ msgctxt "package type"
+#~ msgid "package"
+#~ msgstr "بوغچا"
+
+#~ msgctxt "package type"
+#~ msgid "theme"
+#~ msgstr "ئۆرنەك"
+
+#~ msgctxt "package type"
+#~ msgid "dataengine"
+#~ msgstr "سانلىق-مەلۇمات ماتورى"
+
+#~ msgctxt "package type"
+#~ msgid "runner"
+#~ msgstr "ئىجرا قىلغۇچى"
+
+#, fuzzy
+#~| msgid "Wallpaper packages"
+#~ msgctxt "package type"
+#~ msgid "wallpaperplugin"
+#~ msgstr "تام قەغەز بوغچالارى"
+
+#~ msgctxt "package type"
+#~ msgid "layout-template"
+#~ msgstr "جايلاشتۇرۇش قېلىپى"
+
+#~ msgctxt "package type"
+#~ msgid "kwineffect"
+#~ msgstr "kwineffect"
+
+#~ msgctxt "package type"
+#~ msgid "windowswitcher"
+#~ msgstr "windowswitcher"
+
+#~ msgctxt "package type"
+#~ msgid "kwinscript"
+#~ msgstr "kwinscript"
+
+#~ msgid "Could not find a suitable installer for package of type %1"
+#~ msgstr "بوغچا تىپى %1 غا ماس كېلىدىغان بوغچا ئورناتقۇچنى تاپالمىدى"
+
+#~ msgctxt ""
+#~ "No option was given, this is the error message telling the user he needs "
+#~ "at least one, do not translate install, remove, upgrade nor list"
+#~ msgid "One of install, remove, upgrade or list is required."
+#~ msgstr ""
+#~ "ئاز دېگەندە بىر ئورنىتىش، چىقىرىۋېتىش، يۈكسەلدۈرۈش ياكى تىزىمىنى "
+#~ "كۆرسىتىشنى تەلەپ قىلىدۇ."
+
+#~ msgctxt ""
+#~ "The user entered conflicting options packageroot and global, this is the "
+#~ "error message telling the user he can use only one"
+#~ msgid ""
+#~ "The packageroot and global options conflict each other, please select "
+#~ "only one."
+#~ msgstr ""
+#~ "بوغچا شېخى ۋە ئومۇمىيەت تاللانمىسى ئۆزئارا توقۇنۇشىدۇ، بىرىنىلا تاللاڭ."
+
+#~ msgid "Addon Name"
+#~ msgstr "قىستۇرما ئاتى"
+
+#~ msgid "Service Type"
+#~ msgstr "مۇلازىمەت تىپى"
+
+#~ msgid "Path"
+#~ msgstr "يول"
+
+#~ msgid "Package types that are installable with this tool:"
+#~ msgstr "بۇ قورالنى ئىشلىتىپ ئورناتقىلى بولىدىغان بوغچا تىپى:"
+
+#~ msgid "Built in:"
+#~ msgstr "ئۆزىدىكى:"
+
+#, fuzzy
+#~| msgid "Data Files"
+#~ msgid "DataEngine"
+#~ msgstr "سانلىق-مەلۇمات ھۆججەتلىرى"
+
+#~ msgid "Layout Template"
+#~ msgstr "جايلاشتۇرۇش قېلىپى"
+
+#~ msgid "Look and Feel"
+#~ msgstr "كۆرۈنۈش ۋە تۇيغۇ"
+
+#~ msgid "Package"
+#~ msgstr "بوغچا"
+
+#~ msgid "Plasmoid"
+#~ msgstr "Plasmoid"
+
+#~ msgid "Runner"
+#~ msgstr "ئىجرا قىلغۇچى"
+
+#~ msgid "Shell"
+#~ msgstr "Shell"
+
+#~ msgid "Theme"
+#~ msgstr "ئۆرنەك"
+
+#, fuzzy
+#~| msgid "Wallpaper packages"
+#~ msgid "Wallpaper Images"
+#~ msgstr "تام قەغەز بوغچالارى"
+
+#~ msgid "KWin Effect"
+#~ msgstr "KWin ئۈنۈمى"
+
+#~ msgid "KWin Window Switcher"
+#~ msgstr "KWin كۆزنەك ئالماشتۇرغۇچ"
+
+#, fuzzy
+#~| msgid "Main Script File"
+#~ msgid "KWin Script"
+#~ msgstr "ئاساسىي قوليازما ھۆججىتى"
+
+#~ msgid "Provided by plugins:"
+#~ msgstr "قىستۇرما تەمىنلىگەن:"
+
+#~ msgid "Provided by .desktop files:"
+#~ msgstr ".desktop ھۆججەت تەمىنلىگەن"
+
+#~ msgid "Successfully installed %1"
+#~ msgstr "%1 مۇۋەپپەقىيەتلىك ئورنىتىلدى"
+
+#~ msgid ""
+#~ "Could not load installer for package of type %1. Error reported was: %2"
+#~ msgstr ""
+#~ "بوغچا تىپى %1 بولغان بوغچا ئورناتقۇچنى تاپالمىدى. مەلۇم قىلغان خاتالىق: %2"
+
+#~ msgid "search term"
+#~ msgstr "ئىزدەش تۈرى"

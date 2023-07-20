@@ -11,15 +11,19 @@
 #include <QQuickItem>
 
 #include <KPackage/Package>
+#include <kdeclarative/kdeclarative_export.h>
 
 class KConfigLoader;
 class KActionCollection;
+class KConfigPropertyMap;
 
 class ContainmentInterface;
 
 namespace KDeclarative
 {
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
 class ConfigPropertyMap;
+#endif
 class QmlObject;
 }
 
@@ -35,7 +39,11 @@ class WallpaperInterface : public QQuickItem
     Q_OBJECT
 
     Q_PROPERTY(QString pluginName READ pluginName NOTIFY packageChanged)
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
     Q_PROPERTY(KDeclarative::ConfigPropertyMap *configuration READ configuration NOTIFY configurationChanged)
+#else
+    Q_PROPERTY(KConfigPropertyMap *configuration READ configuration NOTIFY configurationChanged)
+#endif
     Q_PROPERTY(bool loading MEMBER m_loading NOTIFY isLoadingChanged)
 
 public:
@@ -54,7 +62,11 @@ public:
 
     QString pluginName() const;
 
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
     KDeclarative::ConfigPropertyMap *configuration() const;
+#else
+    KConfigPropertyMap *configuration() const;
+#endif
 
     KConfigLoader *configScheme();
 
@@ -78,6 +90,7 @@ Q_SIGNALS:
     void packageChanged();
     void configurationChanged();
     void isLoadingChanged();
+    void repaintNeeded(const QColor &accentColor = Qt::transparent);
 
 private Q_SLOTS:
     void syncWallpaperPackage();
@@ -89,7 +102,11 @@ private:
     ContainmentInterface *m_containmentInterface;
     KDeclarative::QmlObject *m_qmlObject;
     KPackage::Package m_pkg;
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
     KDeclarative::ConfigPropertyMap *m_configuration;
+#else
+    KConfigPropertyMap *m_configuration;
+#endif
     KConfigLoader *m_configLoader;
     KActionCollection *m_actions;
     bool m_loading = false;

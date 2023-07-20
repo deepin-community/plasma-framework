@@ -315,11 +315,23 @@ public:
      */
     void setRepaintBlocked(bool blocked);
 
+    /**
+     * This will return the minimum height required to correctly draw this
+     * SVG. 
+     * @since 5.101
+     */
+    Q_INVOKABLE int minimumDrawingHeight();
+
+    /**
+     * This will return the minimum width required to correctly draw this
+     * SVG. 
+     * @since 5.101
+     */
+    Q_INVOKABLE int minimumDrawingWidth();
+
 private:
     FrameSvgPrivate *const d;
     friend class FrameData;
-
-    // Q_PRIVATE_SLOT(d, void updateSizes())
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(FrameSvg::EnabledBorders)

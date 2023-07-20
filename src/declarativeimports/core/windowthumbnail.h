@@ -73,7 +73,11 @@ class WindowThumbnail : public QQuickItem, public QAbstractNativeEventFilter
 public:
     explicit WindowThumbnail(QQuickItem *parent = nullptr);
     ~WindowThumbnail() override;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     bool nativeEventFilter(const QByteArray &eventType, void *message, long int *result) override;
+#else
+    bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result) override;
+#endif
     QSGNode *updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updatePaintNodeData) override;
 
     uint32_t winId() const;
@@ -155,7 +159,7 @@ public:
     void setTexture(QSGTexture *texture);
 
 private:
-    QScopedPointer<QSGTexture> m_texture;
+    std::unique_ptr<QSGTexture> m_texture;
 };
 
 }

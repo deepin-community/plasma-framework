@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 5.81.0 amd64 arm64 armel armhf i386 m68k mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x x32
+# SymbolsHelper-Confirmed: 5.103.0 amd64
 libKF5Plasma.so.5 libkf5plasma5 #MINVER#, libkf5plasma5 (>= 5.53~)
 * Build-Depends-Package: libkf5plasma-dev
  _ZN6Plasma10DataEngine10removeDataERK7QStringS3_@Base 4.96.0
@@ -258,6 +258,7 @@ libKF5Plasma.so.5 libkf5plasma5 #MINVER#, libkf5plasma5 (>= 5.53~)
  _ZN6Plasma18DataEngineConsumerD1Ev@Base 4.96.0
  _ZN6Plasma18DataEngineConsumerD2Ev@Base 4.96.0
  _ZN6Plasma19locationToDirectionENS_5Types8LocationE@Base 4.96.0
+ _ZN6Plasma20visualPopupPlacementENS_5Types14PopupPlacementEN2Qt15LayoutDirectionE@Base 5.103.0
  _ZN6Plasma25isPluginVersionCompatibleEj@Base 4.96.0
  _ZN6Plasma26locationToInverseDirectionENS_5Types8LocationE@Base 4.96.0
  _ZN6Plasma3Svg11eventFilterEP7QObjectP6QEvent@Base 4.96.0
@@ -481,6 +482,8 @@ libKF5Plasma.so.5 libkf5plasma5 #MINVER#, libkf5plasma5 (>= 5.53~)
  _ZN6Plasma8FrameSvg16staticMetaObjectE@Base 4.96.0
  _ZN6Plasma8FrameSvg17setEnabledBordersE6QFlagsINS0_13EnabledBorderEE@Base 4.96.0
  _ZN6Plasma8FrameSvg17setRepaintBlockedEb@Base 5.35.0
+ _ZN6Plasma8FrameSvg19minimumDrawingWidthEv@Base 5.101.0
+ _ZN6Plasma8FrameSvg20minimumDrawingHeightEv@Base 5.101.0
  _ZN6Plasma8FrameSvg25setCacheAllRenderedFramesEb@Base 4.96.0
  _ZN6Plasma8FrameSvg6prefixEv@Base 4.96.0
  _ZN6Plasma8FrameSvgC1EP7QObject@Base 4.96.0
@@ -489,7 +492,7 @@ libKF5Plasma.so.5 libkf5plasma5 #MINVER#, libkf5plasma5 (>= 5.53~)
  _ZN6Plasma8FrameSvgD1Ev@Base 4.96.0
  _ZN6Plasma8FrameSvgD2Ev@Base 4.96.0
  (optional=templinst|arch=arm64 armel armhf hurd-i386 i386 kfreebsd-i386 m68k mips mipsel powerpc powerpcspe ppc64el sparc64)_ZNK12KConfigGroup9readEntryI6QRectFEET_PKcRKS2_@Base 4.100.0
- (arch=!hurd-i386 !i386 !m68k !mipsel !ppc64 !s390x)_ZNK12KConfigGroup9readEntryI6QSizeFEET_PKcRKS2_@Base 5.81.0
+ (optional=templinst|arch=!hurd-i386 !i386 !m68k !mipsel !ppc64 !s390x)_ZNK12KConfigGroup9readEntryI6QSizeFEET_PKcRKS2_@Base 5.81.0
  (optional=templinst)_ZNK12KConfigGroup9readEntryIbEET_PKcRKS1_@Base 5.61.0
  (optional=templinst)_ZNK12KConfigGroup9readEntryIdEET_PKcRKS1_@Base 5.17.0
  (optional=templinst)_ZNK12KConfigGroup9readEntryIiEET_PKcRKS1_@Base 4.100.0
@@ -563,9 +566,12 @@ libKF5Plasma.so.5 libkf5plasma5 #MINVER#, libkf5plasma5 (>= 5.53~)
  _ZNK6Plasma18ContainmentActions10pluginInfoEv@Base 4.96.0
  _ZNK6Plasma18ContainmentActions8metadataEv@Base 5.69.0
  _ZNK6Plasma3Svg10colorGroupEv@Base 5.0.0
+ _ZNK6Plasma3Svg10hasElementE11QStringView@Base 5.101.0
  _ZNK6Plasma3Svg10hasElementERK7QString@Base 4.96.0
  _ZNK6Plasma3Svg10metaObjectEv@Base 4.96.0
+ _ZNK6Plasma3Svg11elementRectE11QStringView@Base 5.101.0
  _ZNK6Plasma3Svg11elementRectERK7QString@Base 4.96.0
+ _ZNK6Plasma3Svg11elementSizeE11QStringView@Base 5.101.0
  _ZNK6Plasma3Svg11elementSizeERK7QString@Base 4.96.0
  _ZNK6Plasma3Svg11scaleFactorEv@Base 5.8.0+git20150317.1235+15.04
  _ZNK6Plasma3Svg15useSystemColorsEv@Base 5.16.0
@@ -599,6 +605,7 @@ libKF5Plasma.so.5 libkf5plasma5 #MINVER#, libkf5plasma5 (>= 5.53~)
  _ZNK6Plasma5Theme5colorENS0_9ColorRoleENS0_10ColorGroupE@Base 5.0.0
  _ZNK6Plasma5Theme5mSizeERK5QFont@Base 4.96.0
  _ZNK6Plasma5Theme7paletteEv@Base 5.69.0
+ _ZNK6Plasma5Theme8metadataEv@Base 5.96.0
  _ZNK6Plasma5Theme9imagePathERK7QString@Base 4.96.0
  _ZNK6Plasma5Theme9themeNameEv@Base 4.96.0
  _ZNK6Plasma5Types10metaObjectEv@Base 4.96.0
@@ -634,6 +641,7 @@ libKF5Plasma.so.5 libkf5plasma5 #MINVER#, libkf5plasma5 (>= 5.53~)
  _ZNK6Plasma6Applet6statusEv@Base 4.96.0
  _ZNK6Plasma6Applet7actionsEv@Base 4.96.0
  _ZNK6Plasma6Applet7packageEv@Base 4.96.0
+ _ZNK6Plasma6Applet8filePathERK10QByteArrayRK7QString@Base 5.100.0
  _ZNK6Plasma6Applet8kPackageEv@Base 5.5.0+git20150104.1955+15.04
  _ZNK6Plasma6Applet8locationEv@Base 4.96.0
  _ZNK6Plasma6Applet9destroyedEv@Base 4.96.0
@@ -758,5 +766,4 @@ libKF5Plasma.so.5 libkf5plasma5 #MINVER#, libkf5plasma5 (>= 5.53~)
  _ZZZN14KPluginFactory17instantiatePluginIN6Plasma12ScriptEngineEEENS_6ResultIT_EERK15KPluginMetaDataP7QObjectRK5QListI8QVariantEENKUlvE_clEvE15qstring_literal@Base 5.90.0
  _ZZZN14KPluginFactory17instantiatePluginIN6Plasma16PackageStructureEEENS_6ResultIT_EERK15KPluginMetaDataP7QObjectRK5QListI8QVariantEENKUlvE_clEvE15qstring_literal@Base 5.90.0
  _ZZZN14KPluginFactory17instantiatePluginIN6Plasma18ContainmentActionsEEENS_6ResultIT_EERK15KPluginMetaDataP7QObjectRK5QListI8QVariantEENKUlvE_clEvE15qstring_literal@Base 5.90.0
- _ZZZN14KPluginFactory17instantiatePluginIN6Plasma6AppletEEENS_6ResultIT_EERK15KPluginMetaDataP7QObjectRK5QListI8QVariantEENKUlvE_clEvE15qstring_literal@Base 5.90.0
  _ZZZN14KPluginFactory17instantiatePluginIN6Plasma7ServiceEEENS_6ResultIT_EERK15KPluginMetaDataP7QObjectRK5QListI8QVariantEENKUlvE_clEvE15qstring_literal@Base 5.90.0

@@ -12,19 +12,20 @@ import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 
 /**
- * A list item that expands when clicked to show additional actions or a custom
- * view. The list item has a standardized appearance, with an icon on the left
- * badged with an optional emblem, a title and optional subtitle to the right,
- * an  optional default action button, and a button to expand and collapse the
- * list item.
+ * A list item that expands when clicked to show additional actions and/or a
+ * custom view.
+ * The list item has a standardized appearance, with an icon on the left badged
+ * with an optional emblem, a title and optional subtitle to the right, an
+ * optional default action button, and a button to expand and collapse the list
+ * item.
  *
- * When expanded, the list item shows one of two views:
- * - A list of contextually-appropriate actions if contextualActionsModel has
- *   been defined and customExpandedViewContent has not been defined.
- * - A custom view if customExpandedViewContent has been defined and
- *   contextualActionsModel has not been defined.
+ * When expanded, the list item shows a list of contextually-appropriate actions
+ * if contextualActionsModel has been defined.
+ * If customExpandedViewContent has been defined, it will show a custom view.
+ * If both have been defined, it shows both, with the actions above the custom
+ * view.
  *
- * It is not valid to define both or neither; only define one.
+ * It is not valid to define neither; define one or both.
  *
  * Note: this component should only be used for lists where the maximum number
  * of items is very low, ideally less than 10. For longer lists, consider using
@@ -35,15 +36,16 @@ import org.kde.plasma.extras 2.0 as PlasmaExtras
  *
  * @code
  * import org.kde.plasma.extras 2.0 as PlasmaExtras
+ * import org.kde.plasma.components 3.0 as PlasmaComponents
  * [...]
- * PlasmaExtras.ScrollArea {
+ * PlasmaComponents.ScrollView {
  *     ListView {
  *         anchors.fill: parent
  *         focus: true
  *         currentIndex: -1
  *         clip: true
  *         model: myModel
- *         highlight: PlasmaComponents.Highlight {}
+ *         highlight: PlasmaExtras.Highlight {}
  *         highlightMoveDuration: PlasmaCore.Units.longDuration
  *         highlightResizeDuration: PlasmaCore.Units.longDuration
  *         delegate: PlasmaExtras.ExpandableListItem {
@@ -233,6 +235,8 @@ Item {
      *
      * Optional; if not defined, no context menu will be displayed when the user
      * right-clicks on the list item.
+     *
+     * @deprecated since 5.94; put actions in contextualActionsModel instead
      */
     property var contextMenu
 
@@ -243,16 +247,17 @@ Item {
      * equal to the width of the list item itself, while height: will depend
      * on the component itself.
      *
-     * Optional; if not defined, the expanded view will show contextual actions
-     * instead.
+     * Optional; if not defined, no custom view actions will be displayed and
+     * you should instead define contextualActionsModel, and then actions will
+     * be shown when the user expands the list item.
      */
-    property var customExpandedViewContent: actionsListComponent
+    property var customExpandedViewContent
 
     /*
      * The actual instance of the custom view content, if loaded
      * @since 5.72
      */
-    property alias customExpandedViewContentItem: expandedView.item
+    property alias customExpandedViewContentItem: customContentLoader.item
 
     /*
      * isBusy: bool
@@ -265,11 +270,11 @@ Item {
 
     /*
      * isEnabled: bool
-     * Whether or not this list item should be enabled and interactive.
+     * Just an alias for Item::enabled property.
      *
-     * Optional; defaults to true.
+     * @deprecated Use `enabled` directly.
      */
-    property bool isEnabled: true
+    property alias isEnabled: listItem.enabled
 
     /*
      * isDefault: bool
@@ -282,25 +287,25 @@ Item {
      */
     property bool isDefault: false
 
+    // TODO KF6: Change type to bool, and make private. Meanwhile QML converts boolean result into int property alright.
+    readonly property int enabledActions: Array.from(contextualActionsModel).some(action => action.enabled)
+
+    /**
+     * expanded: bool
+     * Whether the expanded view is visible.
+     *
+     * @since 5.98
+     */
+    readonly property alias expanded: expandedView.expanded
+
     /*
      * hasExpandableContent: bool (read-only)
      * Whether or not this expandable list item is actually expandable. True if
      * this item has either a custom view or else at least one enabled action.
      * Otherwise false.
      */
-    readonly property bool hasExpandableContent: {
-        // If there is custom content, assume it is expandable (otherwise what
-        // would be the point?)
-        if (customExpandedViewContent != actionsListComponent) {
-            return true;
-        }
-        // Filter out disabled items which won't appear, when determining if there
-        // are any valid actions
-        if (contextualActionsModel) {
-            return Array.from(contextualActionsModel).filter(item => item.enabled).length > 0;
-        }
-        return false;
-    }
+    readonly property bool hasExpandableContent: customExpandedViewContent || enabledActions
+
     /*
      * expand()
      * Show the expanded view, growing the list item to its taller size.
@@ -309,7 +314,7 @@ Item {
         if (!listItem.hasExpandableContent) {
             return;
         }
-        expandedView.active = true
+        expandedView.expanded = true
         listItem.itemExpanded(listItem)
     }
 
@@ -321,7 +326,7 @@ Item {
         if (!listItem.hasExpandableContent) {
             return;
         }
-        expandedView.active = false
+        expandedView.expanded = false
         listItem.itemCollapsed(listItem)
     }
 
@@ -333,35 +338,35 @@ Item {
         if (!listItem.hasExpandableContent) {
             return;
         }
-        expandedView.active ? listItem.collapse() : listItem.expand()
+        expandedView.expanded ? listItem.collapse() : listItem.expand()
     }
 
     signal itemExpanded(Item item)
     signal itemCollapsed(Item item)
 
-    width: parent.width // Assume that we will be used as a delegate, not placed in a layout
+    width: parent ? parent.width : undefined // Assume that we will be used as a delegate, not placed in a layout
     height: mainLayout.height
 
-    onIsEnabledChanged: if (!listItem.isEnabled) { collapse() }
+    onEnabledChanged: if (!listItem.enabled) { collapse() }
 
-    Keys.onPressed: {
-        if (event.key == Qt.Key_Return || event.key == Qt.Key_Enter) {
+    Keys.onPressed: event => {
+        if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
             if (defaultActionButtonAction) {
                 defaultActionButtonAction.trigger()
             } else {
                 toggleExpanded();
             }
             event.accepted = true;
-        } else if (event.key == Qt.Key_Escape) {
-            if (expandedView.active) {
+        } else if (event.key === Qt.Key_Escape) {
+            if (expandedView.expanded) {
                 collapse();
                 event.accepted = true;
             }
             // if not active, we'll let the Escape event pass through, so it can close the applet, etc.
-        } else if (event.key == Qt.Key_Space) {
+        } else if (event.key === Qt.Key_Space) {
             toggleExpanded();
             event.accepted = true;
-        } else if (event.key == Qt.Key_Menu) {
+        } else if (event.key === Qt.Key_Menu) {
             if (contextMenu instanceof PlasmaComponents2.Menu) {
                 contextMenu.visualParent = listItem;
                 contextMenu.prepare();
@@ -374,11 +379,33 @@ Item {
 
     KeyNavigation.tab: defaultActionButtonVisible ? defaultActionButton : expandToggleButton
     KeyNavigation.right: defaultActionButtonVisible ? defaultActionButton : expandToggleButton
+    KeyNavigation.down: expandToggleButton.KeyNavigation.down
+    Keys.onDownPressed: event => {
+        if (!actionsListLoader.item || ListView.view.currentIndex < 0) {
+            ListView.view.incrementCurrentIndex();
+            ListView.view.currentItem.forceActiveFocus(Qt.TabFocusReason);
+            event.accepted = true;
+            return;
+        }
+        event.accepted = false; // Forward to KeyNavigation.down
+    }
+    Keys.onUpPressed: event => {
+        if (ListView.view.currentIndex === 0) {
+            event.accepted = false;
+        } else {
+            ListView.view.decrementCurrentIndex();
+            ListView.view.currentItem.forceActiveFocus(Qt.BacktabFocusReason);
+        }
+    }
+
+    Accessible.role: Accessible.Button
+    Accessible.name: title
+    Accessible.description: subtitle
 
     // Handle left clicks and taps; don't accept stylus input or else it steals
     // events from the buttons on the list item
     TapHandler {
-        enabled: listItem.isEnabled && listItem.hasExpandableContent
+        enabled: listItem.hasExpandableContent
 
         acceptedPointerTypes: PointerDevice.GenericPointer | PointerDevice.Finger
 
@@ -392,13 +419,14 @@ Item {
     MouseArea {
         anchors.fill: parent
 
-        enabled: listItem.isEnabled
-
         acceptedButtons: Qt.RightButton
         hoverEnabled: true
 
         // using onPositionChanged instead of onContainsMouseChanged so this doesn't trigger when the list reflows
         onPositionChanged: listItem.ListView.view.currentIndex = (containsMouse ? index : -1)
+        onExited: if (listItem.ListView.view.currentIndex === index) {
+            listItem.ListView.view.currentIndex = -1;
+        }
 
         // Handle right-click, if so defined
         onClicked: {
@@ -510,84 +538,139 @@ Item {
                 PlasmaComponents3.ToolButton {
                     id: defaultActionButton
 
-                    enabled: listItem.isEnabled
                     visible: defaultActionButtonAction
                             && listItem.defaultActionButtonVisible
                             && (!busyIndicator.visible || listItem.showDefaultActionButtonWhenBusy)
 
                     KeyNavigation.tab: expandToggleButton
                     KeyNavigation.right: expandToggleButton
+                    KeyNavigation.down: expandToggleButton.KeyNavigation.down
+                    Keys.onUpPressed: event => listItem.Keys.onUpPressed(event)
+
+                    Accessible.name: action !== null ? action.text : ""
                 }
 
                 // Expand/collapse button
                 PlasmaComponents3.ToolButton {
                     id: expandToggleButton
                     visible: listItem.hasExpandableContent
-                    icon.name: expandedView.active ? "collapse" : "expand"
+
+                    display: PlasmaComponents3.AbstractButton.IconOnly
+                    text: expandedView.expanded ? i18ndc("libplasma5", "@action:button", "Collapse") : i18ndc("libplasma5", "@action:button", "Expand")
+                    icon.name: expandedView.expanded ? "collapse" : "expand"
+
+                    Keys.onUpPressed: event => listItem.Keys.onUpPressed(event)
 
                     onClicked: listItem.toggleExpanded()
+
+                    PlasmaComponents3.ToolTip {
+                        text: parent.text
+                    }
                 }
             }
 
 
-            // Expanded view, by default showing the actions list
-            Loader {
+            // Expanded view with actions and/or custom content in it
+            ColumnLayout {
                 id: expandedView
 
-                visible: active
-                opacity: active ? 1.0 : 0
+                property bool expanded: false
 
-                active: false
-                sourceComponent: customExpandedViewContent
+                visible: expanded
 
                 Layout.fillWidth: true
                 Layout.margins: PlasmaCore.Units.smallSpacing
 
+                spacing: PlasmaCore.Units.smallSpacing
+                opacity: expanded ? 1 : 0
                 Behavior on opacity {
                     NumberAnimation {
                         duration: PlasmaCore.Units.veryLongDuration
                         easing.type: Easing.InOutCubic
                     }
                 }
-            }
-        }
-    }
 
-    // Default expanded view content: contextual actions list
-    Component {
-        id: actionsListComponent
+                // Actions list
+                Loader {
+                    id: actionsListLoader
 
-        // Container for actions list, so that we can add left and right margins to it
-        Item {
-            height: childrenRect.height
-            width: mainRowLayout.width
+                    visible: status === Loader.Ready
 
-            ColumnLayout {
-                anchors.top: parent.top
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.leftMargin: PlasmaCore.Units.gridUnit + PlasmaCore.Units.smallSpacing
-                anchors.rightMargin: PlasmaCore.Units.gridUnit + PlasmaCore.Units.smallSpacing * 2
+                    active: expandedView.expanded && listItem.enabledActions
 
-                spacing: 0
+                    Layout.fillWidth: true
 
-                Repeater {
+                    sourceComponent: Item {
+                        height: childrenRect.height
+                        width: actionsListLoader.width // basically, parent.width but null-proof
 
-                    model: listItem.contextualActionsModel
+                        ColumnLayout {
+                            anchors.top: parent.top
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.leftMargin: PlasmaCore.Units.gridUnit
+                            anchors.rightMargin: PlasmaCore.Units.gridUnit
 
-                    delegate: PlasmaComponents3.ToolButton {
-                        Layout.fillWidth: true
+                            spacing: 0
 
-                        visible: model.enabled
+                            Repeater {
+                                id: actionRepeater
 
-                        text: model.text
-                        icon.name: model.icon.name
+                                model: listItem.contextualActionsModel
 
-                        onClicked: {
-                            modelData.trigger()
-                            collapse()
+                                delegate: PlasmaComponents3.ToolButton {
+                                    Layout.fillWidth: true
+
+                                    visible: model.enabled
+
+                                    text: model.text
+                                    icon.name: model.icon.name
+
+                                    KeyNavigation.up: index > 0 ? actionRepeater.itemAt(index - 1) : expandToggleButton
+                                    Keys.onDownPressed: event => {
+                                        if (index === actionRepeater.count - 1) {
+                                            event.accepted = true;
+                                            listItem.ListView.view.incrementCurrentIndex();
+                                            listItem.ListView.view.currentItem.forceActiveFocus(Qt.TabFocusReason);
+                                        } else {
+                                            event.accepted = false; // Forward to KeyNavigation.down
+                                        }
+                                    }
+
+                                    onClicked: {
+                                        modelData.trigger()
+                                        collapse()
+                                    }
+                                }
+                            }
                         }
                     }
+                }
+
+                // Separator between the two items when both are shown
+                PlasmaCore.SvgItem {
+                    visible: actionsListLoader.active && customContentLoader.active
+
+                    Layout.fillWidth: true
+
+                    elementId: "horizontal-line"
+                    svg: PlasmaCore.Svg {
+                        imagePath: "widgets/line"
+                    }
+                }
+
+                // Custom content item, if any
+                Loader {
+                    id: customContentLoader
+
+                    visible: status === Loader.Ready
+
+                    Layout.fillWidth: true
+
+                    active: customExpandedViewContent != undefined && expandedView.expanded
+                    asynchronous: true
+                    sourceComponent: customExpandedViewContent
+
                 }
             }
         }

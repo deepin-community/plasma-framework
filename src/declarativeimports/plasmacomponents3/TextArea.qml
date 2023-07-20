@@ -5,7 +5,6 @@
 */
 
 import QtQuick 2.6
-import QtQuick.Window 2.2
 import QtQuick.Controls @QQC2_VERSION@
 import QtQuick.Templates @QQC2_VERSION@ as T
 import org.kde.plasma.core 2.0 as PlasmaCore
@@ -31,15 +30,11 @@ T.TextArea {
     opacity: control.enabled ? 1 : 0.6
     wrapMode: Text.WordWrap
     verticalAlignment: TextEdit.AlignTop
-    hoverEnabled: !Kirigami.Settings.tabletMode
+    hoverEnabled: !Kirigami.Settings.tabletMode || !Kirigami.Settings.hasTransientTouchInput
 
-    // Work around Qt bug where NativeRendering breaks for non-integer scale factors
-    // https://bugreports.qt.io/browse/QTBUG-70481
-    renderType: Screen.devicePixelRatio % 1 !== 0 ? Text.QtRendering : Text.NativeRendering
+    selectByMouse: hoverEnabled
 
-    selectByMouse: !Kirigami.Settings.tabletMode
-
-    cursorDelegate: Kirigami.Settings.tabletMode ? mobileCursor : null
+    cursorDelegate: !hoverEnabled ? mobileCursor : null
     Component {
         id: mobileCursor
         MobileTextSelection.MobileCursor {
@@ -51,7 +46,7 @@ T.TextArea {
     onPressed: MobileTextSelection.MobileTextActionsToolBar.shouldBeVisible = true;
 
     onPressAndHold: {
-        if (!Kirigami.Settings.tabletMode) {
+        if (hoverEnabled) {
             return;
         }
         forceActiveFocus();

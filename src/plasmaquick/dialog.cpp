@@ -9,22 +9,23 @@
 
 #include "dialog.h"
 #include "../declarativeimports/core/framesvgitem.h"
+#include "appletquickitem.h"
 #include "config-plasma.h"
+#include "../declarativeimports/core/config-x11.h"
 #include "configview.h"
 #include "dialogshadows_p.h"
 #include "view.h"
 
 #include <QLayout>
 #include <QMenu>
+#include <QPlatformSurfaceEvent>
 #include <QPointer>
 #include <QQuickItem>
 #include <QScreen>
-#include <QTimer>
-
-#include <QPlatformSurfaceEvent>
 
 #include <KWindowSystem/KWindowInfo>
 #include <KWindowSystem>
+#include <KX11Extras>
 
 #include <kquickaddons/quickviewsharedengine.h>
 
@@ -32,6 +33,7 @@
 #include <Plasma/Corona>
 
 #include <QDebug>
+#include <optional>
 
 #if HAVE_KWAYLAND
 #include "waylandintegration_p.h"
@@ -40,12 +42,20 @@
 #endif
 
 #if HAVE_XCB_SHAPE
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 #include <xcb/shape.h>
 #endif
 
 #if HAVE_X11
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QtPlatformHeaders/QXcbWindowFunctions>
+#else
+#include <qpa/qplatformwindow_p.h>
+#endif
 #endif
 
 // Unfortunately QWINDOWSIZE_MAX is not exported
@@ -65,12 +75,12 @@ public:
         , hideOnWindowDeactivate(false)
         , outputOnly(false)
         , visible(false)
+        , resizableEdges({})
+        , overridingCursor(false)
+        , appletInterface(nullptr)
         , componentComplete(dialog->parent() == nullptr)
         , backgroundHints(Dialog::StandardBackground)
     {
-        hintsCommitTimer.setSingleShot(true);
-        hintsCommitTimer.setInterval(0);
-        QObject::connect(&hintsCommitTimer, SIGNAL(timeout()), q, SLOT(updateLayoutParameters()));
     }
 
     void updateInputShape();
@@ -97,6 +107,8 @@ public:
     void updateMinimumHeight();
     void updateMaximumWidth();
     void updateMaximumHeight();
+    void updateResizableEdges();
+    void updateSizeFromAppletInterface();
 
     /**
      * Gets the maximum and minimum size hints for the window based on the contents. it doesn't actually resize anything
@@ -131,12 +143,18 @@ public:
 
     void applyType();
 
+    bool updateMouseCursor(const QPointF &globalMousePos);
+    Qt::Edges hitTest(const QPointF &pos);
+    bool hitTestLeft(const QPointF &pos);
+    bool hitTestRight(const QPointF &pos);
+    bool hitTestTop(const QPointF &pos);
+    bool hitTestBottom(const QPointF &pos);
+
     Dialog *q;
     Plasma::Types::Location location;
     Plasma::FrameSvgItem *frameSvgItem;
     QPointer<QQuickItem> mainItem;
     QPointer<QQuickItem> visualParent;
-    QTimer hintsCommitTimer;
 #if HAVE_KWAYLAND
     QPointer<KWayland::Client::PlasmaShellSurface> shellSurface;
 #endif
@@ -147,6 +165,9 @@ public:
     bool hideOnWindowDeactivate;
     bool outputOnly;
     bool visible;
+    Qt::Edges resizableEdges;
+    bool overridingCursor;
+    AppletQuickItem *appletInterface;
     Plasma::Theme theme;
     bool componentComplete;
     Dialog::BackgroundHints backgroundHints;
@@ -237,10 +258,7 @@ void DialogPrivate::updateTheme()
             frameSvgItem->setImagePath(prefix + QStringLiteral("dialogs/background"));
         }
 
-        // This makes the mask slightly maller than the frame. Since the svg will have antialiasing and the mask not,
-        // there will be artifacts at the corners, if they go under the svg they're less evident
-        frameSvgItem->frameSvg()->resizeFrame(q->size() - QSize(2,2));
-        const QRegion mask = frameSvgItem->frameSvg()->mask().translated(1,1);
+        const QRegion mask = frameSvgItem->frameSvg()->mask();
         KWindowEffects::enableBlurBehind(q, theme.blurBehindEnabled(), mask);
 
         KWindowEffects::enableBackgroundContrast(q,
@@ -249,9 +267,8 @@ void DialogPrivate::updateTheme()
                                                  theme.backgroundIntensity(),
                                                  theme.backgroundSaturation(),
                                                  mask);
-        frameSvgItem->frameSvg()->resizeFrame(q->size());
 
-        if (KWindowSystem::compositingActive()) {
+        if (KX11Extras::compositingActive()) {
             if (hasMask) {
                 hasMask = false;
                 q->setMask(QRegion());
@@ -364,7 +381,7 @@ void DialogPrivate::updateMinimumWidth()
     q->contentItem()->setWidth(qMax(q->width(), minimumWidth));
     q->setWidth(qMax(q->width(), minimumWidth));
 
-    hintsCommitTimer.start();
+    updateLayoutParameters();
 }
 
 void DialogPrivate::updateMinimumHeight()
@@ -390,7 +407,7 @@ void DialogPrivate::updateMinimumHeight()
     q->contentItem()->setHeight(qMax(q->height(), minimumHeight));
     q->setHeight(qMax(q->height(), minimumHeight));
 
-    hintsCommitTimer.start();
+    updateLayoutParameters();
 }
 
 void DialogPrivate::updateMaximumWidth()
@@ -409,10 +426,10 @@ void DialogPrivate::updateMaximumWidth()
     if (q->screen()) {
         maximumWidth = qMin(q->screen()->availableGeometry().width(), maximumWidth);
     }
-    q->contentItem()->setWidth(qMax(q->width(), maximumWidth));
-    q->setWidth(qMax(q->width(), maximumWidth));
+    q->contentItem()->setWidth(qMin(q->width(), maximumWidth));
+    q->setWidth(qMin(q->width(), maximumWidth));
 
-    hintsCommitTimer.start();
+    updateLayoutParameters();
 }
 
 void DialogPrivate::updateMaximumHeight()
@@ -431,10 +448,80 @@ void DialogPrivate::updateMaximumHeight()
     if (q->screen()) {
         maximumHeight = qMin(q->screen()->availableGeometry().height(), maximumHeight);
     }
-    q->contentItem()->setHeight(qMax(q->height(), maximumHeight));
+    q->contentItem()->setHeight(qMin(q->height(), maximumHeight));
     q->setHeight(qMin(q->height(), maximumHeight));
 
-    hintsCommitTimer.start();
+    updateLayoutParameters();
+}
+
+void DialogPrivate::updateResizableEdges()
+{
+    if (!appletInterface) {
+        resizableEdges = {};
+        return;
+    }
+
+    QSize min;
+    QSize max(DIALOGSIZE_MAX, DIALOGSIZE_MAX);
+    getSizeHints(min, max);
+    if (min == max) {
+        resizableEdges = {};
+        return;
+    }
+
+    switch (q->location()) {
+    case Plasma::Types::BottomEdge:
+        resizableEdges = Qt::LeftEdge | Qt::TopEdge | Qt::RightEdge;
+        break;
+    case Plasma::Types::TopEdge:
+        resizableEdges = Qt::LeftEdge | Qt::BottomEdge | Qt::RightEdge;
+        break;
+    case Plasma::Types::LeftEdge:
+        resizableEdges = Qt::TopEdge | Qt::BottomEdge | Qt::RightEdge;
+        break;
+    case Plasma::Types::RightEdge:
+        resizableEdges = Qt::LeftEdge | Qt::TopEdge | Qt::BottomEdge;
+        break;
+    case Plasma::Types::Floating:
+    case Plasma::Types::Desktop:
+    case Plasma::Types::FullScreen:
+        resizableEdges = {};
+        break;
+    }
+}
+
+void DialogPrivate::updateSizeFromAppletInterface()
+{
+    if (!appletInterface) {
+        return;
+    }
+    if (!mainItem) {
+        return;
+    }
+    if (!mainItemLayout) {
+        return;
+    }
+
+    QSize min;
+    QSize max(DIALOGSIZE_MAX, DIALOGSIZE_MAX);
+    getSizeHints(min, max);
+    if (min == max) {
+        return;
+    }
+
+    QVariant prefHeight = mainItemLayout->property("preferredHeight");
+    QVariant prefWidth = mainItemLayout->property("preferredWidth");
+    int defHeight = prefHeight.isNull() ? min.height() : prefHeight.toInt();
+    int defWidth = prefWidth.isNull() ? min.width() : prefWidth.toInt();
+
+    KConfigGroup config = appletInterface->applet()->config();
+    qreal popupWidth = config.readEntry("popupWidth", static_cast<qreal>(defWidth));
+    qreal popupHeight = config.readEntry("popupHeight", static_cast<qreal>(defHeight));
+    mainItemLayout->setProperty("preferredWidth", popupWidth);
+    mainItemLayout->setProperty("preferredHeight", popupHeight);
+    mainItem->setWidth(popupWidth);
+    mainItem->setHeight(popupHeight);
+    updateLayoutParameters();
 }
 
 void DialogPrivate::getSizeHints(QSize &min, QSize &max) const
@@ -473,7 +560,7 @@ void DialogPrivate::getSizeHints(QSize &min, QSize &max) const
 
 void DialogPrivate::updateLayoutParameters()
 {
-    if (!componentComplete || !mainItem || !mainItemLayout) {
+    if (!componentComplete || !mainItem || !mainItemLayout || q->visibility() == QWindow::Hidden) {
         return;
     }
 
@@ -484,7 +571,8 @@ void DialogPrivate::updateLayoutParameters()
     QSize max(DIALOGSIZE_MAX, DIALOGSIZE_MAX);
     getSizeHints(min, max);
 
-    const QSize finalSize(qBound(min.width(), q->width(), max.width()), qBound(min.height(), q->height(), max.height()));
+    const QSize finalSize(qBound(min.width(), q->width(), std::max(max.width(), min.width())),
+                          qBound(min.height(), q->height(), std::max(max.height(), min.height())));
 
     if (visualParent) {
         // it's important here that we're using re->size() as size, we don't want to do recursive resizeEvents
@@ -502,9 +590,6 @@ void DialogPrivate::updateLayoutParameters()
     repositionIfOffScreen();
     updateTheme();
 
-    // FIXME: this seems to interfere with the geometry change that
-    // sometimes is still going on, causing flicker (this one is two repositions happening in quick succession).
-    // it may have to be delayed further
     q->setMinimumSize(min);
     q->setMaximumSize(max);
 
@@ -547,9 +632,9 @@ void DialogPrivate::updateInputShape()
 #if HAVE_XCB_SHAPE
     if (KWindowSystem::isPlatformX11()) {
         xcb_connection_t *c = QX11Info::connection();
-        static bool s_shapeExtensionChecked = false;
-        static bool s_shapeAvailable = false;
-        if (!s_shapeExtensionChecked) {
+        static std::optional<bool> s_shapeAvailable = std::nullopt;
+        if (!s_shapeAvailable.has_value()) {
+            s_shapeAvailable = std::optional(false);
             xcb_prefetch_extension_data(c, &xcb_shape_id);
             const xcb_query_extension_reply_t *extension = xcb_get_extension_data(c, &xcb_shape_id);
             if (extension->present) {
@@ -557,12 +642,11 @@ void DialogPrivate::updateInputShape()
                 auto cookie = xcb_shape_query_version(c);
                 QScopedPointer<xcb_shape_query_version_reply_t, QScopedPointerPodDeleter> version(xcb_shape_query_version_reply(c, cookie, nullptr));
                 if (!version.isNull()) {
-                    s_shapeAvailable = (version->major_version * 0x10 + version->minor_version) >= 0x11;
+                    s_shapeAvailable = std::optional((version->major_version * 0x10 + version->minor_version) >= 0x11);
                 }
             }
-            s_shapeExtensionChecked = true;
         }
-        if (!s_shapeAvailable) {
+        if (!s_shapeAvailable.value()) {
             return;
         }
         if (outputOnly) {
@@ -580,7 +664,7 @@ void DialogPrivate::syncToMainItemSize()
 {
     Q_ASSERT(mainItem);
 
-    if (!componentComplete) {
+    if (!componentComplete || q->visibility() == QWindow::Hidden) {
         return;
     }
     if (mainItem->width() <= 0 || mainItem->height() <= 0) {
@@ -702,84 +786,105 @@ void DialogPrivate::setupWaylandIntegration()
 
 void DialogPrivate::applyType()
 {
-    if (type != Dialog::Normal) {
-        /*QXcbWindowFunctions::WmWindowType*/ int wmType = 0;
+    /*QXcbWindowFunctions::WmWindowType*/ int wmType = 0;
 
 #if HAVE_X11
-        if (KWindowSystem::isPlatformX11()) {
-            switch (type) {
-            case Dialog::Normal:
-                Q_UNREACHABLE();
-                break;
-            case Dialog::Dock:
-                wmType = QXcbWindowFunctions::WmWindowType::Dock;
-                break;
-            case Dialog::DialogWindow:
-                wmType = QXcbWindowFunctions::WmWindowType::Dialog;
-                break;
-            case Dialog::PopupMenu:
-                wmType = QXcbWindowFunctions::WmWindowType::PopupMenu;
-                break;
-            case Dialog::Tooltip:
-                wmType = QXcbWindowFunctions::WmWindowType::Tooltip;
-                break;
-            case Dialog::Notification:
-                wmType = QXcbWindowFunctions::WmWindowType::Notification;
-                break;
-            case Dialog::OnScreenDisplay:
-            case Dialog::CriticalNotification:
-                // Not supported by Qt
-                break;
-            }
-
-            if (wmType) {
-                QXcbWindowFunctions::setWmWindowType(q, static_cast<QXcbWindowFunctions::WmWindowType>(wmType));
-            }
-        }
+    if (KWindowSystem::isPlatformX11()) {
+        switch (type) {
+        case Dialog::Normal:
+            q->setFlags(Qt::FramelessWindowHint | q->flags());
+            break;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+        case Dialog::Dock:
+            wmType = QXcbWindowFunctions::WmWindowType::Dock;
+            break;
+        case Dialog::DialogWindow:
+            wmType = QXcbWindowFunctions::WmWindowType::Dialog;
+            break;
+        case Dialog::PopupMenu:
+            wmType = QXcbWindowFunctions::WmWindowType::PopupMenu;
+            break;
+        case Dialog::Tooltip:
+            wmType = QXcbWindowFunctions::WmWindowType::Tooltip;
+            break;
+        case Dialog::Notification:
+            wmType = QXcbWindowFunctions::WmWindowType::Notification;
+            break;
+#else
+        case Dialog::Dock:
+            wmType = QNativeInterface::Private::QXcbWindow::Dock;
+            break;
+        case Dialog::DialogWindow:
+            wmType = QNativeInterface::Private::QXcbWindow::Dialog;
+            break;
+        case Dialog::PopupMenu:
+            wmType = QNativeInterface::Private::QXcbWindow::PopupMenu;
+            break;
+        case Dialog::Tooltip:
+            wmType = QNativeInterface::Private::QXcbWindow::Tooltip;
+            break;
+        case Dialog::Notification:
+            wmType = QNativeInterface::Private::QXcbWindow::Notification;
+            break;
 #endif
+        case Dialog::OnScreenDisplay:
+        case Dialog::CriticalNotification:
+        case Dialog::AppletPopup:
+            // Not supported by Qt
+            break;
+        }
 
-        if (!wmType) {
-            KWindowSystem::setType(q->winId(), static_cast<NET::WindowType>(type));
-        }
-#if HAVE_KWAYLAND
-        if (shellSurface) {
-            switch (type) {
-                case Dialog::Dock:
-                shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::Panel);
-                break;
-            case Dialog::Tooltip:
-                shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::ToolTip);
-                break;
-            case Dialog::Notification:
-                shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::Notification);
-                break;
-            case Dialog::OnScreenDisplay:
-                shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::OnScreenDisplay);
-                break;
-            case Dialog::CriticalNotification:
-                shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::CriticalNotification);
-                break;
-            default:
-                break;
-            }
-        }
+        if (wmType) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+            QXcbWindowFunctions::setWmWindowType(q, static_cast<QXcbWindowFunctions::WmWindowType>(wmType));
+#else
+            // QXcbWindow isn't installed and thus inaccessible to us, but it does read this magic property from the window...
+            q->setProperty("_q_xcb_wm_window_type", wmType);
 #endif
-    } else {
-        q->setFlags(Qt::FramelessWindowHint | q->flags());
-
-#if HAVE_KWAYLAND
-        // Only possible after setup
-        if (shellSurface) {
-            if (q->flags() & Qt::WindowStaysOnTopHint) {
-                shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::Panel);
-                shellSurface->setPanelBehavior(KWayland::Client::PlasmaShellSurface::PanelBehavior::WindowsGoBelow);
-            } else {
-                shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::Normal);
-                shellSurface->setPanelBehavior(KWayland::Client::PlasmaShellSurface::PanelBehavior::AlwaysVisible);
-            }
         }
-#endif
     }
+#endif
+
+    if (!wmType && type != Dialog::Normal) {
+        KWindowSystem::setType(q->winId(), static_cast<NET::WindowType>(type));
+    }
+#if HAVE_KWAYLAND
+    if (shellSurface) {
+        if (q->flags() & Qt::WindowStaysOnTopHint) {
+            // If the AppletPopup type is not explicitly requested, then use the Dock type in this case
+            // to avoid bug #454635.
+            if (type != Dialog::AppletPopup && type != Dialog::Tooltip) {
+                type = Dialog::Dock;
+                shellSurface->setPanelBehavior(KWayland::Client::PlasmaShellSurface::PanelBehavior::WindowsGoBelow);
+            }
+        }
+        switch (type) {
+        case Dialog::Dock:
+            shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::Panel);
+            break;
+        case Dialog::Tooltip:
+            shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::ToolTip);
+            break;
+        case Dialog::Notification:
+            shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::Notification);
+            break;
+        case Dialog::OnScreenDisplay:
+            shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::OnScreenDisplay);
+            break;
+        case Dialog::CriticalNotification:
+            shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::CriticalNotification);
+            break;
+        case Dialog::Normal:
+            shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::Normal);
+            break;
+        case Dialog::AppletPopup:
+            shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::AppletPopup);
+            break;
+        default:
+            break;
+        }
+    }
+#endif
 
     // an OSD can't be a Dialog, as qt xcb would attempt to set a transient parent for it
     // see bug 370433
@@ -802,9 +907,9 @@ void DialogPrivate::applyType()
     }
 
     if (type == Dialog::Dock || type == Dialog::Notification || type == Dialog::OnScreenDisplay || type == Dialog::CriticalNotification) {
-        KWindowSystem::setOnAllDesktops(q->winId(), true);
+        KX11Extras::setOnAllDesktops(q->winId(), true);
     } else {
-        KWindowSystem::setOnAllDesktops(q->winId(), false);
+        KX11Extras::setOnAllDesktops(q->winId(), false);
     }
 
 #if HAVE_KWAYLAND
@@ -812,6 +917,102 @@ void DialogPrivate::applyType()
         shellSurface->setPanelTakesFocus(!q->flags().testFlag(Qt::WindowDoesNotAcceptFocus));
     }
 #endif
+}
+
+bool DialogPrivate::updateMouseCursor(const QPointF &globalMousePos)
+{
+    Qt::Edges sides = hitTest(globalMousePos) & resizableEdges;
+    if (!sides) {
+        if (overridingCursor) {
+            q->unsetCursor();
+            overridingCursor = false;
+        }
+        return false;
+    }
+
+    if (sides == Qt::Edges(Qt::LeftEdge | Qt::TopEdge)) {
+        q->setCursor(Qt::SizeFDiagCursor);
+    } else if (sides == Qt::Edges(Qt::RightEdge | Qt::TopEdge)) {
+        q->setCursor(Qt::SizeBDiagCursor);
+    } else if (sides == Qt::Edges(Qt::LeftEdge | Qt::BottomEdge)) {
+        q->setCursor(Qt::SizeBDiagCursor);
+    } else if (sides == Qt::Edges(Qt::RightEdge | Qt::BottomEdge)) {
+        q->setCursor(Qt::SizeFDiagCursor);
+    } else if (sides.testFlag(Qt::TopEdge)) {
+        q->setCursor(Qt::SizeVerCursor);
+    } else if (sides.testFlag(Qt::LeftEdge)) {
+        q->setCursor(Qt::SizeHorCursor);
+    } else if (sides.testFlag(Qt::RightEdge)) {
+        q->setCursor(Qt::SizeHorCursor);
+    } else {
+        q->setCursor(Qt::SizeVerCursor);
+    }
+
+    overridingCursor = true;
+    return true;
+}
+
+Qt::Edges DialogPrivate::hitTest(const QPointF &pos)
+{
+    bool left = hitTestLeft(pos);
+    bool right = hitTestRight(pos);
+    bool top = hitTestTop(pos);
+    bool bottom = hitTestBottom(pos);
+    Qt::Edges edges;
+    if (left) {
+        edges.setFlag(Qt::LeftEdge);
+    }
+    if (right) {
+        edges.setFlag(Qt::RightEdge);
+    }
+    if (bottom) {
+        edges.setFlag(Qt::BottomEdge);
+    }
+    if (top) {
+        edges.setFlag(Qt::TopEdge);
+    }
+
+    return edges;
+}
+
+bool DialogPrivate::hitTestLeft(const QPointF &pos)
+{
+    const QRect geometry = q->geometry();
+    const QRectF rect(geometry.x(),
+                      geometry.y(),
+                      frameSvgItem->fixedMargins()->left(),
+                      geometry.height());
+    return rect.contains(pos);
+}
+
+bool DialogPrivate::hitTestRight(const QPointF &pos)
+{
+    const QRect geometry = q->geometry();
+    const QRectF rect(geometry.x() + geometry.width() - frameSvgItem->fixedMargins()->right(),
+                      geometry.y(),
+                      frameSvgItem->fixedMargins()->right(),
+                      geometry.height());
+    return rect.contains(pos);
+}
+
+bool DialogPrivate::hitTestTop(const QPointF &pos)
+{
+    const QRect geometry = q->geometry();
+    const QRectF rect(geometry.x(),
+                      geometry.y(),
+                      geometry.width(),
+                      frameSvgItem->fixedMargins()->top());
+    return rect.contains(pos);
+}
+
+bool DialogPrivate::hitTestBottom(const QPointF &pos)
+{
+    const QRect geometry = q->geometry();
+    const QRectF rect(geometry.x(),
+                      geometry.y() + geometry.height() - frameSvgItem->fixedMargins()->bottom(),
+                      geometry.width(),
+                      frameSvgItem->fixedMargins()->bottom());
+    return rect.contains(pos);
 }
 
 Dialog::Dialog(QQuickItem *parent)
@@ -826,6 +1027,9 @@ Dialog::Dialog(QQuickItem *parent)
     });
     connect(this, &QWindow::yChanged, [=]() {
         d->slotWindowPositionChanged();
+    });
+    connect(this, &Dialog::locationChanged, this, [&] {
+        d->updateResizableEdges();
     });
 
     // Given dialogs are skip task bar and don't have a decoration
@@ -852,10 +1056,6 @@ Dialog::Dialog(QQuickItem *parent)
 
 Dialog::~Dialog()
 {
-    if (!QCoreApplication::instance()->closingDown()) {
-        DialogShadows::self()->removeWindow(this);
-    }
-
     // Prevent signals from super-class destructor invoking our now-destroyed slots
     disconnect(this, nullptr, this, nullptr);
 }
@@ -868,8 +1068,6 @@ QQuickItem *Dialog::mainItem() const
 void Dialog::setMainItem(QQuickItem *mainItem)
 {
     if (d->mainItem != mainItem) {
-        d->hintsCommitTimer.stop();
-
         if (d->mainItem) {
             disconnect(d->mainItem, nullptr, this, nullptr);
             d->mainItem->setParentItem(nullptr);
@@ -909,9 +1107,10 @@ void Dialog::setMainItem(QQuickItem *mainItem)
             d->mainItemLayout = layout;
 
             if (layout) {
-                // Why queued connections?
-                // we need to be sure that the properties are
-                // already *all* updated when we call the management code
+                // These connections are direct. They run on the GUI thread.
+                // If the underlying QQuickItem is sane, these properties should be updated atomically in one cycle
+                // of the GUI thread event loop, denying the chance for the event loop to run a QQuickItem::update() call in between.
+                // So we avoid rendering a frame in between with inconsistent geometry properties which would cause flickering issues.
                 connect(layout, SIGNAL(minimumWidthChanged()), this, SLOT(updateMinimumWidth()));
                 connect(layout, SIGNAL(minimumHeightChanged()), this, SLOT(updateMinimumHeight()));
                 connect(layout, SIGNAL(maximumWidthChanged()), this, SLOT(updateMaximumWidth()));
@@ -1043,6 +1242,28 @@ QPoint Dialog::popupPosition(QQuickItem *item, const QSize &size)
         }
     }
 
+    // If the dialog is from opening an applet in the panel and it's close enough to the center that
+    // it would still cover the original applet in the panel if it was centered, then we manually center it.
+    if (d->type == Dialog::AppletPopup) {
+        QRectF parentRect = item->mapRectToScene(item->boundingRect());
+        switch (d->location) {
+        case Plasma::Types::TopEdge:
+        case Plasma::Types::BottomEdge:
+            if (qAbs(dialogPos.x() + size.width() / 2 - avail.center().x() ) < size.width() / 2 - parentRect.width() / 3) {
+                dialogPos.setX(avail.center().x() - size.width() / 2);
+            }
+            break;
+        case Plasma::Types::LeftEdge:
+        case Plasma::Types::RightEdge:
+            if (qAbs(dialogPos.y() + size.height() / 2 - avail.center().y() ) < size.height() / 2 - parentRect.height() / 3) {
+                dialogPos.setY(avail.center().y() - size.height() / 2);
+            }
+            break;
+        default:
+            break;
+        }
+    }
+
     if (dialogPos.x() < avail.left()) {
         // popup hits lhs
         if (d->location != Plasma::Types::LeftEdge || d->location == Plasma::Types::RightEdge) {
@@ -1129,6 +1350,10 @@ void Dialog::resizeEvent(QResizeEvent *re)
 {
     QQuickWindow::resizeEvent(re);
 
+    if (d->resizableEdges) {
+        d->updateMouseCursor(QCursor::pos());
+    }
+
     // it's a spontaneous event generated in qguiapplication.cpp QGuiApplicationPrivate::processWindowScreenChangedEvent
     // QWindowSystemInterfacePrivate::GeometryChangeEvent gce(window, QHighDpi::fromNativePixels(window->handle()->geometry(), window), QRect());
     // This happens before the first show event when there is more than one screen,
@@ -1140,7 +1365,7 @@ void Dialog::resizeEvent(QResizeEvent *re)
     }
 
     // A dialog can be resized even if no mainItem has ever been set
-    if (!d->mainItem) {
+    if (!d->mainItem || !isExposed()) {
         return;
     }
 
@@ -1151,6 +1376,8 @@ void Dialog::resizeEvent(QResizeEvent *re)
     d->mainItem->setPosition(QPointF(margin->left(), margin->top()));
 
     d->mainItem->setSize(QSize(re->size().width() - margin->left() - margin->right(), re->size().height() - margin->top() - margin->bottom()));
+
+    d->updateTheme();
 
     QObject::connect(d->mainItem, SIGNAL(widthChanged()), this, SLOT(slotMainItemSizeChanged()));
     QObject::connect(d->mainItem, SIGNAL(heightChanged()), this, SLOT(slotMainItemSizeChanged()));
@@ -1214,6 +1441,9 @@ void Dialog::focusOutEvent(QFocusEvent *ev)
 
 void Dialog::showEvent(QShowEvent *event)
 {
+    d->updateResizableEdges();
+    d->updateSizeFromAppletInterface();
+
     if (d->backgroundHints != Dialog::NoBackground) {
         DialogShadows::self()->addWindow(this, d->frameSvgItem->enabledBorders());
     }
@@ -1223,10 +1453,16 @@ void Dialog::showEvent(QShowEvent *event)
     QQuickWindow::showEvent(event);
 }
 
+static bool isRunningInKWin()
+{
+    static bool check = QGuiApplication::platformName() == QLatin1String("wayland-org.kde.kwin.qpa");
+    return check;
+}
+
 bool Dialog::event(QEvent *event)
 {
     if (event->type() == QEvent::Expose) {
-        if (!KWindowSystem::isPlatformWayland() || !isExposed()) {
+        if (!KWindowSystem::isPlatformWayland() || isRunningInKWin() || !isExposed()) {
             return QQuickWindow::event(event);
         }
 
@@ -1284,9 +1520,22 @@ bool Dialog::event(QEvent *event)
         case QEvent::MouseButtonPress:
         case QEvent::MouseButtonRelease: {
             QMouseEvent *me = static_cast<QMouseEvent *>(event);
+            if (d->resizableEdges) {
+                if (event->type() == QEvent::MouseMove && d->updateMouseCursor(me->globalPos())) {
+                    return QQuickWindow::event(event);
+                }
+                if (event->type() == QEvent::MouseButtonPress) {
+                    const QPointF globalMousePos = me->globalPos();
+                    const Qt::Edges sides = d->hitTest(globalMousePos) & d->resizableEdges;
+                    if (sides) {
+                        startSystemResize(sides);
+                        return true;
+                    }
+                }
+            }
 
             // don't mess with position if the cursor is actually outside the view:
-            // somebody is doing a click and drag that must not break when the cursor i outside
+            // somebody is doing a click and drag that must not break when the cursor is outside
             if (geometry().contains(me->screenPos().toPoint()) && !d->mainItemContainsPosition(me->windowPos())) {
                 QMouseEvent me2(me->type(),
                                 d->positionAdjustedForMainItem(me->windowPos()),
@@ -1389,7 +1638,25 @@ bool Dialog::event(QEvent *event)
 
 void Dialog::hideEvent(QHideEvent *event)
 {
+    // Persist the size if this contains an applet
+    if (d->appletInterface && d->mainItem) {
+        KConfigGroup config = d->appletInterface->applet()->config();
+        qreal w = d->mainItem->width();
+        qreal h = d->mainItem->height();
+        config.writeEntry("popupWidth", w);
+        config.writeEntry("popupHeight", h);
+        config.sync();
+    }
+
     QQuickWindow::hideEvent(event);
+}
+
+void Dialog::moveEvent(QMoveEvent *e)
+{
+    QQuickWindow::moveEvent(e);
+    if (d->resizableEdges) {
+        d->updateMouseCursor(QCursor::pos());
+    }
 }
 
 void Dialog::classBegin()
@@ -1458,6 +1725,20 @@ bool Dialog::isVisible() const
         return QQuickWindow::isVisible();
     }
     return d->visible;
+}
+
+void Dialog::setAppletInterface(QQuickItem *appletInterface)
+{
+    if (d->appletInterface == appletInterface) {
+        return;
+    }
+    d->appletInterface = qobject_cast<AppletQuickItem *>(appletInterface);
+    Q_EMIT appletInterfaceChanged();
+}
+
+QQuickItem *Dialog::appletInterface() const
+{
+    return d->appletInterface;
 }
 
 Dialog::BackgroundHints Dialog::backgroundHints() const

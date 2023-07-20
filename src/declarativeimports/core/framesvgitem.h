@@ -184,6 +184,20 @@ class FrameSvgItem : public QQuickItem
      */
     Q_PROPERTY(QRegion mask READ mask NOTIFY maskChanged)
 
+    /**
+     * This will return the minimum height required to correctly draw this
+     * SVG.
+     * @since 5.101
+     */
+    Q_PROPERTY(int minimumDrawingHeight READ minimumDrawingHeight NOTIFY repaintNeeded)
+
+    /**
+     * This will return the minimum width required to correctly draw this
+     * SVG.
+     * @since 5.101
+     */
+    Q_PROPERTY(int minimumDrawingWidth READ minimumDrawingWidth NOTIFY repaintNeeded)
+
 public:
     /**
      * @return true if the svg has the necessary elements with the given prefix
@@ -191,6 +205,15 @@ public:
      * @param prefix the given prefix we want to check if drawable
      */
     Q_INVOKABLE bool hasElementPrefix(const QString &prefix) const;
+
+    /**
+     * Check if the SVG has a certain element.
+     *
+     * This is a convenience function that forwards to Svg::hasElement.
+     *
+     * @see Svg::hasElement
+     */
+    Q_INVOKABLE bool hasElement(const QString &elementName) const;
 
     /// @cond INTERNAL_DOCS
     FrameSvgItem(QQuickItem *parent = nullptr);
@@ -218,8 +241,14 @@ public:
 
     void setStatus(Plasma::Svg::Status status);
     Plasma::Svg::Status status() const;
+    int minimumDrawingHeight() const;
+    int minimumDrawingWidth() const;
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#else
+    void geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#endif
 
     QRegion mask() const;
 

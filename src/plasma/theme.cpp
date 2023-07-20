@@ -25,7 +25,6 @@
 #include <KDirWatch>
 #include <KImageCache>
 #include <KWindowEffects>
-#include <KWindowSystem>
 #include <QDebug>
 #include <QStandardPaths>
 
@@ -389,6 +388,11 @@ KPluginInfo Theme::pluginInfo() const
     return KPluginInfo(d->pluginMetaData);
 }
 #endif
+
+KPluginMetaData Theme::metadata() const
+{
+    return d->pluginMetaData;
+}
 
 QFont Theme::defaultFont() const
 {

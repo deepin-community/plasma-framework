@@ -16,6 +16,7 @@
 
 class WallpaperInterface;
 class DropMenu;
+class KJob;
 
 namespace KIO
 {
@@ -74,7 +75,7 @@ class ContainmentInterface : public AppletInterface
      */
     Q_PROPERTY(bool editMode READ isEditMode WRITE setEditMode NOTIFY editModeChanged)
 
-    Q_PROPERTY(WallpaperInterface* wallpaper READ wallpaperInterface NOTIFY wallpaperInterfaceChanged)
+    Q_PROPERTY(WallpaperInterface *wallpaper READ wallpaperInterface NOTIFY wallpaperInterfaceChanged)
 
     Q_PROPERTY(Plasma::Types::ContainmentDisplayHints containmentDisplayHints READ containmentDisplayHints WRITE setContainmentDisplayHints NOTIFY
                    containmentDisplayHintsChanged)
@@ -150,6 +151,14 @@ public:
      */
     Q_INVOKABLE QAction *globalAction(QString name) const;
 
+    /**
+     * Opens the context menu of the Corona
+     *
+     * @param globalPos menu position in the global coordinate system
+     * @since 5.102
+     */
+    Q_INVOKABLE void openContextMenu(const QPointF &globalPos);
+
     bool isEditMode() const;
     void setEditMode(bool edit);
 
@@ -169,6 +178,7 @@ protected:
     void addContainmentActions(QMenu *desktopMenu, QEvent *event);
 
     virtual bool isLoading() const override;
+    void itemChange(ItemChange change, const ItemChangeData &value) override;
 
 Q_SIGNALS:
     /**
@@ -210,6 +220,7 @@ private Q_SLOTS:
 private:
     void clearDataForMimeJob(KIO::Job *job);
     void setAppletArgs(Plasma::Applet *applet, const QString &mimetype, const QString &data);
+    void deleteWallpaperInterface();
 
     WallpaperInterface *m_wallpaperInterface;
     QList<QObject *> m_appletInterfaces;

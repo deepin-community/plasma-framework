@@ -29,7 +29,13 @@
 #include "plasmoid/containmentinterface.h"
 #include "plasmoid/wallpaperinterface.h"
 
+#include <kdeclarative/kdeclarative_export.h>
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
 #include <kdeclarative/configpropertymap.h>
+#else
+#include <KConfigPropertyMap>
+#endif
+
 #include <kdeclarative/qmlobject.h>
 
 DeclarativeAppletScript::DeclarativeAppletScript(QObject *parent, const QVariantList &args)
@@ -37,20 +43,21 @@ DeclarativeAppletScript::DeclarativeAppletScript(QObject *parent, const QVariant
     , m_interface(nullptr)
     , m_args(args)
 {
+    const char *uri = "org.kde.plasma.plasmoid";
     // qmlRegisterType<AppletInterface>();
     // FIXME: use this if/when will be possible to have properties of attached items subclasses on the left hand of expressions
     /*qmlRegisterUncreatableType<AppletLoader>("org.kde.plasma.plasmoid", 2, 0, "Plasmoid",
                                              QLatin1String("Do not create objects of type Plasmoid"));*/
-    qmlRegisterUncreatableType<AppletInterface>("org.kde.plasma.plasmoid", 2, 0, "Plasmoid", QStringLiteral("Do not create objects of type Plasmoid"));
-    qmlRegisterUncreatableType<ContainmentInterface>("org.kde.plasma.plasmoid",
-                                                     2,
-                                                     0,
-                                                     "Containment",
-                                                     QStringLiteral("Do not create objects of type Containment"));
+    qmlRegisterUncreatableType<AppletInterface>(uri, 2, 0, "Plasmoid", QStringLiteral("Do not create objects of type Plasmoid"));
+    qmlRegisterUncreatableType<ContainmentInterface>(uri, 2, 0, "Containment", QStringLiteral("Do not create objects of type Containment"));
 
-    qmlRegisterUncreatableType<WallpaperInterface>("org.kde.plasma.plasmoid", 2, 0, "Wallpaper", QStringLiteral("Do not create objects of type Wallpaper"));
+    qmlRegisterUncreatableType<WallpaperInterface>(uri, 2, 0, "Wallpaper", QStringLiteral("Do not create objects of type Wallpaper"));
 
-    qmlRegisterAnonymousType<KDeclarative::ConfigPropertyMap>("org.kde.plasma.plasmoid", 1);
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
+    qmlRegisterAnonymousType<KDeclarative::ConfigPropertyMap>(uri, 1);
+#else
+    qmlRegisterAnonymousType<KConfigPropertyMap>(uri, 1);
+#endif
 }
 
 DeclarativeAppletScript::~DeclarativeAppletScript()
@@ -81,7 +88,7 @@ bool DeclarativeAppletScript::init()
 
 QString DeclarativeAppletScript::filePath(const QString &type, const QString &file) const
 {
-    return applet()->kPackage().filePath(type.toLocal8Bit().constData(), file);
+    return applet()->filePath(type.toLocal8Bit().constData(), file);
 }
 
 void DeclarativeAppletScript::constraintsEvent(Plasma::Types::Constraints constraints)

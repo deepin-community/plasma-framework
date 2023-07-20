@@ -6,7 +6,6 @@ usr/lib/*/qt5/qml/QtQuick/Controls.2/Plasma/
 usr/lib/*/qt5/qml/QtQuick/Controls/Styles/Plasma/
 usr/lib/*/qt5/qml/org/kde/kirigami.2/
 usr/lib/*/qt5/qml/org/kde/plasma/
-usr/share/kservices5/plasma-scriptengine-applet-declarative.desktop
 usr/share/kservicetypes5/plasma-applet.desktop
 usr/share/kservicetypes5/plasma-containment.desktop
 usr/share/kservicetypes5/plasma-containmentactions.desktop

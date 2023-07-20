@@ -12,10 +12,11 @@
 #include <QGuiApplication>
 #include <QObject>
 
-#include <KPluginInfo>
-#include <KSharedConfig>
-
 #include <plasma/plasma_export.h>
+#if PLASMA_ENABLE_DEPRECATED_SINCE(5, 94)
+#include <KPluginInfo>
+#endif
+#include <KSharedConfig>
 
 class KPluginMetaData;
 
@@ -334,6 +335,13 @@ public:
     PLASMA_DEPRECATED_VERSION(5, 67, "Use KPluginMetaData metadata()")
     KPluginInfo pluginInfo() const;
 #endif
+
+    /**
+     * @return plugin metadata for this theme, with information such as
+     * name, description, author, website etc
+     * @since 5.95
+     */
+    KPluginMetaData metadata() const;
 
     /**
      * @return The default application font

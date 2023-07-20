@@ -1,16 +1,9 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-#
-# Weng Xuetian <wengxt@gmail.com>, 2014, 2015, 2016.
-# Xuetian Weng <xweng@cs.stonybrook.edu>, 2014.
-# Guo Yunhe <guoyunhebrave@gmail.com>, 2017.
-# Chao Feng <chaofeng111@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-27 00:40+0000\n"
-"PO-Revision-Date: 2021-12-22 14:06\n"
+"POT-Creation-Date: 2023-01-06 00:44+0000\n"
+"PO-Revision-Date: 2023-01-12 10:31\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -120,20 +113,47 @@ msgstr "确定"
 msgid "Cancel"
 msgstr "取消"
 
-#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:79
+#: declarativeimports/plasmaextracomponents/qml/BasicPlasmoidHeading.qml:80
 #, kde-format
 msgid "More actions"
 msgstr "更多操作"
 
-#: plasma/applet.cpp:377
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Collapse"
+msgstr "折叠"
+
+#: declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml:559
+#, kde-format
+msgctxt "@action:button"
+msgid "Expand"
+msgstr "展开"
+
+#: declarativeimports/plasmaextracomponents/qml/PasswordField.qml:46
+#, kde-format
+msgid "Password"
+msgstr "密码"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:68
+#, kde-format
+msgid "Search…"
+msgstr "搜索…"
+
+#: declarativeimports/plasmaextracomponents/qml/SearchField.qml:70
+#, kde-format
+msgid "Search"
+msgstr "搜索"
+
+#: plasma/applet.cpp:379
 #, kde-format
 msgid "Unknown"
 msgstr "未知"
 
-#: plasma/applet.cpp:757
+#: plasma/applet.cpp:759
 #, kde-format
 msgid "Activate %1 Widget"
-msgstr "激活 %1 小部件"
+msgstr "激活 %1 挂件"
 
 #: plasma/containment.cpp:115 plasma/private/applet_p.cpp:106
 #, kde-format
@@ -141,7 +161,7 @@ msgctxt "%1 is the name of the applet"
 msgid "Remove %1"
 msgstr "移除 %1"
 
-#: plasma/containment.cpp:121 plasma/corona.cpp:407 plasma/corona.cpp:498
+#: plasma/containment.cpp:121 plasma/corona.cpp:406 plasma/corona.cpp:496
 #, kde-format
 msgid "Enter Edit Mode"
 msgstr "进入编辑模式"
@@ -152,17 +172,17 @@ msgctxt "%1 is the name of the applet"
 msgid "Configure %1..."
 msgstr "配置%1..."
 
-#: plasma/corona.cpp:356 plasma/corona.cpp:483
+#: plasma/corona.cpp:355 plasma/corona.cpp:482
 #, kde-format
 msgid "Lock Widgets"
-msgstr "锁定小部件"
+msgstr "锁定挂件"
 
-#: plasma/corona.cpp:356
+#: plasma/corona.cpp:355
 #, kde-format
 msgid "Unlock Widgets"
-msgstr "解锁小部件"
+msgstr "解锁挂件"
 
-#: plasma/corona.cpp:405
+#: plasma/corona.cpp:404
 #, kde-format
 msgid "Exit Edit Mode"
 msgstr "退出编辑模式"
@@ -238,20 +258,20 @@ msgstr "屏幕截图"
 msgid "Translations"
 msgstr "翻译"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:29
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
 #, kde-format
 msgid "Configuration UI pages model"
 msgstr "配置界面页面模型"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:30
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:31
 #, kde-format
 msgid "Configuration XML file"
 msgstr "配置 XML 文件"
 
-#: plasma/packagestructure/plasma_applet_packagestructure.cpp:41
+#: plasma/packagestructure/plasma_applet_packagestructure.cpp:47
 #, kde-format
 msgid "Custom expander for compact applets"
-msgstr "自定义紧凑小部件的扩展器"
+msgstr "紧凑小程序的自定义扩展器"
 
 #: plasma/packagestructure/plasma_dataengine_packagestructure.cpp:36
 #, kde-format
@@ -283,13 +303,13 @@ msgstr "壁纸包"
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:38
 #, kde-format
 msgid "Images for widgets"
-msgstr "小部件图像"
+msgstr "挂件图像"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:39
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:40
 #, kde-format
 msgid "Background image for widgets"
-msgstr "小部件背景图像"
+msgstr "挂件背景图像"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:41
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:42
@@ -307,7 +327,7 @@ msgstr "面板背景图像"
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:46
 #, kde-format
 msgid "Background for graphing widgets"
-msgstr "图形绘制小部件背景"
+msgstr "图形绘制挂件背景"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:47
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:48
@@ -335,7 +355,7 @@ msgstr "注销对话框的不透明主题"
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:60
 #, kde-format
 msgid "Opaque images for widgets"
-msgstr "小部件的不透明图像"
+msgstr "挂件的不透明图像"
 
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:63
 #: plasma/packagestructure/plasma_theme_packagestructure.cpp:66
@@ -354,95 +374,7 @@ msgstr "工具提示的不透明背景图像"
 msgid "KColorScheme configuration file"
 msgstr "KColorScheme 配置文件"
 
-#: plasma/pluginloader.cpp:95
-msgid "Accessibility"
-msgstr "无障碍辅助"
-
-#: plasma/pluginloader.cpp:96
-msgid "Application Launchers"
-msgstr "应用程序启动器"
-
-#: plasma/pluginloader.cpp:97
-msgid "Astronomy"
-msgstr "天文"
-
-#: plasma/pluginloader.cpp:98
-msgid "Date and Time"
-msgstr "日期和时间"
-
-#: plasma/pluginloader.cpp:99
-msgid "Development Tools"
-msgstr "开发工具"
-
-#: plasma/pluginloader.cpp:100
-msgid "Education"
-msgstr "教育"
-
-#: plasma/pluginloader.cpp:101
-msgid "Environment and Weather"
-msgstr "环境和天气"
-
-#: plasma/pluginloader.cpp:102
-msgid "Examples"
-msgstr "示例"
-
-#: plasma/pluginloader.cpp:103
-msgid "File System"
-msgstr "文件系统"
-
-#: plasma/pluginloader.cpp:104
-msgid "Fun and Games"
-msgstr "娱乐和游戏"
-
-#: plasma/pluginloader.cpp:105
-msgid "Graphics"
-msgstr "图形图像处理"
-
-#: plasma/pluginloader.cpp:106
-msgid "Language"
-msgstr "语言"
-
-#: plasma/pluginloader.cpp:107
-msgid "Mapping"
-msgstr "映射"
-
-#: plasma/pluginloader.cpp:108
-msgid "Miscellaneous"
-msgstr "其他"
-
-#: plasma/pluginloader.cpp:109
-msgid "Multimedia"
-msgstr "多媒体"
-
-#: plasma/pluginloader.cpp:110
-msgid "Online Services"
-msgstr "在线服务"
-
-#: plasma/pluginloader.cpp:111
-msgid "Productivity"
-msgstr "生产力工具"
-
-#: plasma/pluginloader.cpp:112
-msgid "System Information"
-msgstr "系统信息"
-
-#: plasma/pluginloader.cpp:113
-msgid "Utilities"
-msgstr "实用工具"
-
-#: plasma/pluginloader.cpp:114
-msgid "Windows and Tasks"
-msgstr "窗口和任务"
-
-#: plasma/pluginloader.cpp:115
-msgid "Clipboard"
-msgstr "剪贴板"
-
-#: plasma/pluginloader.cpp:116
-msgid "Tasks"
-msgstr "任务"
-
-#: plasma/pluginloader.cpp:614 plasma/pluginloader.cpp:615
+#: plasma/pluginloader.cpp:592 plasma/pluginloader.cpp:593
 #, kde-format
 msgctxt "misc category"
 msgid "Miscellaneous"
@@ -451,72 +383,72 @@ msgstr "其他"
 #: plasma/private/applet_p.cpp:126
 #, kde-format
 msgid "The %1 widget did not define which ScriptEngine to use."
-msgstr "小部件 %1 并未定义使用何种脚本引擎。"
+msgstr "挂件 %1 并未定义使用何种脚本引擎。"
 
 #: plasma/private/applet_p.cpp:145
 #, kde-format
 msgctxt "Package file, name of the widget"
 msgid "Could not open the %1 package required for the %2 widget."
-msgstr "无法打开 %2 小部件所需的 %1 软件包。"
+msgstr "无法打开 %2 挂件所需的 %1 软件包。"
 
 #: plasma/private/applet_p.cpp:166
 #, kde-format
 msgctxt ""
 "API or programming language the widget was written in, name of the widget"
 msgid "Could not create a %1 ScriptEngine for the %2 widget."
-msgstr "无法为 %2 小部件创建 %1 脚本引擎。"
+msgstr "无法为 %2 挂件创建 %1 脚本引擎。"
 
 #: plasma/private/applet_p.cpp:172
 #, kde-format
 msgid "Show Alternatives..."
-msgstr "显示备选方案..."
+msgstr "显示替代部件..."
 
-#: plasma/private/applet_p.cpp:268
+#: plasma/private/applet_p.cpp:274
 #, kde-format
 msgid "Widget Removed"
-msgstr "小部件已移除"
+msgstr "挂件已移除"
 
-#: plasma/private/applet_p.cpp:269
+#: plasma/private/applet_p.cpp:275
 #, kde-format
 msgid "The widget \"%1\" has been removed."
-msgstr "已移除小部件“%1”。"
+msgstr "已移除挂件“%1”。"
 
-#: plasma/private/applet_p.cpp:273
+#: plasma/private/applet_p.cpp:279
 #, kde-format
 msgid "Panel Removed"
 msgstr "面板已移除"
 
-#: plasma/private/applet_p.cpp:274
+#: plasma/private/applet_p.cpp:280
 #, kde-format
 msgid "A panel has been removed."
 msgstr "已移除面板。"
 
-#: plasma/private/applet_p.cpp:277
+#: plasma/private/applet_p.cpp:283
 #, kde-format
 msgid "Desktop Removed"
 msgstr "桌面已移除"
 
-#: plasma/private/applet_p.cpp:278
+#: plasma/private/applet_p.cpp:284
 #, kde-format
 msgid "A desktop has been removed."
 msgstr "已移除桌面。"
 
-#: plasma/private/applet_p.cpp:281
+#: plasma/private/applet_p.cpp:287
 #, kde-format
 msgid "Undo"
 msgstr "撤销"
 
-#: plasma/private/applet_p.cpp:369
+#: plasma/private/applet_p.cpp:375
 #, kde-format
 msgid "Widget Settings"
-msgstr "小部件设置"
+msgstr "挂件设置"
 
-#: plasma/private/applet_p.cpp:376
+#: plasma/private/applet_p.cpp:382
 #, kde-format
 msgid "Remove this Widget"
-msgstr "移除此小部件"
+msgstr "移除此挂件"
 
-#: plasma/private/applet_p.cpp:383
+#: plasma/private/applet_p.cpp:389
 #: plasma/private/associatedapplicationmanager.cpp:65
 #: plasma/private/associatedapplicationmanager.cpp:124
 #: plasma/private/associatedapplicationmanager.cpp:166
@@ -524,7 +456,7 @@ msgstr "移除此小部件"
 msgid "Run the Associated Application"
 msgstr "运行关联应用程序"
 
-#: plasma/private/applet_p.cpp:474
+#: plasma/private/applet_p.cpp:480
 #, kde-format
 msgid "Script initialization failed"
 msgstr "脚本初始化失败"
@@ -535,27 +467,27 @@ msgstr "脚本初始化失败"
 msgid "Open with %1"
 msgstr "用 %1 打开"
 
-#: plasma/private/containment_p.cpp:58
+#: plasma/private/containment_p.cpp:57
 #, kde-format
 msgid "Remove this Panel"
 msgstr "移除此面板"
 
-#: plasma/private/containment_p.cpp:60
+#: plasma/private/containment_p.cpp:59
 #, kde-format
 msgid "Remove this Activity"
 msgstr "移除此活动"
 
-#: plasma/private/containment_p.cpp:66
+#: plasma/private/containment_p.cpp:65
 #, kde-format
 msgid "Activity Settings"
 msgstr "活动设置"
 
-#: plasma/private/containment_p.cpp:72
+#: plasma/private/containment_p.cpp:71
 #, kde-format
 msgid "Add Widgets..."
-msgstr "添加小部件..."
+msgstr "添加挂件..."
 
-#: plasma/private/containment_p.cpp:188
+#: plasma/private/containment_p.cpp:187
 #, kde-format
 msgid "Could not find requested component: %1"
 msgstr "无法找到所需组件：%1"
@@ -566,19 +498,19 @@ msgstr "无法找到所需组件：%1"
 msgid ""
 "Sharing a widget on the network allows you to access this widget from "
 "another computer as a remote control."
-msgstr "在网络上共享小部件后，您可以将其他计算机作为遥控器远程访问此小部件。"
+msgstr "在网络上共享挂件后，您可以将其他计算机作为遥控器远程访问此挂件。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishCheckbox)
 #: plasma/private/publish.ui:27
 #, kde-format
 msgid "Share this widget on the network"
-msgstr "在网络上共享此小部件"
+msgstr "在网络上共享此挂件"
 
 #. i18n: ectx: property (text), widget (QCheckBox, allUsersCheckbox)
 #: plasma/private/publish.ui:37
 #, kde-format
 msgid "Allow everybody to freely access this widget"
-msgstr "允许任何人自由访问此小部件"
+msgstr "允许任何人自由访问此挂件"
 
 #: plasma/private/service_p.h:32
 #, kde-format
@@ -586,71 +518,71 @@ msgctxt "Error message, tried to start an invalid service"
 msgid "Invalid (null) service, can not perform any operations."
 msgstr "无效的服务，无法执行任何操作。"
 
-#: plasmaquick/appletquickitem.cpp:595
+#: plasmaquick/appletquickitem.cpp:609
 #, kde-format
 msgid "Unknown Applet"
 msgstr "未知小程序"
 
-#: plasmaquick/appletquickitem.cpp:610
+#: plasmaquick/appletquickitem.cpp:624
 #, kde-format
 msgid "Error loading QML file: %1 %2"
 msgstr "加载 QML 文件出错：%1 %2"
 
-#: plasmaquick/appletquickitem.cpp:612
+#: plasmaquick/appletquickitem.cpp:626
 #, kde-format
 msgid "Error loading Applet: package inexistent. %1"
 msgstr "加载小程序出错：软件包不存在。%1"
 
-#: plasmaquick/configview.cpp:96
+#: plasmaquick/configview.cpp:92
 #, kde-format
 msgid "%1 Settings"
 msgstr "%1 设置"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:597
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:603
 #, kde-format
 msgid "Plasma Package"
 msgstr "Plasma 软件包"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:601
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:607
 #, kde-format
 msgid "Install"
 msgstr "安装"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:614
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:620
 #, kde-format
 msgid "Package Installation Failed"
 msgstr "软件包安装失败"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:637
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:643
 #, kde-format
 msgid "The package you just dropped is invalid."
 msgstr "您刚刚拖放的软件包无效。"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:646
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:710
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:652
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:721
 #, kde-format
 msgid "Widgets"
-msgstr "小部件"
+msgstr "挂件"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:651
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:657
 #, kde-format
 msgctxt "Add widget"
 msgid "Add %1"
 msgstr "添加 %1"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:665
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:714
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:671
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:725
 #, kde-format
 msgctxt "Add icon widget"
 msgid "Add Icon"
 msgstr "添加图标"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:677
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:683
 #, kde-format
 msgid "Wallpaper"
 msgstr "壁纸"
 
-#: scriptengines/qml/plasmoid/containmentinterface.cpp:687
+#: scriptengines/qml/plasmoid/containmentinterface.cpp:693
 #, kde-format
 msgctxt "Set wallpaper"
 msgid "Set %1"

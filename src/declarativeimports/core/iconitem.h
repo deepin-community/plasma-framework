@@ -32,7 +32,7 @@ class IconItem : public QQuickItem
     /**
      * Sets the icon to be displayed. Source can be one of:
      *  - iconName (as a string)
-     *  - URL
+     *  - URL (for now, only file:// URL or a absolute path are supported)
      *  - QImage
      *  - QPixmap
      *  - QIcon
@@ -148,7 +148,11 @@ public:
     QSGNode *updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updatePaintNodeData) override;
 
     void itemChange(ItemChange change, const ItemChangeData &value) override;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#else
+    void geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#endif
 
     void componentComplete() override;
 
@@ -179,8 +183,11 @@ private:
     QSize paintedSize(const QSizeF &containerSize = QSizeF()) const;
     void updateImplicitSize();
 
+    QSGNode *createSubtree(qreal initialOpacity);
+    void updateSubtree(QSGNode *node, qreal opacity);
+
     // all the ways we can set an source. Only one of them will be valid
-    QScopedPointer<IconItemSource> m_iconItemSource;
+    std::unique_ptr<IconItemSource> m_iconItemSource;
     // this contains the raw variant it was passed
     QVariant m_source;
     Plasma::Svg::Status m_status;

@@ -13,6 +13,7 @@
 #include <QQuickItemGrabResult>
 #include <QSignalSpy>
 
+#include <KConfigGroup>
 #include <KIconEngine>
 #include <KIconLoader>
 #include <KIconTheme>
@@ -113,6 +114,32 @@ QImage IconItemTest::grabImage(QQuickItem *item)
     return grab->image();
 }
 
+QImage IconItemTest::waitAndGrabImage(QQuickItem *item, int delay)
+{
+    auto window = item->window();
+
+    // Ensure the window is exposed, as otherwise rendering does not happen.
+    Q_ASSERT(QTest::qWaitForWindowExposed(window));
+
+    // Wait for the provided time. This ensures we can delay so animations have
+    // time to run.
+    QTest::qWait(delay);
+
+    // Ensure the item is rendered at least once before continuing. Otherwise
+    // we run the risk of nothing having changed when calling this in quick
+    // succession.
+    QSignalSpy frameSwappedSpy(window, &QQuickWindow::frameSwapped);
+    frameSwappedSpy.wait(100);
+
+    auto result = grabImage(item);
+
+    // In rare cases, we can trigger a use-after free if we don't explicitly
+    // disconnect from QQuickWindow::frameSwapped.
+    frameSwappedSpy.disconnect(window);
+
+    return result;
+}
+
 Plasma::Svg *IconItemTest::findPlasmaSvg(QQuickItem *item)
 {
     return item->findChild<Plasma::Svg *>();
@@ -131,30 +158,30 @@ void IconItemTest::changeTheme(Plasma::Theme *theme, const QString &themeName)
 
 void IconItemTest::loadPixmap()
 {
-    QScopedPointer<QQuickItem> item(createIconItem());
+    std::unique_ptr<QQuickItem> item(createIconItem());
     QPixmap sourcePixmap(QFINDTESTDATA("data/test_image.png"));
 
     item->setSize(sourcePixmap.size());
     item->setProperty("source", sourcePixmap);
     QVERIFY(item->property("valid").toBool());
 
-    QImage capture = grabImage(item.data());
-    QCOMPARE(capture, sourcePixmap.toImage().convertToFormat(QImage::Format_ARGB32_Premultiplied));
+    QImage capture = grabImage(item.get());
+    QCOMPARE(capture, sourcePixmap.toImage().convertToFormat(capture.format()));
     QCOMPARE(sourcePixmap, item->property("source").value<QPixmap>());
 }
 
 // tests setting icon from a QImage
 void IconItemTest::loadImage()
 {
-    QScopedPointer<QQuickItem> item(createIconItem());
+    std::unique_ptr<QQuickItem> item(createIconItem());
     QImage sourceImage(QFINDTESTDATA("data/test_image.png"));
 
     item->setSize(sourceImage.size());
     item->setProperty("source", sourceImage);
     QVERIFY(item->property("valid").toBool());
 
-    QImage capture = grabImage(item.data());
-    QCOMPARE(capture, sourceImage.convertToFormat(QImage::Format_ARGB32_Premultiplied));
+    QImage capture = grabImage(item.get());
+    QCOMPARE(capture, sourceImage.convertToFormat(capture.format()));
     QCOMPARE(sourceImage, item->property("source").value<QImage>());
 }
 
@@ -185,7 +212,7 @@ void IconItemTest::usesPlasmaTheme()
     svg.setImagePath("icons/konversation");
 
     QImage img1 = grabImage(item1);
-    QImage img2 = svg.image(QSize(item1->width(), item1->height()), "konversation");
+    QImage img2 = svg.image(QSize(item1->width(), item1->height()), "konversation").convertToFormat(img1.format());
     QVERIFY(!imageIsEmpty(img1));
     QVERIFY(!imageIsEmpty(img2));
     QCOMPARE(img1, img2);
@@ -213,7 +240,7 @@ void IconItemTest::animation()
     grabImage(item1);
     item1->setProperty("source", "user-away");
     // animation from user-busy -> user-away
-    QVERIFY(userAwayImg != grabImage(item1));
+    QVERIFY(userAwayImg != waitAndGrabImage(item1));
 
     // animated = false
     QQuickItem *item2 = createIconItem();
@@ -247,7 +274,7 @@ void IconItemTest::animationAfterHide()
     QCOMPARE(userAwayImg, grabImage(item1));
 
     item1->setProperty("source", "user-busy");
-    QVERIFY(userBusyImg != grabImage(item1));
+    QVERIFY(userBusyImg != waitAndGrabImage(item1));
 }
 
 void IconItemTest::bug_359388()

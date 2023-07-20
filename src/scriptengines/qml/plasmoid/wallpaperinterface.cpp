@@ -7,7 +7,12 @@
 #include "wallpaperinterface.h"
 
 #include "containmentinterface.h"
+
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
 #include <kdeclarative/configpropertymap.h>
+#else
+#include <KConfigPropertyMap>
+#endif
 #include <kdeclarative/qmlobjectsharedengine.h>
 
 #include <KActionCollection>
@@ -20,6 +25,7 @@
 #include <QQmlExpression>
 #include <QQmlProperty>
 
+#include <Plasma/Corona>
 #include <Plasma/PluginLoader>
 #include <kpackage/packageloader.h>
 
@@ -43,6 +49,10 @@ WallpaperInterface::WallpaperInterface(ContainmentInterface *parent)
         syncWallpaperPackage();
     }
     connect(m_containmentInterface->containment(), &Plasma::Containment::wallpaperChanged, this, &WallpaperInterface::syncWallpaperPackage);
+    connect(m_containmentInterface->containment()->corona(),
+            &Plasma::Corona::startupCompleted,
+            this,
+            std::bind(&WallpaperInterface::repaintNeeded, this, Qt::transparent));
 }
 
 WallpaperInterface::~WallpaperInterface()
@@ -73,7 +83,11 @@ QString WallpaperInterface::pluginName() const
     return m_wallpaperPlugin;
 }
 
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
 KDeclarative::ConfigPropertyMap *WallpaperInterface::configuration() const
+#else
+KConfigPropertyMap *WallpaperInterface::configuration() const
+#endif
 {
     return m_configuration;
 }
@@ -94,6 +108,7 @@ KConfigLoader *WallpaperInterface::configScheme()
             QFile file(xmlPath);
             m_configLoader = new KConfigLoader(cfg, &file, this);
         }
+        connect(m_configLoader, &KConfigLoader::configChanged, this, &WallpaperInterface::configurationChanged);
     }
 
     return m_configLoader;
@@ -132,11 +147,22 @@ void WallpaperInterface::syncWallpaperPackage()
     m_configLoader = nullptr;
     m_configuration = nullptr;
     if (configScheme()) {
+#if KDECLARATIVE_BUILD_DEPRECATED_SINCE(5, 89)
         m_configuration = new KDeclarative::ConfigPropertyMap(configScheme(), this);
+#else
+        m_configuration = new KConfigPropertyMap(configScheme(), this);
+#endif
     }
 
-    m_qmlObject->rootContext()->setContextProperty(QStringLiteral("wallpaper"), this);
+    /*
+     * The initialization is delayed, so it's fine to setSource first.
+     * This also prevents many undefined wallpaper warnings caused by "wallpaper" being set
+     * when the old wallpaper plugin still exists.
+     */
     m_qmlObject->setSource(m_pkg.fileUrl("mainscript"));
+    if (!qEnvironmentVariableIntValue("PLASMA_NO_CONTEXTPROPERTIES")) {
+        m_qmlObject->rootContext()->setContextProperty(QStringLiteral("wallpaper"), this);
+    }
 
     const QString rootPath = m_pkg.metadata().value(QStringLiteral("X-Plasma-RootPath"));
     if (!rootPath.isEmpty()) {
@@ -150,6 +176,7 @@ void WallpaperInterface::syncWallpaperPackage()
     props[QStringLiteral("width")] = width();
     props[QStringLiteral("height")] = height();
     m_qmlObject->completeInitialization(props);
+    Q_EMIT repaintNeeded();
 }
 
 void WallpaperInterface::loadFinished()
@@ -251,7 +278,7 @@ WallpaperInterface *WallpaperInterface::qmlAttachedProperties(QObject *object)
 {
     // at the moment of the attached object creation, the root item is the only one that hasn't a parent
     // only way to avoid creation of this attached for everybody but the root item
-    return object->parent() ? nullptr : s_rootObjects.value(QtQml::qmlEngine(object));
+    return object->parent() ? nullptr : s_rootObjects.value(qmlEngine(object));
 }
 
 bool WallpaperInterface::isLoading() const
